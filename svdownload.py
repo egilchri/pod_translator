@@ -1,25 +1,12 @@
-import re
-import os
 import argparse
 import requests
 import whisper
 import json
 import warnings
-import nltk
 from deep_translator import GoogleTranslator
 
-# Suppress the urllib3/LibreSSL warning for a cleaner output
+# Suppress the urllib3/LibreSSL warning
 warnings.filterwarnings("ignore", message=".*urllib3 v2 only supports OpenSSL 1.1.1+.*")
-
-# Ensure the NLTK sentence tokenizer is available
-try:
-    # We now check for 'punkt_tab' which is required for newer NLTK versions
-    nltk.data.find('tokenizers/punkt_tab')
-except LookupError:
-    print("Downloading updated NLTK punctuation data (punkt_tab)...")
-    nltk.download('punkt_tab')
-    # Some older environments still look for the original 'punkt'
-    nltk.download('punkt')
 
 def process_podcast(url):
     audio_file = "podcast.mp3"
@@ -37,26 +24,29 @@ def process_podcast(url):
         return
 
     # 2. Transcribe with Whisper
-    print("Transcribing with Whisper (this may take a minute)...")
-    # 'base' is a good balance of speed and accuracy. Use 'medium' for better Swedish.
+    print("Transcribing with Whisper (preserving timestamps)...")
+    # 'base' is good; if your Mac has the RAM, 'small' or 'medium' improves Swedish grammar
     model = whisper.load_model("base")
     result = model.transcribe(audio_file, language='sv')
     
-    # 3. Re-group into Utterances (Sentences)
-    print("Processing utterances and translating...")
+    # 3. Process segments for Highlighting
+    print("Translating segments and attaching timestamps...")
     translator = GoogleTranslator(source='sv', target='en')
-    full_text = result['text']
     
-    # Split the massive block of text into actual sentences
-    utterances = nltk.sent_tokenize(full_text, language='swedish')
+    # Whisper's 'segments' list contains the timing data we need
+    segments = result.get('segments', [])
     
     web_data = []
-    for sentence in utterances:
-        clean_sentence = sentence.strip()
-        if clean_sentence:
+    for seg in segments:
+        sv_text = seg['text'].strip()
+        
+        if sv_text:
+            # We preserve start and end (in seconds) so the HTML player knows when to highlight
             web_data.append({
-                "sv": clean_sentence,
-                "en": translator.translate(clean_sentence)
+                "start": round(seg['start'], 2),
+                "end": round(seg['end'], 2),
+                "sv": sv_text,
+                "en": translator.translate(sv_text)
             })
 
     # 4. Save for Web Player
@@ -64,10 +54,10 @@ def process_podcast(url):
         json.dump(web_data, f, ensure_ascii=False, indent=2)
     
     print(f"\nSuccess! Created {json_output}")
-    print(f"Processed {len(web_data)} utterances.")
+    print(f"Processed {len(web_data)} timed segments.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Download, transcribe, and translate Swedish podcasts.")
+    parser = argparse.ArgumentParser(description="Download, transcribe, and translate with timing.")
     parser.add_argument("--url", required=True, help="The direct URL to the .mp3 file")
     args = parser.parse_args()
     
