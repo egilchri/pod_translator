@@ -1,1 +1,32 @@
-pyton3 ./svtran
+# Usapodden
+# https://sverigesradio.se/usapodden
+python3 ./svtran.py --url https://sverigesradio.se/topsy/ljudfil/srse/10084652.mp3
+
+python3 ./svtran.py --url https://sverigesradio.se/topsy/ljudfil/srse/10081970.mp3
+
+python3 ./svdownload.py --url https://sverigesradio.se/topsy/ljudfil/srse/10081970.mp3
+
+python3 ./svdownload.py --url "https://www.sverigesradio.se/topsy/ljudfil/itunes/10073191.mp3" --feedname "usapodden" --date "260211" --title "Trump tvingas backa från rasistisk video"
+
+python3 ./run_workflow.py --url "https://www.sverigesradio.se/topsy/ljudfil/itunes/10073191.mp3" --feedname "usapodden" --date "260211" --title "Trump tvingas backa från rasistisk video"
+
+
+
+
+python3 -m http.server 8000
+
+M-x shell-command  python3 -m http.server 8000 &
+
+
+python3 ./show_usapodden_feed.py
+
+python3 ./show_podcast_feed.py --url https://api.sr.se/api/rss/pod/itunes/22712
+
+
+python3 ./show_podcast_feed.py --url https://podcast.stream.schibsted.media/ap/100196
+
+python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 --feedname aftenpoddenusa
+
+
+
+python3 -mpdb ./show_podcast_feed.py --url https://podcast.stream.schibsted.media/ap/100196

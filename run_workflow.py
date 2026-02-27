@@ -22,20 +22,23 @@ def main():
     parser.add_argument("--feedname", required=True)
     parser.add_argument("--date", required=True)
     parser.add_argument("--title", required=True)
+    # Added language parameter
+    parser.add_argument("--lang", default="sv", help="ISO Language code (e.g. sv, no, de)")
     
     args = parser.parse_args()
 
-    # 1. Path to your separate Podcasts repository (Adjust this path if needed)
+    # 1. Path to your separate Podcasts repository
     podcasts_repo_path = os.path.abspath("Podcasts")
 
-    # 2. Run the processing script
-    print(f"--- Starting Processing for {args.title} ---")
+    # 2. Run the processing script with the language parameter
+    print(f"--- Starting Processing for {args.url} in {args.lang} ---")
     run_command([
         "python3", "svdownload.py", 
         "--url", args.url, 
         "--feedname", args.feedname, 
         "--date", args.date, 
-        "--title", args.title
+        "--title", args.title,
+        "--lang", args.lang
     ])
 
     # 3. Define the generated filenames
@@ -55,23 +58,26 @@ def main():
 
     for f in files_to_move:
         if os.path.exists(f):
-            shutil.move(f, os.path.join(podcasts_repo_path, f))
+            # Overwrite if file already exists in target
+            dest = os.path.join(podcasts_repo_path, f)
+            if os.path.exists(dest):
+                os.remove(dest)
+            shutil.move(f, dest)
         else:
             print(f"[!] Warning: {f} was not generated.")
 
     # 5. Git Operations inside the Podcasts repository
-    print("--- Staging and Pushing in Podcasts Repo ---")
-    commit_message = f"Add transcript and audio for {args.feedname} - {args.date}"
+    print(f"--- Staging and Pushing ({args.lang}) in Podcasts Repo ---")
+    commit_message = f"Add {args.lang} transcript and audio for {args.feedname} - {args.date}"
     
-    # We run these with cwd=podcasts_repo_path to target the correct repository
     for f in files_to_move:
         run_command(["git", "add", f], cwd=podcasts_repo_path)
     
     run_command(["git", "commit", "-m", commit_message], cwd=podcasts_repo_path)
     run_command(["git", "push"], cwd=podcasts_repo_path)
 
-    print(f"--- Workflow Complete! Episode is live in the Podcasts repository. ---")
+    print(f"--- Workflow Complete! {args.lang} episode is live. ---")
 
 if __name__ == "__main__":
     main()
- 
+
