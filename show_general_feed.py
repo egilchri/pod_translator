@@ -2,42 +2,54 @@ import argparse
 import feedparser
 import re
 import sys
+import os
 import time
 from datetime import datetime
 
 def clean_text(text):
+    """Cleans text for safe command-line usage and HTML safety."""
     if not text: return ""
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)
+    # Using single quotes to prevent f-string syntax errors in Python
     return " ".join(text.split()).replace('"', "'")
 
 def slugify(text):
+    """Converts a string into a short, filename-friendly slug."""
     text = text.lower()
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')[:15]
 
 def create_general_feed(url, lang_override=None):
+    print(f"Fetching feed: {url}")
     feed = feedparser.parse(url)
-    if not feed.entries: return None, None
     
+    if not feed.entries:
+        print("Error: Could not parse feed or no entries found.")
+        return None, None
+
     podcast_title = feed.feed.get('title', 'Unknown Podcast')
     feed_name_attr = slugify(podcast_title)
     
-    # Sync Logic: Get latest entry timestamp
+    # Sync Logic: Capture the timestamp of the latest episode in the RSS
     latest_entry = feed.entries[0]
     latest_ts = time.mktime(latest_entry.published_parsed) if hasattr(latest_entry, 'published_parsed') else time.time()
 
+    # Determine language logic (Bypassing English check for manual overrides)
     is_override = "true" if lang_override else "false"
     if lang_override:
         lang_code = lang_override
     else:
         full_lang = feed.feed.get('language', 'en-us').lower()
-        if "en" in full_lang: return None, None
+        if "en" in full_lang:
+            print(f"Error: Target language is English ({full_lang}). Skipping.")
+            return None, None
         lang_code = full_lang.split('-')[0]
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
+    js_lang_param = f"'{lang_override}'" if lang_override else "null"
 
-    # NEW: Added data-rss-url to keep track of the source
+    # Metadata persistence: Save the RSS source and override status in the HTML
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
@@ -49,21 +61,35 @@ def create_general_feed(url, lang_override=None):
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
             .nav-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }}
             .btn-back {{ background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }}
+            /* Sync Button: Hidden by default, pulses when update is needed */
             .btn-sync {{ background: #ffc107; color: black; padding: 8px 16px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; display: none; animation: pulse 2s infinite; }}
             @keyframes pulse {{ 0% {{ opacity: 1; }} 50% {{ opacity: 0.7; }} 100% {{ opacity: 1; }} }}
             header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
             .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ffc107; }}
-            .btn-run {{ background: #ffc107; color: black; padding: 10px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; }}
+            .btn-group {{ display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }}
+            .btn {{ padding: 10px 15px; border-radius: 6px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; font-size: 0.85em; }}
+            .btn-run {{ background: #ffc107; color: black; }}
+            .btn-view {{ background: #28a745; color: white; }}
+            .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 1000; }}
         </style>
         <script>
+            // Uses metadata to copy the exact update command to clipboard
             function triggerUpdate() {{
-                const cmd = `python3 run_workflow_feed.py --url "{url}"` + ("{lang_override}" ? ` --lang {lang_override}` : "");
-                navigator.clipboard.writeText(cmd);
-                alert("Update command copied! Run it in your terminal.");
+                const rssUrl = document.documentElement.getAttribute('data-rss-url');
+                const langCode = {js_lang_param};
+                const langFlag = langCode ? ` --lang ${{langCode}}` : "";
+                const cmd = `python3 run_workflow_feed.py --url "${{rssUrl}}"${{langFlag}}`;
+                navigator.clipboard.writeText(cmd).then(() => {{
+                    alert("Feed Update command copied! Run it in your terminal.");
+                }});
             }}
             function copyMasterCommand(mp3Url, feedname, date, title, lang) {{
                 const cmd = `python3 ./run_workflow.py --url "${{mp3Url}}" --feedname "${{feedname}}" --date "${{date}}" --title "${{title}}" --lang "${{lang}}"`;
-                navigator.clipboard.writeText(cmd);
+                navigator.clipboard.writeText(cmd).then(() => {{
+                    const t = document.getElementById('toast');
+                    t.style.display = 'block';
+                    setTimeout(() => {{ t.style.display = 'none'; }}, 3000);
+                }});
             }}
         </script>
     </head>
@@ -76,9 +102,14 @@ def create_general_feed(url, lang_override=None):
             <h1>{podcast_title}</h1>
             <p>Language: <strong>{lang_code}</strong> {"(Manual Override)" if lang_override else ""}</p>
         </header>
+        <div id="toast" class="toast">✅ Command Copied!</div>
+
         <script>
+            // On load, compare timestamps to decide if update button should show
             window.addEventListener('DOMContentLoaded', () => {{
-                if (parseFloat(document.body.dataset.latest) > parseFloat(document.body.dataset.generated)) {{
+                const latest = parseFloat(document.body.dataset.latest);
+                const generated = parseFloat(document.body.dataset.generated);
+                if (latest > generated) {{
                     document.getElementById('syncBtn').style.display = 'block';
                 }}
             }});
@@ -89,31 +120,37 @@ def create_general_feed(url, lang_override=None):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
+        
+        # Clean variables to avoid syntax errors
         c_title = clean_text(entry.get('title', 'Untitled'))
+        c_summary = clean_text(entry.get('summary', ''))[:300]
         live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
 
         html_content += f"""
         <div class="episode-card">
-            <small>{dt.strftime("%B %d, %Y")}</small>
+            <small style="color:#666; font-weight:bold;">{dt.strftime("%B %d, %Y")}</small>
             <h2>{c_title}</h2>
+            <div class="summary">{c_summary}...</div>
             <div class="btn-group">
-                <button class="btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">⚡ Copy Process Command</button>
-                <a href="{live_url}" class="btn-view" style="background:#28a745; color:white; padding:10px 15px; border-radius:6px; text-decoration:none; font-weight:bold;">🌐 View Live</a>
+                <button class="btn btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">⚡ Copy Process Command</button>
+                <a href="{live_url}" class="btn btn-view">🌐 View Live</a>
+                <a href="{mp3_link}" target="_blank" class="btn" style="background:#e9ecef; color:#004a99; border:1px solid #004a99;">🎧 Preview MP3</a>
             </div>
         </div>"""
 
-    with open(f"{feed_name_attr}.feed.html", "w", encoding="utf-8") as f:
+    output_filename = f"{feed_name_attr}.feed.html"
+    with open(output_filename, "w", encoding="utf-8") as f:
         f.write(html_content + "</body></html>")
     return feed_name_attr, lang_code
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
-    parser.add_argument("--lang", help="Override language code")
+    parser.add_argument("--lang", help="Override the RSS language code")
     args = parser.parse_args()
+    
     fname, lcode = create_general_feed(args.url, args.lang)
     if fname and lcode:
         print(f"FEEDNAME_OUTPUT:{fname}")
         print(f"LANG_OUTPUT:{lcode}")
-
 
