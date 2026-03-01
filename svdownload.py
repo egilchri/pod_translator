@@ -92,9 +92,9 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             fp_orig = BytesIO()
             tts_orig.write_to_fp(fp_orig)
             fp_orig.seek(0)
-            orig_audio = AudioSegment.from_file(fp_orig, format="mp3")
-            combined_audio += orig_audio
-            current_b_time += (len(orig_audio) / 1000.0)
+            orig_audio_seg = AudioSegment.from_file(fp_orig, format="mp3")
+            combined_audio += orig_audio_seg
+            current_b_time += (len(orig_audio_seg) / 1000.0)
             
             combined_audio += AudioSegment.silent(duration=500)
             current_b_time += 0.5
@@ -105,9 +105,9 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 fp_en = BytesIO()
                 tts_en.write_to_fp(fp_en)
                 fp_en.seek(0)
-                en_audio = AudioSegment.from_file(fp_en, format="mp3")
-                combined_audio += en_audio
-                current_b_time += (len(en_audio) / 1000.0)
+                en_audio_seg = AudioSegment.from_file(fp_en, format="mp3")
+                combined_audio += en_audio_seg
+                current_b_time += (len(en_audio_seg) / 1000.0)
             
             combined_audio += AudioSegment.silent(duration=1000)
             seg_b_end = current_b_time
@@ -133,34 +133,54 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
     with open(json_output, 'w', encoding='utf-8') as f:
         json.dump(web_data, f, ensure_ascii=False, indent=2)
     
-    # 5. HTML Template with dynamic timestamp logic
+    # 5. Mobile-Friendly HTML Player with Speed Widget
     html_template = f"""
     <!DOCTYPE html>
     <html lang="{lang}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>{title}</title>
         <style>
             :root {{ --primary: #004a99; --accent: #ffc107; --bg: #f0f2f5; }}
-            body {{ font-family: system-ui, sans-serif; margin: 0; background: var(--bg); }}
-            .header-box {{ position: sticky; top: 0; background: white; padding: 15px; border-bottom: 3px solid var(--primary); z-index: 100; }}
-            .controls {{ background: #eee; padding: 12px; border-radius: 15px; margin-top: 10px; }}
-            .row {{ display: flex; gap: 20px; padding: 15px; margin-bottom: 12px; background: white; border-radius: 12px; cursor: pointer; }}
+            body {{ font-family: -apple-system, system-ui, sans-serif; margin: 0; background: var(--bg); }}
+            .header-box {{ position: sticky; top: 0; background: rgba(255,255,255,0.98); padding: 15px; border-bottom: 3px solid var(--primary); z-index: 100; backdrop-filter: blur(10px); }}
+            .controls {{ display: flex; flex-direction: column; gap: 10px; margin-top: 10px; background: #eee; padding: 12px; border-radius: 15px; }}
+            .audio-row {{ display: flex; gap: 10px; align-items: center; }}
+            audio {{ flex-grow: 1; height: 40px; }}
+            .speed-row {{ display: flex; gap: 5px; align-items: center; justify-content: center; border-top: 1px solid #ccc; padding-top: 8px; }}
+            .btn {{ background: var(--primary); color: white; border: none; padding: 8px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.75rem; }}
+            .btn.active {{ background: var(--accent); color: black; }}
+            .speed-btn {{ background: #fff; color: #333; border: 1px solid #ccc; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; cursor: pointer; }}
+            .speed-btn.active {{ background: var(--primary); color: white; border-color: var(--primary); }}
+            .transcript {{ padding: 20px; max-width: 900px; margin: 0 auto; }}
+            .row {{ display: flex; gap: 20px; padding: 15px; margin-bottom: 12px; background: white; border-radius: 12px; border: 1px solid #ddd; cursor: pointer; }}
             .row.highlight {{ background: #fffde7; border-left: 8px solid var(--accent); }}
-            .orig {{ flex: 1; color: var(--primary); font-weight: 700; }}
-            .en {{ flex: 1; color: #546e7a; font-style: italic; }}
+            .orig {{ flex: 1; color: var(--primary); font-weight: 700; font-size: 1.1rem; }}
+            .en {{ flex: 1; color: #546e7a; font-style: italic; border-left: 1px solid #eee; padding-left: 15px; font-size: 1.1rem; }}
+            @media (max-width: 768px) {{ .row {{ flex-direction: column; gap: 10px; }} .en {{ border-left: none; border-top: 1px solid #eee; padding-top: 10px; }} }}
         </style>
     </head>
     <body>
         <div class="header-box">
-            <h1>{title}</h1>
+            <small style="font-weight:bold; color:#666;">{feedname.upper()} | {date}</small>
+            <h1 style="margin: 5px 0; font-size: 1.2rem;">{title}</h1>
             <div class="controls">
-                <audio id="audio" controls src="{audio_file}"></audio>
-                <button id="modeBtn" onclick="toggleMode()">🔊 Switch to Interleaved</button>
+                <div class="audio-row">
+                    <audio id="audio" controls src="{audio_file}"></audio>
+                    <button id="modeBtn" class="btn" onclick="toggleMode()">🔊 Interleaved</button>
+                </div>
+                <div class="speed-row">
+                    <span style="font-size: 0.7rem; font-weight: bold; color: #555;">SPEED:</span>
+                    <button class="speed-btn" onclick="setSpeed(0.5)">0.5x</button>
+                    <button class="speed-btn" onclick="setSpeed(0.75)">0.75x</button>
+                    <button class="speed-btn active" id="speed-1" onclick="setSpeed(1.0)">1x</button>
+                    <button class="speed-btn" onclick="setSpeed(1.25)">1.25x</button>
+                    <button class="speed-btn" onclick="setSpeed(1.5)">1.5x</button>
+                </div>
             </div>
         </div>
-        <div id="transcript" style="padding: 20px;"></div>
+        <div id="transcript" class="transcript"></div>
         <script>
             const audio = document.getElementById('audio');
             const modeBtn = document.getElementById('modeBtn');
@@ -169,12 +189,23 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             let mode = 'orig';
             let data = [];
 
+            function setSpeed(rate) {{
+                audio.playbackRate = rate;
+                document.querySelectorAll('.speed-btn').forEach(btn => {{
+                    btn.classList.remove('active');
+                    if (parseFloat(btn.innerText) === rate) btn.classList.add('active');
+                }});
+            }}
+
             function toggleMode() {{
                 const isPlaying = !audio.paused;
+                const rate = audio.playbackRate;
                 mode = (mode === 'orig') ? 'bilingual' : 'orig';
                 audio.src = sources[mode];
+                audio.playbackRate = rate;
                 if (isPlaying) audio.play();
-                modeBtn.innerText = mode === 'orig' ? '🔊 Switch to Interleaved' : '🌍 Switch to Podcast';
+                modeBtn.innerText = mode === 'orig' ? '🔊 Interleaved' : '🌍 Podcast';
+                modeBtn.classList.toggle('active');
             }}
 
             fetch('{json_output}').then(r => r.json()).then(json => {{
@@ -182,8 +213,11 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 data.forEach((item, i) => {{
                     const row = document.createElement('div');
                     row.className = 'row'; row.id = 'row-' + i;
-                    row.innerHTML = `<div class="orig">${{item.orig}}</div><div class="en">${{item.en}}</div>`;
-                    row.onclick = () => {{ audio.currentTime = (mode === 'orig' ? item.start : item.b_start); audio.play(); }};
+                    row.innerHTML = `<div class=\"orig\">${{item.orig}}</div><div class=\"en\">${{item.en}}</div>`;
+                    row.onclick = () => {{ 
+                        audio.currentTime = (mode === 'orig') ? item.start : item.b_start; 
+                        audio.play(); 
+                    }};
                     container.appendChild(row);
                 }});
             }});
