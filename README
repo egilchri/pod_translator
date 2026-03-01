@@ -25,7 +25,6 @@ python3 ./show_podcast_feed.py --url https://api.sr.se/api/rss/pod/itunes/22712
 
 python3 ./show_podcast_feed.py --url https://podcast.stream.schibsted.media/ap/100196
 
-python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 --feedname aftenpoddenusa
 
 
 
@@ -34,12 +33,16 @@ python3 -mpdb ./show_podcast_feed.py --url https://podcast.stream.schibsted.medi
 time python3 ./run_workflow.py --url "https://www.sverigesradio.se/topsy/ljudfil/itunes/10089151.mp3" --feedname "usapodden" --date "260225" --title "Trump fick bråket han ville ha" --lang "sv"
 
 
-# French
-python3 -mpdb ./show_podcast_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss --feedname wash-dici
-python3 ./run_workflow_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss
+# Feeds
 
-python3 -mpdb ./run_workflow_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss 
-
-python3 ./run_workflow_feed.py --url https://americas.georgetown.edu/series/y-esto-no-es-todo-podcast/feed.rss
-
+# spanish 
 python3 ./run_workflow_feed.py --url https://americas.georgetown.edu/series/y-esto-no-es-todo-podcast/feed.rss --lang es
+
+# French
+python3 ./run_workflow_feed.py --url https://feed.ausha.co/ygdr9TlrARaV
+
+# Norwegian : aftenpoddenusa
+python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 --feedname aftenpoddenusa
+
+# Portuguese
+python3 ./run_workflow_feed.py --url  https://www.omnycontent.com/d/playlist/a5afba10-ff2d-4550-adff-add50110b76b/e6a29981-0f54-46a8-8a46-ae940109168e/68a19809-a0fb-49e6-91a5-ae940109cf5a/podcast.rss

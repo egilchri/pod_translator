@@ -1,9 +1,8 @@
 import os
-import argparse
-import subprocess
 import shutil
 import sys
 import re
+import subprocess  # Fixed the missing import regression
 
 def run_command(command_list, cwd=None):
     """Executes git commands to sync the index with GitHub."""
@@ -13,34 +12,36 @@ def run_command(command_list, cwd=None):
         if "commit" in str(command_list):
             print("No changes to commit for the index.")
         else:
-            print(f"Error: {e}")
+            print(f"Error executing git command: {e}")
             sys.exit(1)
 
 def extract_metadata(filepath):
-    """Extracts title, language, override status, and source RSS from the feed file."""
-    title, lang, is_override, rss_url = "Unknown Podcast", "Unknown", False, "#"
+    """Extracts metadata precisely to avoid attribute spill-over in columns."""
+    title, lang, is_override, rss_url = "Unknown Podcast", "??", False, "#"
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-            title_match = re.search(r'<title>(.*?)</title>', content)
-            if title_match: title = title_match.group(1).split(' - ')[0]
             
-            lang_match = re.search(r'<html lang="(.*?)">', content)
-            if lang_match: lang = lang_match.group(1).upper()
+            # Precise Title Extraction
+            t_match = re.search(r'<title>(.*?)</title>', content)
+            if t_match: title = t_match.group(1).split(' - ')[0]
             
-            # Detect manual override flag
-            if 'data-is-override="true"' in content:
-                is_override = True
+            # Precise Language Extraction (prevents capturing data- attributes)
+            l_match = re.search(r'<html lang="([^"]+)"', content)
+            if l_match: lang = l_match.group(1).upper()
             
-            # Extract the source RSS URL
-            rss_match = re.search(r'data-rss-url="(.*?)"', content)
-            if rss_match: rss_url = rss_match.group(1)
+            # Metadata Flags
+            is_override = 'data-is-override="true"' in content
+            
+            r_match = re.search(r'data-rss-url="([^"]+)"', content)
+            if r_match: rss_url = r_match.group(1)
                 
     except Exception as e:
-        print(f"Warning: Could not parse {filepath}: {e}")
+        print(f"Warning parsing {filepath}: {e}")
     return title, lang, is_override, rss_url
 
 def generate_index_html(podcasts_dir):
+    """Generates the multi-column index with legal disclaimer."""
     root_url = "https://egilchri.github.io/pod_tran"
     files = [f for f in os.listdir(podcasts_dir) if f.endswith(".feed.html")]
     files.sort()
@@ -49,22 +50,17 @@ def generate_index_html(podcasts_dir):
     for filename in files:
         full_path = os.path.join(podcasts_dir, filename)
         title, lang, is_override, rss_url = extract_metadata(full_path)
-        file_url = f"{root_url}/{filename}"
         
-        lang_display = f"{lang}*" if is_override else lang
-        override_note = '<br><small style="color:orange; font-size:0.7em;">Manual Override</small>' if is_override else ''
+        # New Sync Mode logic for the dedicated column
+        status_label = '<span style="color:orange; font-weight:bold; font-size:0.8em;">MANUAL OVERRIDE</span>' if is_override else '<span style="color:gray; font-size:0.8em;">AUTO</span>'
 
         table_rows += f"""
             <tr>
                 <td><strong>{title}</strong></td>
-                <td>
-                    <code style="background:#eee; padding:2px 5px; border-radius:3px;">{lang_display}</code>
-                    {override_note}
-                </td>
-                <td>
-                    <a href="{file_url}" style="color: #004a99; text-decoration: none; font-weight: bold; border: 1px solid #004a99; padding: 5px 10px; border-radius: 4px; display: inline-block; margin-bottom: 5px;">View Dashboard</a>
-                    <br><a href="{rss_url}" target="_blank" style="font-size:0.75em; color:#666; text-decoration:none;">🔗 Source RSS Feed</a>
-                </td>
+                <td><code style="background:#eee; padding:2px 5px; border-radius:3px;">{lang}</code></td>
+                <td>{status_label}</td>
+                <td><a href="{rss_url}" target="_blank" style="text-decoration:none; font-size:0.9em;">🔗 RSS Source</a></td>
+                <td><a href="{root_url}/{filename}" style="color: #004a99; font-weight: bold; text-decoration: none; border: 1px solid #004a99; padding: 5px 10px; border-radius: 4px;">View Dashboard</a></td>
             </tr>"""
 
     html_content = f"""
@@ -74,12 +70,12 @@ def generate_index_html(podcasts_dir):
         <title>Verified Politics Feeds Index</title>
         <style>
             body {{ font-family: system-ui, -apple-system, sans-serif; margin: 40px; background: #f4f4f9; color: #333; line-height: 1.5; }}
-            .container {{ max-width: 1000px; margin: 0 auto; }}
-            h1 {{ color: #004a99; border-bottom: 3px solid #004a99; padding-bottom: 10px; }}
-            table {{ width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; margin-top: 20px; }}
-            th, td {{ padding: 18px; border-bottom: 1px solid #ddd; text-align: left; }}
-            th {{ background-color: #004a99; color: white; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; }}
-            tr:hover {{ background-color: #f9f9f9; }}
+            .container {{ max-width: 1100px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }}
+            h1 {{ color: #004a99; border-bottom: 3px solid #004a99; padding-bottom: 10px; margin-top: 0; }}
+            table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+            th {{ background-color: #004a99; color: white; text-align: left; padding: 15px; text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px; }}
+            td {{ padding: 15px; border-bottom: 1px solid #eee; }}
+            tr:hover {{ background-color: #fcfcfc; }}
             footer {{ margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.85em; color: #666; }}
             .disclaimer {{ background: #eee; padding: 15px; border-radius: 8px; margin-top: 10px; font-style: italic; }}
         </style>
@@ -90,14 +86,14 @@ def generate_index_html(podcasts_dir):
             <table>
                 <thead>
                     <tr>
-                        <th>Podcast Title</th>
-                        <th>Language</th>
-                        <th>Action & Source</th>
+                        <th>Podcast</th>
+                        <th>Lang</th>
+                        <th>Sync Mode</th>
+                        <th>Source</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {table_rows}
-                </tbody>
+                <tbody>{table_rows}</tbody>
             </table>
             <footer>
                 <p><strong>Generated on:</strong> {os.popen('date').read().strip()}</p>
@@ -116,24 +112,23 @@ def generate_index_html(podcasts_dir):
     return index_file
 
 def main():
-    # Identify the correct local path for your Podcasts repo
-    podcasts_repo_path = os.path.abspath("Podcasts")
-    if not os.path.exists(podcasts_repo_path):
-        print(f"[!] Error: {podcasts_repo_path} not found.")
+    repo_path = os.path.abspath("Podcasts")
+    if not os.path.exists(repo_path):
+        print(f"[!] Error: {repo_path} not found.")
         sys.exit(1)
         
-    index_filename = generate_index_html(podcasts_repo_path)
-    dest = os.path.join(podcasts_repo_path, index_filename)
+    index_filename = generate_index_html(repo_path)
+    dest = os.path.join(repo_path, index_filename)
     
     if os.path.exists(dest):
         os.remove(dest)
     shutil.move(index_filename, dest)
     
-    # Automated Git Sync
-    run_command(["git", "add", index_filename], cwd=podcasts_repo_path)
-    run_command(["git", "commit", "-m", "Sync index with fair use disclaimer and RSS sources"], cwd=podcasts_repo_path)
-    run_command(["git", "push"], cwd=podcasts_repo_path)
+    # Automated Git Sync restored
+    run_command(["git", "add", index_filename], cwd=repo_path)
+    run_command(["git", "commit", "-m", "Fixed metadata column display and restored Git sync"], cwd=repo_path)
+    run_command(["git", "push"], cwd=repo_path)
 
 if __name__ == "__main__":
     main()
-
+    
