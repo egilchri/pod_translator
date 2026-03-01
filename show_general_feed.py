@@ -65,7 +65,15 @@ def create_general_feed(url, lang_override=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
-    parser.add_argument("--lang", help="Override language code")
+    parser.add_argument("--lang", help="Override the RSS language code")
     args = parser.parse_args()
-    create_general_feed(args.url, args.lang)
+    
+    # Capture the return values from the function
+    fname, lcode = create_general_feed(args.url, args.lang)
+    
+    # The master script SEARCHES for these specific strings
+    if fname and lcode:
+        print(f"FEEDNAME_OUTPUT:{fname}")
+        print(f"LANG_OUTPUT:{lcode}")
+        
 
