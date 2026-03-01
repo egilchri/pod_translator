@@ -9,7 +9,8 @@ def clean_text(text):
     if not text: return ""
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)
-    return " ".join(text.split()).replace('"', '\\"').replace("'", "\\'")
+    # Remove problematic characters and normalize whitespace
+    return " ".join(text.split()).replace('"', "'")
 
 def slugify(text):
     """Converts a string into a short, filename-friendly slug."""
@@ -35,7 +36,7 @@ def create_general_feed(url, lang_override=None):
         print(f"[*] Using language override: {lang_code}")
     else:
         full_lang = feed.feed.get('language', 'en-us').lower()
-        # Only block English if no override is provided
+        # Bypass this check if lang_override is provided
         if "en" in full_lang:
             print(f"Error: Target language is English ({full_lang}). Skipping.")
             return None, None
@@ -43,6 +44,7 @@ def create_general_feed(url, lang_override=None):
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
 
+    # Header with navigation
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}">
@@ -85,14 +87,19 @@ def create_general_feed(url, lang_override=None):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
-        c_title = clean_text(entry.get('title', 'Untitled'))
         
+        # Pre-process variables to avoid syntax errors inside f-string
+        clean_title = clean_text(entry.get('title', 'Untitled'))
+        clean_summary = clean_text(entry.get('summary', ''))[:300]
+        formatted_date = dt.strftime("%B %d, %Y")
+
         html_content += f"""
-        <div class=\"episode-card\">
-            <small>{dt.strftime(\"%B %d, %Y\")}</small>
-            <h2>{entry.title}</h2>
-            <div class=\"btn-group\">
-                <button class=\"btn-run\" onclick=\"copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')\">⚡ Copy Process Command</button>
+        <div class="episode-card">
+            <small>{formatted_date}</small>
+            <h2>{clean_title}</h2>
+            <div class="summary">{clean_summary}...</div>
+            <div class="btn-group">
+                <button class="btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{clean_title}', '{lang_code}')">⚡ Copy Process Command</button>
             </div>
         </div>"""
 
@@ -105,10 +112,10 @@ def create_general_feed(url, lang_override=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
-    parser.add_argument("--lang", help="Override language code")
+    parser.add_argument("--lang", help="Override the RSS language code")
     args = parser.parse_args()
     
-    # Critical: Return output for the master workflow
+    # Critical: Output these for run_workflow_feed.py
     fname, lcode = create_general_feed(args.url, args.lang)
     if fname and lcode:
         print(f"FEEDNAME_OUTPUT:{fname}")
