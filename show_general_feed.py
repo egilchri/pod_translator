@@ -9,7 +9,7 @@ def clean_text(text):
     if not text: return ""
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)
-    # Remove problematic characters and normalize whitespace
+    # Use standard single quotes to avoid f-string syntax errors
     return " ".join(text.split()).replace('"', "'")
 
 def slugify(text):
@@ -36,7 +36,6 @@ def create_general_feed(url, lang_override=None):
         print(f"[*] Using language override: {lang_code}")
     else:
         full_lang = feed.feed.get('language', 'en-us').lower()
-        # Bypass this check if lang_override is provided
         if "en" in full_lang:
             print(f"Error: Target language is English ({full_lang}). Skipping.")
             return None, None
@@ -44,7 +43,6 @@ def create_general_feed(url, lang_override=None):
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
 
-    # Header with navigation
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}">
@@ -58,8 +56,14 @@ def create_general_feed(url, lang_override=None):
             .btn-back {{ background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }}
             header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
             .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ffc107; }}
-            .btn-run {{ background: #ffc107; color: black; padding: 10px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; }}
-            .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; }}
+            h2 {{ margin: 0 0 10px 0; font-size: 1.3em; }}
+            .summary {{ color: #444; font-size: 0.95em; margin-bottom: 20px; line-height: 1.5; }}
+            .btn-group {{ display: flex; gap: 8px; border-top: 1px solid #eee; padding-top: 15px; flex-wrap: wrap; }}
+            .btn {{ padding: 10px 15px; border-radius: 6px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; font-size: 0.85em; display: inline-block; }}
+            .btn-run {{ background: #ffc107; color: black; }}
+            .btn-view {{ background: #28a745; color: white; }}
+            .btn-listen {{ background: #e9ecef; color: #004a99; border: 1px solid #004a99; }}
+            .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 1000; }}
         </style>
         <script>
             function copyMasterCommand(mp3Url, feedname, date, title, lang) {{
@@ -88,20 +92,25 @@ def create_general_feed(url, lang_override=None):
         date_param = dt.strftime("%y%m%d")
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
         
-        # Pre-process variables to avoid syntax errors inside f-string
-        clean_title = clean_text(entry.get('title', 'Untitled'))
-        clean_summary = clean_text(entry.get('summary', ''))[:300]
-        formatted_date = dt.strftime("%B %d, %Y")
+        # Pre-process variables for clean inclusion in the dashboard
+        c_title = clean_text(entry.get('title', 'Untitled'))
+        c_summary = clean_text(entry.get('summary', ''))[:300]
+        live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
 
         html_content += f"""
         <div class="episode-card">
-            <small>{formatted_date}</small>
-            <h2>{clean_title}</h2>
-            <div class="summary">{clean_summary}...</div>
+            <small style="color:#666; font-weight:bold;">{dt.strftime("%B %d, %Y")}</small>
+            <h2>{c_title}</h2>
+            <div class="summary">{c_summary}...</div>
             <div class="btn-group">
-                <button class="btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{clean_title}', '{lang_code}')">⚡ Copy Process Command</button>
+                <button class="btn btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">
+                    ⚡ Copy Process Command
+                </button>
+                <a href="{live_url}" class="btn btn-view">🌐 View Live</a>
+                <a href="{mp3_link}" target="_blank" class="btn btn-listen">🎧 Preview MP3</a>
             </div>
-        </div>"""
+        </div>
+        """
 
     output_filename = f"{feed_name_attr}.feed.html"
     with open(output_filename, "w", encoding="utf-8") as f:
@@ -115,7 +124,6 @@ if __name__ == "__main__":
     parser.add_argument("--lang", help="Override the RSS language code")
     args = parser.parse_args()
     
-    # Critical: Output these for run_workflow_feed.py
     fname, lcode = create_general_feed(args.url, args.lang)
     if fname and lcode:
         print(f"FEEDNAME_OUTPUT:{fname}")
