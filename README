@@ -30,3 +30,16 @@ python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/1
 
 
 python3 -mpdb ./show_podcast_feed.py --url https://podcast.stream.schibsted.media/ap/100196
+
+time python3 ./run_workflow.py --url "https://www.sverigesradio.se/topsy/ljudfil/itunes/10089151.mp3" --feedname "usapodden" --date "260225" --title "Trump fick bråket han ville ha" --lang "sv"
+
+
+# French
+python3 -mpdb ./show_podcast_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss --feedname wash-dici
+python3 ./run_workflow_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss
+
+python3 -mpdb ./run_workflow_feed.py --url https://www.rfi.fr/fr/podcasts/washington-d-ici/rss 
+
+python3 ./run_workflow_feed.py --url https://americas.georgetown.edu/series/y-esto-no-es-todo-podcast/feed.rss
+
+python3 ./run_workflow_feed.py --url https://americas.georgetown.edu/series/y-esto-no-es-todo-podcast/feed.rss --lang es

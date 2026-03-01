@@ -22,30 +22,39 @@ def main():
     parser.add_argument("--feedname", required=True)
     parser.add_argument("--date", required=True)
     parser.add_argument("--title", required=True)
-    # Added language parameter
     parser.add_argument("--lang", default="sv", help="ISO Language code (e.g. sv, no, de)")
+    # Added num_utterances parameter to pass to svdownload.py
+    parser.add_argument("--num_utterances", type=int, default=None, help="Limit number of segments for testing")
     
     args = parser.parse_args()
 
     # 1. Path to your separate Podcasts repository
     podcasts_repo_path = os.path.abspath("Podcasts")
 
-    # 2. Run the processing script with the language parameter
+    # 2. Run the processing script with the parameters
     print(f"--- Starting Processing for {args.url} in {args.lang} ---")
-    run_command([
+    
+    cmd = [
         "python3", "svdownload.py", 
         "--url", args.url, 
         "--feedname", args.feedname, 
         "--date", args.date, 
         "--title", args.title,
         "--lang", args.lang
-    ])
+    ]
+    
+    # Append the testing limit if provided
+    if args.num_utterances is not None:
+        cmd.extend(["--num_utterances", str(args.num_utterances)])
+
+    run_command(cmd)
 
     # 3. Define the generated filenames
     prefix = f"{args.feedname}.{args.date}"
     transcript_name = f"transcript.{args.feedname}.{args.date}.json"
     files_to_move = [
         f"{prefix}.mp3",
+        f"{prefix}.bilingual.mp3", # Added the new interleaved track
         f"{prefix}.html",
         f"{transcript_name}"
     ]
@@ -70,8 +79,10 @@ def main():
     print(f"--- Staging and Pushing ({args.lang}) in Podcasts Repo ---")
     commit_message = f"Add {args.lang} transcript and audio for {args.feedname} - {args.date}"
     
+    # Stage files that exist in the repo
     for f in files_to_move:
-        run_command(["git", "add", f], cwd=podcasts_repo_path)
+        if os.path.exists(os.path.join(podcasts_repo_path, f)):
+            run_command(["git", "add", f], cwd=podcasts_repo_path)
     
     run_command(["git", "commit", "-m", commit_message], cwd=podcasts_repo_path)
     run_command(["git", "push"], cwd=podcasts_repo_path)
