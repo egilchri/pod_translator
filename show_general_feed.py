@@ -43,6 +43,7 @@ def create_general_feed(url, lang_override=None):
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
 
+    # ADDED: Navigation header and Back button styles
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}">
@@ -52,6 +53,9 @@ def create_general_feed(url, lang_override=None):
         <title>{podcast_title} - Feed Dashboard</title>
         <style>
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
+            .nav-header {{ display: flex; align-items: center; margin-bottom: 20px; }}
+            .btn-back {{ background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }}
+            .btn-back:hover {{ background: #5a6268; }}
             header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
             .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ffc107; }}
             h2 {{ margin: 0 0 10px 0; font-size: 1.3em; }}
@@ -75,6 +79,9 @@ def create_general_feed(url, lang_override=None):
         </script>
     </head>
     <body>
+        <div class="nav-header">
+            <button class="btn-back" onclick="window.history.back()">← Back to Index</button>
+        </div>
         <header>
             <h1>{podcast_title}</h1>
             <p>Language Detected: <strong>{lang_code}</strong> | Feed ID: <strong>{feed_name_attr}</strong></p>
