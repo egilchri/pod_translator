@@ -109,12 +109,15 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 combined_audio += en_audio_seg
                 current_b_time += (len(en_audio_seg) / 1000.0)
             
+            # Final silence for the segment
             combined_audio += AudioSegment.silent(duration=1000)
-            seg_b_end = current_b_time
             current_b_time += 1.0
             
+            # The end of this row is the current time after silence
+            seg_b_end = current_b_time
             b_timestamps.append({"b_start": round(seg_b_start, 2), "b_end": round(seg_b_end, 2)})
-        except:
+        except Exception as e:
+            print(f"Error synthesizing segment {i}: {e}")
             b_timestamps.append({"b_start": 0, "b_end": 0})
 
     combined_audio.export(interleaved_audio_file, format="mp3")
@@ -133,7 +136,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
     with open(json_output, 'w', encoding='utf-8') as f:
         json.dump(web_data, f, ensure_ascii=False, indent=2)
     
-    # 5. Mobile-Friendly HTML Player with Speed Widget
+    # 5. Mobile-Friendly HTML Player
     html_template = f"""
     <!DOCTYPE html>
     <html lang="{lang}">
@@ -155,7 +158,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             .speed-btn.active {{ background: var(--primary); color: white; border-color: var(--primary); }}
             .transcript {{ padding: 20px; max-width: 900px; margin: 0 auto; }}
             .row {{ display: flex; gap: 20px; padding: 15px; margin-bottom: 12px; background: white; border-radius: 12px; border: 1px solid #ddd; cursor: pointer; }}
-            .row.highlight {{ background: #fffde7; border-left: 8px solid var(--accent); }}
+            .row.highlight {{ background: #fffde7; border-left: 8px solid var(--accent); transition: background 0.3s ease; }}
             .orig {{ flex: 1; color: var(--primary); font-weight: 700; font-size: 1.1rem; }}
             .en {{ flex: 1; color: #546e7a; font-style: italic; border-left: 1px solid #eee; padding-left: 15px; font-size: 1.1rem; }}
             @media (max-width: 768px) {{ .row {{ flex-direction: column; gap: 10px; }} .en {{ border-left: none; border-top: 1px solid #eee; padding-top: 10px; }} }}
@@ -168,7 +171,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             <div class="controls">
                 <div class="audio-row">
                     <audio id="audio" controls src="{audio_file}"></audio>
-                    <button id="modeBtn" class="btn" onclick="toggleMode()">🔊 Interleaved</button>
+                    <button id="modeBtn" class="btn" onclick="toggleMode()">🌍 Interleaved</button>
                 </div>
                 <div class="speed-row">
                     <span style="font-size: 0.7rem; font-weight: bold; color: #555;">SPEED:</span>
@@ -188,6 +191,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             const sources = {{ orig: "{audio_file}", bilingual: "{interleaved_audio_file}" }};
             let mode = 'orig';
             let data = [];
+            let lastIdx = -1;
 
             function setSpeed(rate) {{
                 audio.playbackRate = rate;
@@ -203,8 +207,9 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 mode = (mode === 'orig') ? 'bilingual' : 'orig';
                 audio.src = sources[mode];
                 audio.playbackRate = rate;
+                lastIdx = -1; // Force UI refresh on mode change
                 if (isPlaying) audio.play();
-                modeBtn.innerText = mode === 'orig' ? '🔊 Interleaved' : '🌍 Podcast';
+                modeBtn.innerText = mode === 'orig' ? '🌍 Interleaved' : '🎙️ Podcast';
                 modeBtn.classList.toggle('active');
             }}
 
@@ -224,15 +229,26 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
 
             audio.addEventListener('timeupdate', () => {{
                 const now = audio.currentTime;
-                data.forEach((item, i) => {{
-                    const el = document.getElementById('row-' + i);
+                const currentIdx = data.findIndex(item => {{
                     const s = (mode === 'orig') ? item.start : item.b_start;
                     const e = (mode === 'orig') ? item.end : item.b_end;
-                    if (now >= s && now <= e) {{
-                        el.classList.add('highlight');
-                        if (!el.dataset.seen) {{ el.scrollIntoView({{ behavior: 'smooth', block: 'center' }}); el.dataset.seen = '1'; }}
-                    }} else {{ el.classList.remove('highlight'); delete el.dataset.seen; }}
+                    return now >= s && now <= e;
                 }});
+
+                if (currentIdx !== lastIdx) {{
+                    if (lastIdx !== -1) {{
+                        const oldEl = document.getElementById('row-' + lastIdx);
+                        if (oldEl) oldEl.classList.remove('highlight');
+                    }}
+                    if (currentIdx !== -1) {{
+                        const newEl = document.getElementById('row-' + currentIdx);
+                        if (newEl) {{
+                            newEl.classList.add('highlight');
+                            newEl.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+                        }}
+                    }}
+                    lastIdx = currentIdx;
+                }}
             }});
         </script>
     </body>

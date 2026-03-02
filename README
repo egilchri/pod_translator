@@ -42,7 +42,20 @@ python3 ./run_workflow_feed.py --url https://americas.georgetown.edu/series/y-es
 python3 ./run_workflow_feed.py --url https://feed.ausha.co/ygdr9TlrARaV
 
 # Norwegian : aftenpoddenusa
-python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 --feedname aftenpoddenusa
+python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 -
 
 # Portuguese
 python3 ./run_workflow_feed.py --url  https://www.omnycontent.com/d/playlist/a5afba10-ff2d-4550-adff-add50110b76b/e6a29981-0f54-46a8-8a46-ae940109168e/68a19809-a0fb-49e6-91a5-ae940109cf5a/podcast.rss
+
+# Danish
+python3 ./run_workflow_feed.py --url  https://api.dr.dk/podcasts/v1/feeds/stjerner-og-striber-podcast.xml?format=podcast
+
+# Italian
+# python3 ./run_workflow_feed.py --url https://feeds.megaphone.fm/PIANO5443361058
+# Da Costa a Costa is too big and too old
+
+# German
+python3 ./run_workflow_feed.py --url  https://feeds.simplecast.com/yPsdBcxP
+
+# Italian
+
