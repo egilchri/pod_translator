@@ -161,13 +161,16 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             .row.highlight {{ background: #fffde7; border-left: 8px solid var(--accent); transition: background 0.3s ease; }}
             .orig {{ flex: 1; color: var(--primary); font-weight: 700; font-size: 1.1rem; }}
             .en {{ flex: 1; color: #546e7a; font-style: italic; border-left: 1px solid #eee; padding-left: 15px; font-size: 1.1rem; }}
+            .status-badge {{ font-size: 0.7rem; margin-left: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }}
             @media (max-width: 768px) {{ .row {{ flex-direction: column; gap: 10px; }} .en {{ border-left: none; border-top: 1px solid #eee; padding-top: 10px; }} }}
         </style>
     </head>
     <body>
         <div class="header-box">
             <small style="font-weight:bold; color:#666;">{feedname.upper()} | {date}</small>
-            <h1 style="margin: 5px 0; font-size: 1.2rem;">{title}</h1>
+            <h1 style="margin: 5px 0; font-size: 1.2rem;">
+                {title} <span id="audio-status" class="status-badge"></span>
+            </h1>
             <div class="controls">
                 <div class="audio-row">
                     <audio id="audio" controls src="{audio_file}"></audio>
@@ -187,11 +190,29 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
         <script>
             const audio = document.getElementById('audio');
             const modeBtn = document.getElementById('modeBtn');
+            const statusEl = document.getElementById('audio-status');
             const container = document.getElementById('transcript');
             const sources = {{ orig: "{audio_file}", bilingual: "{interleaved_audio_file}" }};
             let mode = 'orig';
             let data = [];
             let lastIdx = -1;
+
+            // Check if audio files are live on server
+            async function checkAudioStatus() {{
+                try {{
+                    const response = await fetch(sources[mode], {{ method: 'HEAD' }});
+                    if (response.ok) {{
+                        statusEl.innerText = "● Live";
+                        statusEl.style.color = "green";
+                    }} else {{
+                        statusEl.innerText = "○ Missing";
+                        statusEl.style.color = "orange";
+                    }}
+                }} catch (e) {{
+                    statusEl.innerText = "○ Offline";
+                    statusEl.style.color = "red";
+                }}
+            }}
 
             function setSpeed(rate) {{
                 audio.playbackRate = rate;
@@ -207,11 +228,14 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 mode = (mode === 'orig') ? 'bilingual' : 'orig';
                 audio.src = sources[mode];
                 audio.playbackRate = rate;
-                lastIdx = -1; // Force UI refresh on mode change
+                lastIdx = -1; 
+                checkAudioStatus();
                 if (isPlaying) audio.play();
                 modeBtn.innerText = mode === 'orig' ? '🌍 Interleaved' : '🎙️ Podcast';
                 modeBtn.classList.toggle('active');
             }}
+
+            checkAudioStatus();
 
             fetch('{json_output}').then(r => r.json()).then(json => {{
                 data = json;
