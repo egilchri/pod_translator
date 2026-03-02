@@ -59,3 +59,5 @@ python3 ./run_workflow_feed.py --url  https://feeds.simplecast.com/yPsdBcxP
 
 # Italian
 
+################### testing
+python3 test_svdownload.py
