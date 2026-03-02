@@ -8,6 +8,7 @@ from pydub import AudioSegment
 from deep_translator import GoogleTranslator
 from gtts import gTTS
 from io import BytesIO
+import time
 
 # Suppress warnings
 warnings.filterwarnings("ignore", message=".*urllib3 v2 only supports OpenSSL.*")
@@ -82,6 +83,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
     b_timestamps = []
 
     for i, seg in enumerate(segments):
+        time.sleep(0.5) # Wait half a second between segments
         orig_text = seg['text'].strip()
         en_text = translated_en[i].strip() if i < len(translated_en) else ""
         seg_b_start = current_b_time
