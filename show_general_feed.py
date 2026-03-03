@@ -4,7 +4,7 @@ import re
 import sys
 import os
 import time
-import requests  # Added for cache control
+import requests
 from datetime import datetime
 
 def clean_text(text):
@@ -12,6 +12,7 @@ def clean_text(text):
     if not text: return ""
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)
+    # Using single quotes to prevent f-string syntax errors in Python
     return " ".join(text.split()).replace('"', "'")
 
 def slugify(text):
@@ -21,53 +22,59 @@ def slugify(text):
     return text.strip('-')[:15]
 
 def create_general_feed(url, lang_override=None, feedname_override=None):
-    print(f"Fetching feed: {url}")
+    # 1. CACHE-BUSTING FETCH
+    # Add a unique 'salt' to the URL and use strict headers to bypass CDN caching
+    cache_buster_url = f"{url}?t={int(time.time())}"
+    print(f"Fetching fresh feed: {cache_buster_url}")
     
-    # 1. FORCE FRESH FETCH (Cache-Busting)
-    # We use a Podcatcher-like User-Agent and headers to bypass caching
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
     }
     
     try:
-        response = requests.get(url, headers=headers, timeout=20)
+        response = requests.get(cache_buster_url, headers=headers, timeout=20)
         response.raise_for_status()
-        # Parse the raw bytes from the request
         feed = feedparser.parse(response.content)
     except Exception as e:
-        print(f"Error fetching feed via requests: {e}")
-        # Fallback to standard feedparser if requests fails
+        print(f"Cache-bust failed: {e}. Falling back to standard URL.")
         feed = feedparser.parse(url)
     
     if not feed.entries:
         print("Error: Could not parse feed or no entries found.")
         return None, None
 
-    # ... [Rest of the naming and language logic remains the same] ...
+    # Determine Feedname
     if feedname_override:
         feed_name_attr = feedname_override
+        print(f"Using manual feedname override: {feed_name_attr}")
     else:
         podcast_title = feed.feed.get('title', 'Unknown Podcast')
         feed_name_attr = slugify(podcast_title)
+        print(f"Discovered feedname: {feed_name_attr}")
 
     podcast_title_display = feed.feed.get('title', 'Unknown Podcast')
     
+    # Sync Logic: Latest entry timestamp
     latest_entry = feed.entries[0]
     latest_ts = time.mktime(latest_entry.published_parsed) if hasattr(latest_entry, 'published_parsed') else time.time()
 
+    # Determine language logic
     is_override = "true" if lang_override else "false"
-    lang_code = lang_override if lang_override else feed.feed.get('language', 'en-us').lower().split('-')[0]
-    
-    if "en" in lang_code and not lang_override:
-        print(f"Error: Target language is English. Skipping.")
-        return None, None
+    if lang_override:
+        lang_code = lang_override
+    else:
+        full_lang = feed.feed.get('language', 'en-us').lower()
+        if "en" in full_lang:
+            print(f"Error: Target language is English ({full_lang}). Skipping.")
+            return None, None
+        lang_code = full_lang.split('-')[0]
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
     js_lang_param = f"'{lang_override}'" if lang_override else "null"
 
-    # ... [HTML Template logic remains same] ...
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
@@ -150,6 +157,8 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         
+        # 2. PROTOCOL REPAIR
+        # Fix //sverigesradio.se URLs common in SR feeds
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
         if mp3_link.startswith("//"):
             mp3_link = "https:" + mp3_link
