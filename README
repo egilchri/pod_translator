@@ -43,7 +43,7 @@ python3 ./run_workflow_feed.py --url https://feed.ausha.co/ygdr9TlrARaV
 
 # Norwegian : aftenpoddenusa
 python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196 -
-
+python3 ./run_workflow_feed.py --url https://podcast.stream.schibsted.media/ap/100196\?format=rss
 # Portuguese
 python3 ./run_workflow_feed.py --url  https://www.omnycontent.com/d/playlist/a5afba10-ff2d-4550-adff-add50110b76b/e6a29981-0f54-46a8-8a46-ae940109168e/68a19809-a0fb-49e6-91a5-ae940109cf5a/podcast.rss
 
@@ -61,8 +61,9 @@ python3 ./run_workflow_feed.py --url  https://feeds.simplecast.com/yPsdBcxP
 
 # Swedish
 python3 ./run_workflow_feed.py --url  https://api.sr.se/api/rss/pod/22712
-python3 ./run_workflow_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden
-
+python3 ./run_workflow_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden --lang sv
+# i got this feed from my podcast addict on my phone, it's the only one I could find that had the latest updated entries
+python3 ./show_general_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden --lang sv
 ################### testing
 python3 test_svdownload.py
 

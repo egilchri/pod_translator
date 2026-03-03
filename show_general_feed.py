@@ -28,7 +28,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
         print("Error: Could not parse feed or no entries found.")
         return None, None
 
-    # FEATURE: Use feedname_override if provided, otherwise slugify the title
+    # Use feedname_override if provided, otherwise slugify the title
     if feedname_override:
         feed_name_attr = feedname_override
         print(f"Using manual feedname override: {feed_name_attr}")
@@ -57,7 +57,6 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
     base_gh_url = "https://egilchri.github.io/pod_tran"
     js_lang_param = f"'{lang_override}'" if lang_override else "null"
 
-    # Metadata persistence: Save the RSS source and override status in the HTML
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
@@ -72,15 +71,12 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             .btn-sync {{ background: #ffc107; color: black; padding: 8px 16px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; display: none; animation: pulse 2s infinite; }}
             @keyframes pulse {{ 0% {{ opacity: 1; }} 50% {{ opacity: 0.7; }} 100% {{ opacity: 1; }} }}
             header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
-            
             .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ccc; position: relative; }}
             .episode-card.is-live {{ border-left-color: #28a745; }}
-            
             .status-tag {{ position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }}
             .tag-live {{ background: #d4edda; color: #155724; }}
             .tag-pending {{ background: #fff3cd; color: #856404; }}
             .tag-checking {{ background: #e9ecef; color: #666; }}
-            
             .btn-group {{ display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }}
             .btn {{ padding: 10px 15px; border-radius: 6px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; font-size: 0.85em; }}
             .btn-run {{ background: #ffc107; color: black; }}
@@ -105,12 +101,10 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
                     setTimeout(() => {{ t.style.display = 'none'; }}, 3000);
                 }});
             }}
-
             async function checkLiveStatus(i, url) {{
                 const status = document.getElementById(`status-${{i}}`);
                 const card = document.getElementById(`card-${{i}}`);
                 const viewBtn = document.getElementById(`view-${{i}}`);
-                
                 try {{
                     const response = await fetch(url, {{ method: 'HEAD' }});
                     if (response.ok) {{
@@ -145,13 +139,13 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         
-        # Construct the URLs based on the determined feed_name_attr
-        expected_mp3_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.mp3"
-        live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
-
+        # Repair protocol-relative URLs (e.g., //sverigesradio.se -> https://sverigesradio.se)
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
         if mp3_link.startswith("//"):
             mp3_link = "https:" + mp3_link
+
+        expected_mp3_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.mp3"
+        live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
         c_title = clean_text(entry.get('title', 'Untitled'))
         c_summary = clean_text(entry.get('summary', ''))[:300]
 
@@ -188,12 +182,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
     parser.add_argument("--lang", help="Override the RSS language code")
-    # Added optional --feedname parameter
     parser.add_argument("--feedname", help="Override the discovered feed name")
     args = parser.parse_args()
     
-    # Passing args.feedname to the creation function
     fname, lcode = create_general_feed(args.url, args.lang, args.feedname)
     if fname and lcode:
         print(f"FEEDNAME_OUTPUT:{fname}")
         print(f"LANG_OUTPUT:{lcode}")
+
