@@ -20,7 +20,7 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')[:15]
 
-def create_general_feed(url, lang_override=None):
+def create_general_feed(url, lang_override=None, feedname_override=None):
     print(f"Fetching feed: {url}")
     feed = feedparser.parse(url)
     
@@ -28,8 +28,16 @@ def create_general_feed(url, lang_override=None):
         print("Error: Could not parse feed or no entries found.")
         return None, None
 
-    podcast_title = feed.feed.get('title', 'Unknown Podcast')
-    feed_name_attr = slugify(podcast_title)
+    # FEATURE: Use feedname_override if provided, otherwise slugify the title
+    if feedname_override:
+        feed_name_attr = feedname_override
+        print(f"Using manual feedname override: {feed_name_attr}")
+    else:
+        podcast_title = feed.feed.get('title', 'Unknown Podcast')
+        feed_name_attr = slugify(podcast_title)
+        print(f"Discovered feedname: {feed_name_attr}")
+
+    podcast_title_display = feed.feed.get('title', 'Unknown Podcast')
     
     # Sync Logic: Capture the timestamp of the latest episode in the RSS
     latest_entry = feed.entries[0]
@@ -56,7 +64,7 @@ def create_general_feed(url, lang_override=None):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{podcast_title} - Feed Dashboard</title>
+        <title>{podcast_title_display} - Feed Dashboard</title>
         <style>
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
             .nav-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }}
@@ -127,7 +135,7 @@ def create_general_feed(url, lang_override=None):
             <button id="syncBtn" class="btn-sync" onclick="triggerUpdate()">⚠ Update Available</button>
         </div>
         <header>
-            <h1>{podcast_title}</h1>
+            <h1>{podcast_title_display}</h1>
             <p>Language: <strong>{lang_code}</strong> {"(Manual Override)" if lang_override else ""}</p>
         </header>
         <div id="toast" class="toast">✅ Command Courtesied to Clipboard!</div>
@@ -137,7 +145,7 @@ def create_general_feed(url, lang_override=None):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         
-        # Construct the URLs
+        # Construct the URLs based on the determined feed_name_attr
         expected_mp3_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.mp3"
         live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
 
@@ -178,10 +186,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
     parser.add_argument("--lang", help="Override the RSS language code")
+    # Added optional --feedname parameter
+    parser.add_argument("--feedname", help="Override the discovered feed name")
     args = parser.parse_args()
     
-    fname, lcode = create_general_feed(args.url, args.lang)
+    # Passing args.feedname to the creation function
+    fname, lcode = create_general_feed(args.url, args.lang, args.feedname)
     if fname and lcode:
         print(f"FEEDNAME_OUTPUT:{fname}")
         print(f"LANG_OUTPUT:{lcode}")
-
