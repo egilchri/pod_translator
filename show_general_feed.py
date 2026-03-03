@@ -150,6 +150,8 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
         live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
 
         mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
+        if mp3_link.startswith("//"):
+            mp3_link = "https:" + mp3_link
         c_title = clean_text(entry.get('title', 'Untitled'))
         c_summary = clean_text(entry.get('summary', ''))[:300]
 
