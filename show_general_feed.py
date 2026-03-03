@@ -35,7 +35,7 @@ def create_general_feed(url, lang_override=None):
     latest_entry = feed.entries[0]
     latest_ts = time.mktime(latest_entry.published_parsed) if hasattr(latest_entry, 'published_parsed') else time.time()
 
-    # Determine language logic (Bypassing English check for manual overrides)
+    # Determine language logic
     is_override = "true" if lang_override else "false"
     if lang_override:
         lang_code = lang_override
@@ -61,19 +61,25 @@ def create_general_feed(url, lang_override=None):
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
             .nav-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }}
             .btn-back {{ background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }}
-            /* Sync Button: Hidden by default, pulses when update is needed */
             .btn-sync {{ background: #ffc107; color: black; padding: 8px 16px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; display: none; animation: pulse 2s infinite; }}
             @keyframes pulse {{ 0% {{ opacity: 1; }} 50% {{ opacity: 0.7; }} 100% {{ opacity: 1; }} }}
             header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
-            .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ffc107; }}
+            
+            .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ccc; position: relative; }}
+            .episode-card.is-live {{ border-left-color: #28a745; }}
+            
+            .status-tag {{ position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }}
+            .tag-live {{ background: #d4edda; color: #155724; }}
+            .tag-pending {{ background: #fff3cd; color: #856404; }}
+            .tag-checking {{ background: #e9ecef; color: #666; }}
+            
             .btn-group {{ display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }}
             .btn {{ padding: 10px 15px; border-radius: 6px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; font-size: 0.85em; }}
             .btn-run {{ background: #ffc107; color: black; }}
-            .btn-view {{ background: #28a745; color: white; }}
+            .btn-view {{ background: #28a745; color: white; display: none; }}
             .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 1000; }}
         </style>
         <script>
-            // Uses metadata to copy the exact update command to clipboard
             function triggerUpdate() {{
                 const rssUrl = document.documentElement.getAttribute('data-rss-url');
                 const langCode = {js_lang_param};
@@ -91,6 +97,28 @@ def create_general_feed(url, lang_override=None):
                     setTimeout(() => {{ t.style.display = 'none'; }}, 3000);
                 }});
             }}
+
+            async function checkLiveStatus(i, url) {{
+                const status = document.getElementById(`status-${{i}}`);
+                const card = document.getElementById(`card-${{i}}`);
+                const viewBtn = document.getElementById(`view-${{i}}`);
+                
+                try {{
+                    const response = await fetch(url, {{ method: 'HEAD' }});
+                    if (response.ok) {{
+                        status.innerText = "● Live";
+                        status.className = "status-tag tag-live";
+                        card.classList.add('is-live');
+                        viewBtn.style.display = 'inline-block';
+                    }} else {{
+                        status.innerText = "○ Pending";
+                        status.className = "status-tag tag-pending";
+                    }}
+                }} catch (e) {{
+                    status.innerText = "○ Offline";
+                    status.className = "status-tag tag-pending";
+                }}
+            }}
         </script>
     </head>
     <body data-latest="{latest_ts}" data-generated="{time.time()}">
@@ -102,45 +130,48 @@ def create_general_feed(url, lang_override=None):
             <h1>{podcast_title}</h1>
             <p>Language: <strong>{lang_code}</strong> {"(Manual Override)" if lang_override else ""}</p>
         </header>
-        <div id="toast" class="toast">✅ Command Copied!</div>
-
-        <script>
-            // On load, compare timestamps to decide if update button should show
-            window.addEventListener('DOMContentLoaded', () => {{
-                const latest = parseFloat(document.body.dataset.latest);
-                const generated = parseFloat(document.body.dataset.generated);
-                if (latest > generated) {{
-                    document.getElementById('syncBtn').style.display = 'block';
-                }}
-            }});
-        </script>
+        <div id="toast" class="toast">✅ Command Courtesied to Clipboard!</div>
     """
 
-    for entry in feed.entries[:15]:
+    for i, entry in enumerate(feed.entries[:15]):
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
-        mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
         
-        # Clean variables to avoid syntax errors
-        c_title = clean_text(entry.get('title', 'Untitled'))
-        c_summary = clean_text(entry.get('summary', ''))[:300]
+        # Construct the URLs
+        expected_mp3_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.mp3"
         live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
 
+        mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
+        c_title = clean_text(entry.get('title', 'Untitled'))
+        c_summary = clean_text(entry.get('summary', ''))[:300]
+
         html_content += f"""
-        <div class="episode-card">
+        <div class="episode-card" id="card-{i}">
+            <span id="status-{i}" class="status-tag tag-checking">Checking...</span>
             <small style="color:#666; font-weight:bold;">{dt.strftime("%B %d, %Y")}</small>
             <h2>{c_title}</h2>
             <div class="summary">{c_summary}...</div>
             <div class="btn-group">
                 <button class="btn btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">⚡ Copy Process Command</button>
-                <a href="{live_url}" class="btn btn-view">🌐 View Live</a>
+                <a href="{live_url}" id="view-{i}" class="btn btn-view">🌐 View Live</a>
                 <a href="{mp3_link}" target="_blank" class="btn" style="background:#e9ecef; color:#004a99; border:1px solid #004a99;">🎧 Preview MP3</a>
             </div>
+            <script>checkLiveStatus({i}, "{expected_mp3_url}");</script>
         </div>"""
 
     output_filename = f"{feed_name_attr}.feed.html"
     with open(output_filename, "w", encoding="utf-8") as f:
-        f.write(html_content + "</body></html>")
+        f.write(html_content + """
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const latest = parseFloat(document.body.dataset.latest);
+                const generated = parseFloat(document.body.dataset.generated);
+                if (latest > generated) {
+                    document.getElementById('syncBtn').style.display = 'block';
+                }
+            });
+        </script>
+        </body></html>""")
     return feed_name_attr, lang_code
 
 if __name__ == "__main__":

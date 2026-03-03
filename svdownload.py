@@ -34,11 +34,12 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
         return
 
     # 2. Transcription
-    print(f"[*] Transcribing in: {lang}...")
+    print(f"[*] Loading Whisper model ('small')...")
     model = whisper.load_model("small")
     segments = []
     
     if num_utterances:
+        print(f"[*] Transcribing first {num_utterances} utterances in: {lang}...")
         chunk_length_ms = 5 * 60 * 1000 
         current_pos = 0
         while len(segments) < num_utterances and current_pos < len(full_audio):
@@ -55,35 +56,46 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             if os.path.exists("temp_chunk.wav"): os.remove("temp_chunk.wav")
         segments = segments[:num_utterances]
     else:
+        print(f"[*] Transcribing full audio in: {lang} (this may take a while)...")
         full_audio.export("temp_full.wav", format="wav")
         result = model.transcribe("temp_full.wav", language=lang)
         segments = [s for s in result.get('segments', []) if s['text'].strip()]
         if os.path.exists("temp_full.wav"): os.remove("temp_full.wav")
 
     # 3. Translation
-    print(f"[*] Translating {len(segments)} segments...")
+    total_to_translate = len(segments)
+    print(f"[*] Translating {total_to_translate} segments...")
     translator = GoogleTranslator(source=lang, target='en')
     all_source_text = [seg['text'].strip() for seg in segments]
     translated_en = []
     if all_source_text:
         batch_size = 25 
         for i in range(0, len(all_source_text), batch_size):
+            current_batch_num = (i // batch_size) + 1
+            total_batches = (len(all_source_text) + batch_size - 1) // batch_size
+            print(f"    > Translating batch {current_batch_num} of {total_batches}...")
+            
             batch = all_source_text[i:i + batch_size]
             try:
                 batch_string = "\n".join(batch)
                 translated_batch = translator.translate(batch_string)
                 translated_en.extend(translated_batch.split('\n'))
-            except:
+            except Exception as e:
+                print(f"      [!] Translation error in batch {current_batch_num}: {e}")
                 translated_en.extend(batch)
 
     # 3.5 Generate Interleaved Audio with Timestamps
-    print("[*] Synthesizing interleaved track...")
+    total_segments = len(segments)
+    print(f"[*] Synthesizing interleaved track for {total_segments} segments...")
     combined_audio = AudioSegment.empty()
     current_b_time = 0.0
     b_timestamps = []
 
     for i, seg in enumerate(segments):
-        time.sleep(0.5) # Wait half a second between segments
+        if (i + 1) % 5 == 0 or i == 0 or (i + 1) == total_segments:
+            print(f"    > Synthesizing audio segment {i+1} of {total_segments}...")
+
+        time.sleep(0.5) 
         orig_text = seg['text'].strip()
         en_text = translated_en[i].strip() if i < len(translated_en) else ""
         seg_b_start = current_b_time
@@ -111,20 +123,20 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
                 combined_audio += en_audio_seg
                 current_b_time += (len(en_audio_seg) / 1000.0)
             
-            # Final silence for the segment
             combined_audio += AudioSegment.silent(duration=1000)
             current_b_time += 1.0
             
-            # The end of this row is the current time after silence
             seg_b_end = current_b_time
             b_timestamps.append({"b_start": round(seg_b_start, 2), "b_end": round(seg_b_end, 2)})
         except Exception as e:
-            print(f"Error synthesizing segment {i}: {e}")
+            print(f"      [!] Error synthesizing segment {i+1}: {e}")
             b_timestamps.append({"b_start": 0, "b_end": 0})
 
+    print(f"[*] Exporting final interleaved MP3...")
     combined_audio.export(interleaved_audio_file, format="mp3")
 
     # 4. Save JSON
+    print(f"[*] Saving transcription data to {json_output}...")
     web_data = []
     for i, seg in enumerate(segments):
         web_data.append({
@@ -138,7 +150,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
     with open(json_output, 'w', encoding='utf-8') as f:
         json.dump(web_data, f, ensure_ascii=False, indent=2)
     
-    # 5. Mobile-Friendly HTML Player
+    # 5. Mobile-Friendly HTML Player (RESTORED FULL TEMPLATE)
     html_template = f"""
     <!DOCTYPE html>
     <html lang="{lang}">
@@ -199,7 +211,6 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
             let data = [];
             let lastIdx = -1;
 
-            // Check if audio files are live on server
             async function checkAudioStatus() {{
                 try {{
                     const response = await fetch(sources[mode], {{ method: 'HEAD' }});
@@ -281,6 +292,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
     </html>
     """
     with open(html_output, 'w', encoding='utf-8') as f: f.write(html_template)
+    print(f"[*] Success! Created {html_output}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -292,4 +304,4 @@ if __name__ == "__main__":
     parser.add_argument("--num_utterances", type=int)
     args = parser.parse_args()
     process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances)
-
+    
