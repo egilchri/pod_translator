@@ -74,41 +74,18 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
     base_gh_url = "https://egilchri.github.io/pod_tran"
     js_lang_param = f"'{lang_override}'" if lang_override else "null"
 
-    # --- CONDITIONAL PWA LOGIC ---
-    # Only inject PWA metadata if we are processing the usapodden feed
-    is_usapodden = (feed_name_attr == "usapodden")
-    pwa_headers = ""
-    pwa_script = ""
-
-    if is_usapodden:
-        pwa_headers = """
-        <link rel="manifest" href="manifest.json">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="theme-color" content="#004a99">
-        """
-        pwa_script = """
-            // Register Service Worker for PWA
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('sw.js').then(reg => {
-                        console.log('USApodden SW registered');
-                    }).catch(err => {
-                        console.log('SW registration failed:', err);
-                    });
-                });
-            }
-        """
-
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>{podcast_title_display} - Feed Dashboard</title>
         
-        {pwa_headers}
+        <link rel="manifest" href="manifest.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#004a99">
 
         <style>
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
@@ -128,9 +105,28 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             .btn-run {{ background: #ffc107; color: black; }}
             .btn-view {{ background: #28a745; color: white; display: none; }}
             .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 1000; }}
+            .summary {{ color: #444; font-size: 0.95em; line-height: 1.4; margin-top: 10px; }}
+
+            /* --- MOBILE APP OVERRIDES --- */
+            @media (display-mode: standalone) {{
+                .btn-back, .btn-run {{ display: none !important; }}
+                .nav-header {{ justify-content: flex-end; }}
+            }}
+            @media (max-width: 600px) {{
+                .btn-run {{ display: none !important; }}
+            }}
         </style>
         <script>
-            {pwa_script}
+            // Register Service Worker for PWA
+            if ('serviceWorker' in navigator) {{
+                window.addEventListener('load', () => {{
+                    navigator.serviceWorker.register('sw.js').then(reg => {{
+                        console.log('SW registered');
+                    }}).catch(err => {{
+                        console.log('SW registration failed:', err);
+                    }});
+                }});
+            }}
 
             function triggerUpdate() {{
                 const rssUrl = document.documentElement.getAttribute('data-rss-url');
