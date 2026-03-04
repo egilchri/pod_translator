@@ -23,7 +23,6 @@ def slugify(text):
 
 def create_general_feed(url, lang_override=None, feedname_override=None):
     # 1. CACHE-BUSTING FETCH
-    # Add a unique 'salt' to the URL and use strict headers to bypass CDN caching
     cache_buster_url = f"{url}?t={int(time.time())}"
     print(f"Fetching fresh feed: {cache_buster_url}")
     
@@ -75,6 +74,32 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
     base_gh_url = "https://egilchri.github.io/pod_tran"
     js_lang_param = f"'{lang_override}'" if lang_override else "null"
 
+    # --- CONDITIONAL PWA LOGIC ---
+    # Only inject PWA metadata if we are processing the usapodden feed
+    is_usapodden = (feed_name_attr == "usapodden")
+    pwa_headers = ""
+    pwa_script = ""
+
+    if is_usapodden:
+        pwa_headers = """
+        <link rel="manifest" href="manifest.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#004a99">
+        """
+        pwa_script = """
+            // Register Service Worker for PWA
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('sw.js').then(reg => {
+                        console.log('USApodden SW registered');
+                    }).catch(err => {
+                        console.log('SW registration failed:', err);
+                    });
+                });
+            }
+        """
+
     html_content = f"""
     <!DOCTYPE html>
     <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
@@ -83,10 +108,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{podcast_title_display} - Feed Dashboard</title>
         
-        <link rel="manifest" href="manifest.json">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="theme-color" content="#004a99">
+        {pwa_headers}
 
         <style>
             body {{ font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f0f2f5; }}
@@ -108,16 +130,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             .toast {{ position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px 30px; border-radius: 50px; display: none; z-index: 1000; }}
         </style>
         <script>
-            // Register Service Worker for PWA
-            if ('serviceWorker' in navigator) {{
-                window.addEventListener('load', () => {{
-                    navigator.serviceWorker.register('sw.js').then(reg => {{
-                        console.log('SW registered:', reg);
-                    }}).catch(err => {{
-                        console.log('SW registration failed:', err);
-                    }});
-                }});
-            }}
+            {pwa_script}
 
             function triggerUpdate() {{
                 const rssUrl = document.documentElement.getAttribute('data-rss-url');

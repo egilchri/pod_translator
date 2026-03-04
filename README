@@ -64,7 +64,9 @@ python3 ./run_workflow_feed.py --url  https://feeds.simplecast.com/yPsdBcxP
 python3 ./run_workflow_feed.py --url  https://api.sr.se/api/rss/pod/22712
 python3 ./run_workflow_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden --lang sv
 # i got this feed from my podcast addict on my phone, it's the only one I could find that had the latest updated entries
-python3 ./show_general_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden --lang sv
+python3 ./show_general_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feednapython3 ./run_workflow_feed.py --url  https://podcast.tamperd.net/sr/usapodden --feedname usapodden --lang sv
+
+me usapodden --lang sv
 ################### testing
 python3 test_svdownload.py
 
