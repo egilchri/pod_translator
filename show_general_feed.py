@@ -12,7 +12,6 @@ def clean_text(text):
     if not text: return ""
     clean = re.compile('<.*?>')
     text = re.sub(clean, '', text)
-    # Using single quotes to prevent f-string syntax errors in Python
     return " ".join(text.split()).replace('"', "'")
 
 def slugify(text):
@@ -48,31 +47,31 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
     # Determine Feedname
     if feedname_override:
         feed_name_attr = feedname_override
-        print(f"Using manual feedname override: {feed_name_attr}")
     else:
         podcast_title = feed.feed.get('title', 'Unknown Podcast')
         feed_name_attr = slugify(podcast_title)
-        print(f"Discovered feedname: {feed_name_attr}")
 
     podcast_title_display = feed.feed.get('title', 'Unknown Podcast')
-    
-    # Sync Logic: Latest entry timestamp
     latest_entry = feed.entries[0]
     latest_ts = time.mktime(latest_entry.published_parsed) if hasattr(latest_entry, 'published_parsed') else time.time()
 
-    # Determine language logic
     is_override = "true" if lang_override else "false"
     if lang_override:
         lang_code = lang_override
     else:
         full_lang = feed.feed.get('language', 'en-us').lower()
-        if "en" in full_lang:
-            print(f"Error: Target language is English ({full_lang}). Skipping.")
-            return None, None
         lang_code = full_lang.split('-')[0]
 
     base_gh_url = "https://egilchri.github.io/pod_tran"
     js_lang_param = f"'{lang_override}'" if lang_override else "null"
+
+    # Define Disclaimer Content
+    disclaimer_html = """
+    <div class="disclaimer-box">
+        <strong>Legal Notice & Fair Use Disclaimer:</strong><br>
+        This dashboard is a personal research and educational project. All audio content and original show metadata are the property of their respective copyright owners. Translations are provided for personal study and accessibility purposes under fair use principles. No commercial use is intended.
+    </div>
+    """
 
     html_content = f"""
     <!DOCTYPE html>
@@ -93,7 +92,8 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             .btn-back {{ background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }}
             .btn-sync {{ background: #ffc107; color: black; padding: 8px 16px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; display: none; animation: pulse 2s infinite; }}
             @keyframes pulse {{ 0% {{ opacity: 1; }} 50% {{ opacity: 0.7; }} 100% {{ opacity: 1; }} }}
-            header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }}
+            header {{ background: #004a99; color: white; padding: 25px; border-radius: 12px; margin-bottom: 15px; }}
+            .disclaimer-box {{ background: #e2e8f0; padding: 15px; border-radius: 10px; margin-bottom: 30px; font-size: 0.85em; color: #475569; line-height: 1.4; border-left: 5px solid #94a3b8; }}
             .episode-card {{ background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 6px solid #ccc; position: relative; }}
             .episode-card.is-live {{ border-left-color: #28a745; }}
             .status-tag {{ position: absolute; top: 15px; right: 20px; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }}
@@ -117,14 +117,9 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             }}
         </style>
         <script>
-            // Register Service Worker for PWA
             if ('serviceWorker' in navigator) {{
                 window.addEventListener('load', () => {{
-                    navigator.serviceWorker.register('sw.js').then(reg => {{
-                        console.log('SW registered');
-                    }}).catch(err => {{
-                        console.log('SW registration failed:', err);
-                    }});
+                    navigator.serviceWorker.register('sw.js');
                 }});
             }}
 
@@ -162,7 +157,6 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
                     }}
                 }} catch (e) {{
                     status.innerText = "○ Offline";
-                    status.className = "status-tag tag-pending";
                 }}
             }}
         </script>
@@ -176,6 +170,9 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
             <h1>{podcast_title_display}</h1>
             <p>Language: <strong>{lang_code}</strong> {"(Manual Override)" if lang_override else ""}</p>
         </header>
+        
+        {disclaimer_html}
+
         <div id="toast" class="toast">✅ Command Courtesied to Clipboard!</div>
     """
 
@@ -224,12 +221,8 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
-    parser.add_argument("--lang", help="Override the RSS language code")
-    parser.add_argument("--feedname", help="Override the discovered feed name")
+    parser.add_argument("--lang")
+    parser.add_argument("--feedname")
     args = parser.parse_args()
-    
-    fname, lcode = create_general_feed(args.url, args.lang, args.feedname)
-    if fname and lcode:
-        print(f"FEEDNAME_OUTPUT:{fname}")
-        print(f"LANG_OUTPUT:{lcode}")
+    create_general_feed(args.url, args.lang, args.feedname)
 
