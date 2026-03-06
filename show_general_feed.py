@@ -224,5 +224,7 @@ if __name__ == "__main__":
     parser.add_argument("--lang")
     parser.add_argument("--feedname")
     args = parser.parse_args()
-    create_general_feed(args.url, args.lang, args.feedname)
+    _, lang_code = create_general_feed(args.url, args.lang, args.feedname)
+    if lang_code:
+        print(f"LANG_OUTPUT:{lang_code}")
 
