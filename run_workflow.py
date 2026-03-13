@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--lang", default="sv", help="ISO Language code (e.g. sv, no, de)")
     # Added num_utterances parameter to pass to svdownload.py
     parser.add_argument("--num_utterances", type=int, default=None, help="Limit number of segments for testing")
+    parser.add_argument("--wordlist-only", action="store_true", help="Only produce the vocabulary JSON, skip all audio processing")
     
     args = parser.parse_args()
 
@@ -47,17 +48,26 @@ def main():
     if args.num_utterances is not None:
         cmd.extend(["--num_utterances", str(args.num_utterances)])
 
+    if args.wordlist_only:
+        cmd.append("--wordlist-only")
+
     run_command(cmd)
 
     # 3. Define the generated filenames
     prefix = f"{args.feedname}.{args.date}"
-    transcript_name = f"transcript.{args.feedname}.{args.date}.json"
-    files_to_move = [
-        f"{prefix}.mp3",
-        f"{prefix}.bilingual.mp3", # Added the new interleaved track
-        f"{prefix}.html",
-        f"{transcript_name}"
-    ]
+    vocab_name = f"vocab.{args.feedname}.{args.date}.json"
+
+    if args.wordlist_only:
+        files_to_move = [vocab_name]
+    else:
+        transcript_name = f"transcript.{prefix}.json"
+        files_to_move = [
+            f"{prefix}.mp3",
+            f"{prefix}.bilingual.mp3",
+            f"{prefix}.html",
+            transcript_name,
+            vocab_name,
+        ]
 
     # 4. Move files to the Podcasts repository folder
     print(f"--- Moving files to {podcasts_repo_path} ---")
@@ -77,7 +87,10 @@ def main():
 
     # 5. Git Operations inside the Podcasts repository
     print(f"--- Staging and Pushing ({args.lang}) in Podcasts Repo ---")
-    commit_message = f"Add {args.lang} transcript and audio for {args.feedname} - {args.date}"
+    if args.wordlist_only:
+        commit_message = f"Add {args.lang} vocabulary list for {args.feedname} - {args.date}"
+    else:
+        commit_message = f"Add {args.lang} transcript and audio for {args.feedname} - {args.date}"
     
     # Stage files that exist in the repo
     for f in files_to_move:

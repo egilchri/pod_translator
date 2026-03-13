@@ -4,19 +4,82 @@ import whisper
 import json
 import warnings
 import os
+import spacy
 from pydub import AudioSegment
 from deep_translator import GoogleTranslator
 from gtts import gTTS
 from io import BytesIO
 import time
 
+SPACY_MODELS = {
+    "sv": "sv_core_news_sm",
+    "no": "nb_core_news_sm",
+    "da": "da_core_news_sm",
+    "de": "de_core_news_sm",
+    "fr": "fr_core_news_sm",
+    "es": "es_core_news_sm",
+    "pt": "pt_core_news_sm",
+    "it": "it_core_news_sm",
+}
+
+
+def build_vocabulary(segments, lang):
+    model_name = SPACY_MODELS.get(lang)
+    if not model_name:
+        print(f"[!] No spacy model configured for lang '{lang}', skipping vocab.")
+        return {}
+    try:
+        nlp = spacy.load(model_name)
+    except OSError:
+        print(f"[!] spacy model '{model_name}' not installed, skipping vocab. Run: python3 -m spacy download {model_name}")
+        return {}
+
+    full_text = " ".join(seg['text'].strip() for seg in segments)
+    doc = nlp(full_text)
+
+    # Collect unique words per POS
+    pos_words = {}
+    for token in doc:
+        if token.is_punct or token.is_space or token.is_digit or token.pos_ == "NUM":
+            continue
+        pos = token.pos_
+        word = token.text.lower()
+        if pos not in pos_words:
+            pos_words[pos] = set()
+        pos_words[pos].add(word)
+
+    # Translate all unique words in batches
+    all_words = sorted({w for words in pos_words.values() for w in words})
+    print(f"[*] Translating {len(all_words)} unique vocabulary words...")
+    translator = GoogleTranslator(source=lang, target='en')
+    translations = {}
+    batch_size = 25
+    for i in range(0, len(all_words), batch_size):
+        batch = all_words[i:i + batch_size]
+        try:
+            result = translator.translate("\n".join(batch))
+            for word, trans in zip(batch, result.split("\n")):
+                translations[word] = trans.strip()
+        except Exception as e:
+            print(f"[!] Vocab translation error: {e}")
+            for word in batch:
+                translations[word] = ""
+
+    # Assemble final structure: grouped by POS, alphabetical, with translations
+    vocab = {}
+    for pos, words in sorted(pos_words.items()):
+        vocab[pos] = [{"word": w, "translation": translations.get(w, "")} for w in sorted(words)]
+
+    return vocab
+
 # Suppress warnings
 warnings.filterwarnings("ignore", message=".*urllib3 v2 only supports OpenSSL.*")
 
-def process_podcast(url, feedname, date, title, lang, num_utterances=None):
+def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordlist_only=False):
     audio_file = f"{feedname}.{date}.mp3"
     interleaved_audio_file = f"{feedname}.{date}.bilingual.mp3"
     json_output = f"transcript.{feedname}.{date}.json"
+    vocab_output = f"vocab.{feedname}.{date}.json"
     html_output = f"{feedname}.{date}.html"
     
     # 1. Download
@@ -61,6 +124,18 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None):
         result = model.transcribe("temp_full.wav", language=lang)
         segments = [s for s in result.get('segments', []) if s['text'].strip()]
         if os.path.exists("temp_full.wav"): os.remove("temp_full.wav")
+
+    # 2.5 Build Vocabulary
+    print(f"[*] Building vocabulary from {len(segments)} segments...")
+    vocab = build_vocabulary(segments, lang)
+    with open(vocab_output, 'w', encoding='utf-8') as f:
+        json.dump(vocab, f, ensure_ascii=False, indent=2)
+    total_words = sum(len(v) for v in vocab.values())
+    print(f"[*] Vocabulary: {total_words} unique words across {len(vocab)} parts of speech -> {vocab_output}")
+
+    if wordlist_only:
+        print(f"[*] --wordlist-only: done. Skipping audio synthesis and HTML generation.")
+        return
 
     # 3. Translation
     total_to_translate = len(segments)
@@ -302,6 +377,7 @@ if __name__ == "__main__":
     parser.add_argument("--title", required=True)
     parser.add_argument("--lang", default="no")
     parser.add_argument("--num_utterances", type=int)
+    parser.add_argument("--wordlist-only", action="store_true")
     args = parser.parse_args()
-    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances)
+    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances, args.wordlist_only)
     
