@@ -75,7 +75,7 @@ def build_vocabulary(segments, lang):
 # Suppress warnings
 warnings.filterwarnings("ignore", message=".*urllib3 v2 only supports OpenSSL.*")
 
-def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordlist_only=False, html_only=False):
+def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordlist_only=False, html_only=False, start_pattern=None):
     audio_file = f"{feedname}.{date}.mp3"
     interleaved_audio_file = f"{feedname}.{date}.bilingual.mp3"
     json_output = f"transcript.{feedname}.{date}.json"
@@ -147,7 +147,17 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
         segments = [s for s in result.get('segments', []) if s['text'].strip()]
         if os.path.exists("temp_full.wav"): os.remove("temp_full.wav")
 
-    # 2.5 Build Vocabulary
+    # 2.5 Apply start pattern filter
+    if start_pattern:
+        pattern_lower = start_pattern.lower()
+        match_idx = next((i for i, s in enumerate(segments) if pattern_lower in s['text'].lower()), None)
+        if match_idx is None:
+            print(f"[!] Warning: start pattern '{start_pattern}' not found. Processing all segments.")
+        else:
+            print(f"[*] Start pattern found at segment {match_idx + 1}. Skipping {match_idx} preceding segments.")
+            segments = segments[match_idx:]
+
+    # 2.6 Build Vocabulary
     print(f"[*] Building vocabulary from {len(segments)} segments...")
     vocab = build_vocabulary(segments, lang)
     with open(vocab_output, 'w', encoding='utf-8') as f:
@@ -430,6 +440,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_utterances", type=int)
     parser.add_argument("--wordlist-only", action="store_true")
     parser.add_argument("--html-only", action="store_true")
+    parser.add_argument("--start-pattern", default=None)
     args = parser.parse_args()
-    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances, args.wordlist_only, args.html_only)
+    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances, args.wordlist_only, args.html_only, args.start_pattern)
     

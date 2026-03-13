@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--num_utterances", type=int, default=None, help="Limit number of segments for testing")
     parser.add_argument("--wordlist-only", action="store_true", help="Only produce the vocabulary JSON, skip all audio processing")
     parser.add_argument("--html-only", action="store_true", help="Only regenerate the HTML player from existing JSON files")
+    parser.add_argument("--start-pattern", default=None, help="Skip segments until this text is found in the transcript")
     
     args = parser.parse_args()
 
@@ -54,6 +55,9 @@ def main():
 
     if args.html_only:
         cmd.append("--html-only")
+
+    if args.start_pattern:
+        cmd.extend(["--start-pattern", args.start_pattern])
 
     run_command(cmd)
 
