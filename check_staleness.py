@@ -12,9 +12,12 @@ import argparse
 import re
 import time
 import subprocess
+import warnings
 import feedparser
 import requests
 from datetime import datetime
+
+warnings.filterwarnings("ignore", category=Warning, module="urllib3")
 
 PODCASTS_DIR = "/Users/edgargilchrist/tools/PodTranslator/Podcasts"
 MAIL_TO = "edgargilchrist"
