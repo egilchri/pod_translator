@@ -265,6 +265,9 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
             .orig {{ flex: 1; color: var(--primary); font-weight: 700; font-size: 1.1rem; }}
             .en {{ flex: 1; color: #546e7a; font-style: italic; border-left: 1px solid #eee; padding-left: 15px; font-size: 1.1rem; }}
             .status-badge {{ font-size: 0.7rem; margin-left: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }}
+            .vocab-row {{ display: flex; align-items: center; gap: 8px; border-top: 1px solid #ccc; padding-top: 8px; }}
+            .vocab-row label {{ font-size: 0.7rem; font-weight: bold; color: #555; white-space: nowrap; }}
+            #vocabSelect {{ flex-grow: 1; font-size: 0.85rem; padding: 4px 8px; border-radius: 8px; border: 1px solid #ccc; background: white; }}
             @media (max-width: 768px) {{ .row {{ flex-direction: column; gap: 10px; }} .en {{ border-left: none; border-top: 1px solid #eee; padding-top: 10px; }} }}
         </style>
     </head>
@@ -286,6 +289,10 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
                     <button class="speed-btn active" id="speed-1" onclick="setSpeed(1.0)">1x</button>
                     <button class="speed-btn" onclick="setSpeed(1.25)">1.25x</button>
                     <button class="speed-btn" onclick="setSpeed(1.5)">1.5x</button>
+                </div>
+                <div class="vocab-row">
+                    <label for="vocabSelect">VOCAB:</label>
+                    <select id="vocabSelect"><option value="">— loading vocabulary —</option></select>
                 </div>
             </div>
         </div>
@@ -338,6 +345,24 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
             }}
 
             checkAudioStatus();
+
+            fetch('{vocab_output}').then(r => r.json()).then(vocab => {{
+                const sel = document.getElementById('vocabSelect');
+                sel.innerHTML = '<option value="">— select a word —</option>';
+                Object.entries(vocab).forEach(([pos, words]) => {{
+                    const group = document.createElement('optgroup');
+                    group.label = pos;
+                    words.forEach(entry => {{
+                        const opt = document.createElement('option');
+                        opt.value = entry.word;
+                        opt.textContent = `${{entry.word}} \u2194 ${{entry.translation}}`;
+                        group.appendChild(opt);
+                    }});
+                    sel.appendChild(group);
+                }});
+            }}).catch(() => {{
+                document.getElementById('vocabSelect').innerHTML = '<option value="">— vocabulary not available —</option>';
+            }});
 
             fetch('{json_output}').then(r => r.json()).then(json => {{
                 data = json;
