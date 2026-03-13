@@ -26,6 +26,7 @@ def main():
     # Added num_utterances parameter to pass to svdownload.py
     parser.add_argument("--num_utterances", type=int, default=None, help="Limit number of segments for testing")
     parser.add_argument("--wordlist-only", action="store_true", help="Only produce the vocabulary JSON, skip all audio processing")
+    parser.add_argument("--html-only", action="store_true", help="Only regenerate the HTML player from existing JSON files")
     
     args = parser.parse_args()
 
@@ -51,6 +52,9 @@ def main():
     if args.wordlist_only:
         cmd.append("--wordlist-only")
 
+    if args.html_only:
+        cmd.append("--html-only")
+
     run_command(cmd)
 
     # 3. Define the generated filenames
@@ -59,6 +63,8 @@ def main():
 
     if args.wordlist_only:
         files_to_move = [vocab_name]
+    elif args.html_only:
+        files_to_move = [f"{prefix}.html"]
     else:
         transcript_name = f"transcript.{prefix}.json"
         files_to_move = [
@@ -89,6 +95,8 @@ def main():
     print(f"--- Staging and Pushing ({args.lang}) in Podcasts Repo ---")
     if args.wordlist_only:
         commit_message = f"Add {args.lang} vocabulary list for {args.feedname} - {args.date}"
+    elif args.html_only:
+        commit_message = f"Regenerate HTML player for {args.feedname} - {args.date}"
     else:
         commit_message = f"Add {args.lang} transcript and audio for {args.feedname} - {args.date}"
     

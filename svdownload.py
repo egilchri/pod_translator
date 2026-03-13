@@ -75,13 +75,21 @@ def build_vocabulary(segments, lang):
 # Suppress warnings
 warnings.filterwarnings("ignore", message=".*urllib3 v2 only supports OpenSSL.*")
 
-def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordlist_only=False):
+def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordlist_only=False, html_only=False):
     audio_file = f"{feedname}.{date}.mp3"
     interleaved_audio_file = f"{feedname}.{date}.bilingual.mp3"
     json_output = f"transcript.{feedname}.{date}.json"
     vocab_output = f"vocab.{feedname}.{date}.json"
     html_output = f"{feedname}.{date}.html"
     
+    # Shortcut: if --html-only, just regenerate the HTML and exit
+    if html_only:
+        print(f"[*] --html-only: regenerating {html_output} from existing JSON files...")
+        with open(html_output, 'w', encoding='utf-8') as f:
+            f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output))
+        print(f"[*] Done. Created {html_output}")
+        return
+
     # Shortcut: if --wordlist-only and transcript already exists, load it directly
     podcasts_transcript = os.path.join("Podcasts", json_output)
     if wordlist_only and os.path.exists(podcasts_transcript):
@@ -239,8 +247,14 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
     with open(json_output, 'w', encoding='utf-8') as f:
         json.dump(web_data, f, ensure_ascii=False, indent=2)
     
-    # 5. Mobile-Friendly HTML Player (RESTORED FULL TEMPLATE)
-    html_template = f"""
+    # 5. Mobile-Friendly HTML Player
+    with open(html_output, 'w', encoding='utf-8') as f:
+        f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output))
+    print(f"[*] Success! Created {html_output}")
+
+
+def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output):
+    return f"""
     <!DOCTYPE html>
     <html lang="{lang}">
     <head>
@@ -405,8 +419,6 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
     </body>
     </html>
     """
-    with open(html_output, 'w', encoding='utf-8') as f: f.write(html_template)
-    print(f"[*] Success! Created {html_output}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -417,6 +429,7 @@ if __name__ == "__main__":
     parser.add_argument("--lang", default="no")
     parser.add_argument("--num_utterances", type=int)
     parser.add_argument("--wordlist-only", action="store_true")
+    parser.add_argument("--html-only", action="store_true")
     args = parser.parse_args()
-    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances, args.wordlist_only)
+    process_podcast(args.url, args.feedname, args.date, args.title, args.lang, args.num_utterances, args.wordlist_only, args.html_only)
     
