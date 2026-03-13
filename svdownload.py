@@ -97,6 +97,14 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
         with open(podcasts_transcript, encoding="utf-8") as f:
             existing = json.load(f)
         segments = [{"text": entry["orig"]} for entry in existing]
+        if start_pattern:
+            pattern_lower = start_pattern.lower()
+            match_idx = next((i for i, s in enumerate(segments) if pattern_lower in s['text'].lower()), None)
+            if match_idx is None:
+                print(f"[!] Warning: start pattern '{start_pattern}' not found. Using all segments.")
+            else:
+                print(f"[*] Start pattern found at segment {match_idx + 1}. Skipping {match_idx} preceding segments.")
+                segments = segments[match_idx:]
         vocab = build_vocabulary(segments, lang)
         with open(vocab_output, 'w', encoding='utf-8') as f:
             json.dump(vocab, f, ensure_ascii=False, indent=2)
