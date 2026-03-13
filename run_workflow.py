@@ -77,7 +77,8 @@ def main():
     vocab_name = f"vocab.{args.feedname}.{args.date}.json"
 
     if args.wordlist_only:
-        files_to_move = [vocab_name]
+        transcript_name = f"transcript.{args.feedname}.{args.date}.json"
+        files_to_move = [vocab_name, transcript_name] if start_pattern else [vocab_name]
     elif args.html_only:
         files_to_move = [f"{prefix}.html"]
     else:
