@@ -64,9 +64,11 @@ def generate_index_html(podcasts_dir):
         # Clean Feed Link (shortened for display)
         feed_link = f'<a href="{rss_url}" target="_blank" style="text-decoration:none; font-size:0.8em; color:#6366f1;">🔗 RSS Feed</a>' if rss_url != "#" else '<span style="color:#94a3b8; font-size:0.8em;">No URL Saved</span>'
 
+        feedname = filename.replace(".feed.html", "")
         table_rows += f"""
             <tr data-latest="{latest_ts}" data-generated="{generated_ts}">
                 <td><strong>{title}</strong> <span class="stale-badge" style="display:none;">⚠ Stale</span></td>
+                <td><code style="background:#f1f5f9; padding:3px 6px; border-radius:4px; font-size:0.85em;">{feedname}</code></td>
                 <td><code style="background:#f1f5f9; padding:3px 6px; border-radius:4px; font-size:0.85em;">{lang}</code></td>
                 <td style="text-align:center;">{status_label}</td>
                 <td>{feed_link}</td>
@@ -98,10 +100,11 @@ def generate_index_html(podcasts_dir):
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 35%;">Podcast Title</th>
-                        <th style="width: 10%;">Lang</th>
-                        <th style="width: 15%; text-align:center;">Sync Mode</th>
-                        <th style="width: 20%;">Feed URL</th>
+                        <th style="width: 30%;">Podcast Title</th>
+                        <th style="width: 15%;">Feed Name</th>
+                        <th style="width: 8%;">Lang</th>
+                        <th style="width: 12%; text-align:center;">Sync Mode</th>
+                        <th style="width: 15%;">Feed URL</th>
                         <th style="width: 20%;">Action</th>
                     </tr>
                 </thead>
