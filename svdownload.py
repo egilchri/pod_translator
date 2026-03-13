@@ -82,6 +82,20 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
     vocab_output = f"vocab.{feedname}.{date}.json"
     html_output = f"{feedname}.{date}.html"
     
+    # Shortcut: if --wordlist-only and transcript already exists, load it directly
+    podcasts_transcript = os.path.join("Podcasts", json_output)
+    if wordlist_only and os.path.exists(podcasts_transcript):
+        print(f"[*] --wordlist-only: loading existing transcript from {podcasts_transcript}")
+        with open(podcasts_transcript, encoding="utf-8") as f:
+            existing = json.load(f)
+        segments = [{"text": entry["orig"]} for entry in existing]
+        vocab = build_vocabulary(segments, lang)
+        with open(vocab_output, 'w', encoding='utf-8') as f:
+            json.dump(vocab, f, ensure_ascii=False, indent=2)
+        total_words = sum(len(v) for v in vocab.values())
+        print(f"[*] Vocabulary: {total_words} unique words across {len(vocab)} parts of speech -> {vocab_output}")
+        return
+
     # 1. Download
     print(f"Downloading: {audio_file}")
     r = requests.get(url, stream=True, timeout=30)
