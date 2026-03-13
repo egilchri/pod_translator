@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--url", required=True, help="The RSS feed URL")
     parser.add_argument("--lang", help="Optional: Override language detection (e.g., 'fr', 'es')")
     parser.add_argument("--feedname", help="Optional: Override discovered feedname")
+    parser.add_argument("--start-pattern", default=None, help="Optional: Skip transcript segments before this pattern")
     args = parser.parse_args()
 
     podcasts_repo_path = os.path.abspath("Podcasts")
@@ -44,6 +45,8 @@ def main():
     gen_cmd = ["python3", "show_general_feed.py", "--url", args.url, "--feedname", feedname]
     if args.lang:
         gen_cmd.extend(["--lang", args.lang])
+    if args.start_pattern:
+        gen_cmd.extend(["--start-pattern", args.start_pattern])
         
     stdout_output = run_command_with_output(gen_cmd)
 

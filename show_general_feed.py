@@ -20,7 +20,7 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')[:15]
 
-def create_general_feed(url, lang_override=None, feedname_override=None):
+def create_general_feed(url, lang_override=None, feedname_override=None, start_pattern=None):
     # 1. CACHE-BUSTING FETCH
     cache_buster_url = f"{url}?t={int(time.time())}"
     print(f"Fetching fresh feed: {cache_buster_url}")
@@ -73,9 +73,12 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
     </div>
     """
 
+    start_pattern_attr = f' data-start-pattern="{start_pattern}"' if start_pattern else ""
+    js_start_pattern = f'"{start_pattern}"' if start_pattern else "null"
+
     html_content = f"""
     <!DOCTYPE html>
-    <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}">
+    <html lang="{lang_code}" data-is-override="{is_override}" data-rss-url="{url}"{start_pattern_attr}>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -133,7 +136,10 @@ def create_general_feed(url, lang_override=None, feedname_override=None):
                 }});
             }}
             function copyMasterCommand(mp3Url, feedname, date, title, lang) {{
-                const cmd = `python3 ./run_workflow.py --url "${{mp3Url}}" --feedname "${{feedname}}" --date "${{date}}" --title "${{title}}" --lang "${{lang}}"`;
+                const startPattern = {js_start_pattern};
+                const startPatternFlag = startPattern ? ` --start-pattern "${{startPattern}}"` : "";
+                const cmd = `python3 ./run_workflow.py --url "${{mp3Url}}" --feedname "${{feedname}}" --date "${{date}}" --title "${{title}}" --lang "${{lang}}"${{startPatternFlag}}`;
+
                 navigator.clipboard.writeText(cmd).then(() => {{
                     const t = document.getElementById('toast');
                     t.style.display = 'block';
@@ -223,8 +229,9 @@ if __name__ == "__main__":
     parser.add_argument("--url", required=True)
     parser.add_argument("--lang")
     parser.add_argument("--feedname")
+    parser.add_argument("--start-pattern", default=None)
     args = parser.parse_args()
-    _, lang_code = create_general_feed(args.url, args.lang, args.feedname)
+    _, lang_code = create_general_feed(args.url, args.lang, args.feedname, args.start_pattern)
     if lang_code:
         print(f"LANG_OUTPUT:{lang_code}")
 

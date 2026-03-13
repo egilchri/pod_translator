@@ -1,4 +1,5 @@
 import argparse
+import re
 import subprocess
 import os
 import sys
@@ -56,8 +57,18 @@ def main():
     if args.html_only:
         cmd.append("--html-only")
 
-    if args.start_pattern:
-        cmd.extend(["--start-pattern", args.start_pattern])
+    start_pattern = args.start_pattern
+    if not start_pattern:
+        feed_html = os.path.join("Podcasts", f"{args.feedname}.feed.html")
+        if os.path.exists(feed_html):
+            with open(feed_html, encoding="utf-8") as f:
+                m = re.search(r'data-start-pattern="([^"]+)"', f.read())
+                if m:
+                    start_pattern = m.group(1)
+                    print(f"--- Using start-pattern from feed HTML: '{start_pattern}' ---")
+
+    if start_pattern:
+        cmd.extend(["--start-pattern", start_pattern])
 
     run_command(cmd)
 

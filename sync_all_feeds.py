@@ -19,11 +19,13 @@ def get_active_feeds(podcasts_dir):
                 lang_match = re.search(r'<html lang="([^"]+)"', content)
                 is_override = 'data-is-override="true"' in content
                 
+                pattern_match = re.search(r'data-start-pattern="([^"]+)"', content)
                 if url_match:
                     feeds.append({
                         "url": url_match.group(1),
                         "lang": lang_match.group(1) if lang_match and is_override else None,
-                        "name": filename.replace(".feed.html", "")
+                        "name": filename.replace(".feed.html", ""),
+                        "start_pattern": pattern_match.group(1) if pattern_match else None,
                     })
     return feeds
 
@@ -42,6 +44,8 @@ def main():
         cmd = ["python3", "run_workflow_feed.py", "--url", feed['url']]
         if feed['lang']:
             cmd.extend(["--lang", feed['lang']])
+        if feed.get('start_pattern'):
+            cmd.extend(["--start-pattern", feed['start_pattern']])
         
         try:
             subprocess.run(cmd, check=True)
