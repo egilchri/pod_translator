@@ -43,7 +43,7 @@ def main():
     card_pattern = re.compile(
         r'(<div class="episode-card" id="card-\d+">'
         r'.*?<small style="color:#666; font-weight:bold;">)(.*?)(</small>)'
-        r'(.*?copyMasterCommand\(\'(https?://[^\']+\.mp3)\')',
+        r'(.*?copyMasterCommand\(\'(https?://[^\']+\.mp3[^\']*)\')',
         re.DOTALL
     )
 
