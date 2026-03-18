@@ -86,7 +86,7 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
     if html_only:
         print(f"[*] --html-only: regenerating {html_output} from existing JSON files...")
         with open(html_output, 'w', encoding='utf-8') as f:
-            f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output))
+            f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output, start_pattern))
         print(f"[*] Done. Created {html_output}")
         return
 
@@ -270,11 +270,12 @@ def process_podcast(url, feedname, date, title, lang, num_utterances=None, wordl
     
     # 5. Mobile-Friendly HTML Player
     with open(html_output, 'w', encoding='utf-8') as f:
-        f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output))
+        f.write(build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output, start_pattern))
     print(f"[*] Success! Created {html_output}")
 
 
-def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output):
+def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, json_output, vocab_output, start_pattern=None):
+    js_start_pattern = f'"{start_pattern}"' if start_pattern else "null"
     return f"""
     <!DOCTYPE html>
     <html lang="{lang}">
@@ -301,21 +302,28 @@ def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, 
             .en {{ flex: 1; color: #546e7a; font-style: italic; border-left: 1px solid #eee; padding-left: 15px; font-size: 1.1rem; }}
             .status-badge {{ font-size: 0.7rem; margin-left: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }}
             .vocab-row {{ display: flex; align-items: center; gap: 8px; border-top: 1px solid #ccc; padding-top: 8px; }}
-            .vocab-row label {{ font-size: 0.7rem; font-weight: bold; color: #555; white-space: nowrap; }}
-            #vocabSelect {{ flex-grow: 1; font-size: 0.85rem; padding: 4px 8px; border-radius: 8px; border: 1px solid #ccc; background: white; }}
+            #vocabPanel {{ display: none; margin-top: 8px; border-top: 1px solid #ccc; padding-top: 8px; max-height: 200px; overflow-y: auto; }}
+            #vocabPanel table {{ width: auto; border-collapse: collapse; font-size: 0.8rem; }}
+            #vocabPanel th {{ text-align: left; font-weight: bold; color: #555; padding: 2px 8px 2px 0; border-bottom: 2px solid #ccc; white-space: nowrap; }}
+            #vocabPanel td {{ padding: 2px 8px 2px 0; border-bottom: 1px solid #eee; vertical-align: top; white-space: nowrap; }}
+            #vocabPanel td:last-child {{ color: #888; font-style: italic; }}
             @media (max-width: 768px) {{ .row {{ flex-direction: column; gap: 10px; }} .en {{ border-left: none; border-top: 1px solid #eee; padding-top: 10px; }} }}
         </style>
     </head>
     <body>
         <div class="header-box">
-            <small style="font-weight:bold; color:#666;">{feedname.upper()} | {date}</small>
-            <h1 style="margin: 5px 0; font-size: 1.2rem;">
-                {title} <span id="audio-status" class="status-badge"></span>
-            </h1>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <small style="font-weight:bold; color:#666;">{feedname.upper()} | {date} &nbsp;·&nbsp; <em style="font-weight:normal;">Personal/educational use only. Audio © respective owners. Translations under fair use.</em></small>
+                <button id="modeBtn" class="btn" onclick="toggleMode()">Switch to Interleaved</button>
+            </div>
+            <h1 style="margin: 5px 0; font-size: 1.2rem;">{title}</h1>
+            <div style="margin: 4px 0 8px; font-size: 0.95rem; font-weight: bold; color: var(--primary);">
+                Mode: <span id="modeLabel">Podcast</span>
+                <span id="audio-status" class="status-badge"></span>
+            </div>
             <div class="controls">
                 <div class="audio-row">
-                    <audio id="audio" controls src="{audio_file}"></audio>
-                    <button id="modeBtn" class="btn" onclick="toggleMode()">🌍 Interleaved</button>
+                    <audio id="audio" controls preload="metadata" src="{audio_file}"></audio>
                 </div>
                 <div class="speed-row">
                     <span style="font-size: 0.7rem; font-weight: bold; color: #555;">SPEED:</span>
@@ -326,21 +334,34 @@ def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, 
                     <button class="speed-btn" onclick="setSpeed(1.5)">1.5x</button>
                 </div>
                 <div class="vocab-row">
-                    <label for="vocabSelect">VOCAB:</label>
-                    <select id="vocabSelect"><option value="">— loading vocabulary —</option></select>
+                    <button class="btn" onclick="toggleVocab()" id="vocabBtn">VOCAB ▾</button>
                 </div>
+                <div id="vocabPanel"><em>Loading vocabulary...</em></div>
             </div>
         </div>
         <div id="transcript" class="transcript"></div>
         <script>
             const audio = document.getElementById('audio');
             const modeBtn = document.getElementById('modeBtn');
+            const modeLabel = document.getElementById('modeLabel');
             const statusEl = document.getElementById('audio-status');
             const container = document.getElementById('transcript');
             const sources = {{ orig: "{audio_file}", bilingual: "{interleaved_audio_file}" }};
+            const startPattern = {js_start_pattern};
             let mode = 'orig';
             let data = [];
             let lastIdx = -1;
+            let seekTargetTime = null;
+            let initialSeekDone = false;
+
+            function applySeek() {{
+                if (initialSeekDone || seekTargetTime === null) return;
+                audio.currentTime = seekTargetTime;
+                initialSeekDone = true;
+            }}
+
+            audio.addEventListener('loadedmetadata', applySeek);
+            audio.addEventListener('canplay', applySeek);
 
             async function checkAudioStatus() {{
                 try {{
@@ -372,31 +393,50 @@ def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, 
                 mode = (mode === 'orig') ? 'bilingual' : 'orig';
                 audio.src = sources[mode];
                 audio.playbackRate = rate;
-                lastIdx = -1; 
+                lastIdx = -1;
+                if (startPattern !== null && data.length > 0) {{
+                    const matchIdx = data.findIndex(item => item.orig.toLowerCase().includes(startPattern.toLowerCase()));
+                    const target = data[matchIdx !== -1 ? matchIdx : 0];
+                    seekTargetTime = (mode === 'orig') ? target.start : target.b_start;
+                    initialSeekDone = false;
+                }}
                 checkAudioStatus();
                 if (isPlaying) audio.play();
-                modeBtn.innerText = mode === 'orig' ? '🌍 Interleaved' : '🎙️ Podcast';
+                modeLabel.innerText = mode === 'orig' ? 'Podcast' : 'Interleaved';
+                modeBtn.innerText = mode === 'orig' ? 'Switch to Interleaved' : 'Switch to Podcast';
                 modeBtn.classList.toggle('active');
             }}
 
             checkAudioStatus();
 
+            function toggleVocab() {{
+                const panel = document.getElementById('vocabPanel');
+                const btn = document.getElementById('vocabBtn');
+                const open = panel.style.display === 'block';
+                panel.style.display = open ? 'none' : 'block';
+                btn.innerText = open ? 'VOCAB ▾' : 'VOCAB ▴';
+            }}
+
             fetch('{vocab_output}').then(r => r.json()).then(vocab => {{
-                const sel = document.getElementById('vocabSelect');
-                sel.innerHTML = '<option value="">— select a word —</option>';
+                const entries = [];
                 Object.entries(vocab).forEach(([pos, words]) => {{
-                    const group = document.createElement('optgroup');
-                    group.label = pos;
-                    words.forEach(entry => {{
-                        const opt = document.createElement('option');
-                        opt.value = entry.word;
-                        opt.textContent = `${{entry.word}} \u2194 ${{entry.translation}}`;
-                        group.appendChild(opt);
-                    }});
-                    sel.appendChild(group);
+                    words.forEach(entry => entries.push({{ word: entry.word, translation: entry.translation, pos }}));
                 }});
+                entries.sort((a, b) => a.word.localeCompare(b.word));
+                const panel = document.getElementById('vocabPanel');
+                const table = document.createElement('table');
+                table.innerHTML = '<thead><tr><th>{lang}</th><th>EN</th><th>P.O.S.</th></tr></thead>';
+                const tbody = document.createElement('tbody');
+                entries.forEach(e => {{
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${{e.word}}</td><td>${{e.translation}}</td><td>${{e.pos}}</td>`;
+                    tbody.appendChild(tr);
+                }});
+                table.appendChild(tbody);
+                panel.innerHTML = '';
+                panel.appendChild(table);
             }}).catch(() => {{
-                document.getElementById('vocabSelect').innerHTML = '<option value="">— vocabulary not available —</option>';
+                document.getElementById('vocabPanel').innerHTML = '<em>Vocabulary not available</em>';
             }});
 
             fetch('{json_output}').then(r => r.json()).then(json => {{
@@ -405,12 +445,21 @@ def build_html(feedname, date, title, lang, audio_file, interleaved_audio_file, 
                     const row = document.createElement('div');
                     row.className = 'row'; row.id = 'row-' + i;
                     row.innerHTML = `<div class=\"orig\">${{item.orig}}</div><div class=\"en\">${{item.en}}</div>`;
-                    row.onclick = () => {{ 
-                        audio.currentTime = (mode === 'orig') ? item.start : item.b_start; 
-                        audio.play(); 
+                    row.onclick = () => {{
+                        audio.currentTime = (mode === 'orig') ? item.start : item.b_start;
+                        audio.play();
                     }};
                     container.appendChild(row);
                 }});
+                if (startPattern !== null && data.length > 0) {{
+                    const matchIdx = data.findIndex(item => item.orig.toLowerCase().includes(startPattern.toLowerCase()));
+                    const targetIdx = matchIdx !== -1 ? matchIdx : 0;
+                    const target = data[targetIdx];
+                    seekTargetTime = (mode === 'orig') ? target.start : target.b_start;
+                    const targetRow = document.getElementById('row-' + targetIdx);
+                    if (targetRow) targetRow.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+                    applySeek();
+                }}
             }});
 
             audio.addEventListener('timeupdate', () => {{

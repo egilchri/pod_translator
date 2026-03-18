@@ -202,9 +202,8 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
             <h2>{c_title}</h2>
             <div class="summary">{c_summary}...</div>
             <div class="btn-group">
-                <button class="btn btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">⚡ Copy Process Command</button>
-                <a href="{live_url}" id="view-{i}" class="btn btn-view">🌐 View Live</a>
-                <a href="{mp3_link}" target="_blank" class="btn" style="background:#e9ecef; color:#004a99; border:1px solid #004a99;">🎧 Preview MP3</a>
+                <button class="btn btn-run" onclick="copyMasterCommand('{mp3_link}', '{feed_name_attr}', '{date_param}', '{c_title}', '{lang_code}')">Developer CP</button>
+                <a href="{live_url}" id="view-{i}" class="btn btn-view">🌐 Goto Playback</a>
             </div>
             <script>checkLiveStatus({i}, "{expected_mp3_url}");</script>
         </div>"""

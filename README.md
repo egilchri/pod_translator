@@ -12,8 +12,9 @@ sync_all_feeds.py
         └─► show_general_feed.py (generates feed dashboard HTML)
   └─► generate_podcast_index.py  (builds master index)
 
-run_workflow.py                  (per episode, triggered manually from dashboard)
-  └─► svdownload.py              (AI transcription / translation / TTS engine)
+update_latest.py                 (per feed, checks for new episode + refreshes feed page)
+  └─► run_workflow.py            (per episode, triggered manually or via update_latest)
+        └─► svdownload.py        (AI transcription / translation / TTS engine)
 ```
 
 ---
@@ -82,7 +83,30 @@ run_workflow.py                  (per episode, triggered manually from dashboard
 
 ---
 
-### 5. `run_workflow.py` — Episode Processing Controller
+### 5. `update_latest.py` — Single-Feed Episode Updater
+
+**Purpose:** One command to download the latest episode for a single feed (if new) and refresh its feed page.
+
+- Reads the existing `Podcasts/{feedname}.feed.html` to extract the RSS URL, language, and start-pattern — no extra arguments needed.
+- Fetches the RSS and checks if the latest episode has already been processed (by looking for `Podcasts/{feedname}.{date}.html`).
+- If new: runs `run_workflow.py` automatically with all parameters populated from the RSS entry.
+- Always runs `run_workflow_feed.py` at the end to regenerate and push the feed dashboard.
+
+**Arguments:**
+
+| Argument | Required | Description |
+|---|---|---|
+| `feedname` | Yes | Podcast slug (e.g. `usapodden`) — positional, no flag needed |
+
+**Example:**
+
+```bash
+python3 update_latest.py usapodden
+```
+
+---
+
+### 6. `run_workflow.py` — Episode Processing Controller
 
 **Purpose:** The master controller for processing a single podcast episode end-to-end.
 
@@ -136,6 +160,12 @@ To check for new episodes across every podcast you track and rebuild the index:
 
 ```bash
 python3 sync_all_feeds.py
+```
+
+### Update a Single Feed (Latest Episode + Feed Page)
+
+```bash
+python3 update_latest.py usapodden
 ```
 
 ### Add a New Podcast Feed
