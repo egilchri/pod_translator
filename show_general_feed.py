@@ -112,11 +112,11 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
 
             /* --- MOBILE APP OVERRIDES --- */
             @media (display-mode: standalone) {{
-                .btn-back, .btn-run {{ display: none !important; }}
+                .btn-back, .btn-run, #syncBtn {{ display: none !important; }}
                 .nav-header {{ justify-content: flex-end; }}
             }}
             @media (max-width: 600px) {{
-                .btn-run {{ display: none !important; }}
+                .btn-run, #syncBtn {{ display: none !important; }}
             }}
         </style>
         <script>
