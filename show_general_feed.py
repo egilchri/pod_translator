@@ -186,9 +186,12 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
         dt = datetime(*entry.published_parsed[:6]) if hasattr(entry, 'published_parsed') else datetime.now()
         date_param = dt.strftime("%y%m%d")
         
-        mp3_link = next((en.href for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), "")
+        mp3_enclosure = next((en for en in entry.get('enclosures', []) if en.type == 'audio/mpeg'), None)
+        mp3_link = mp3_enclosure.href if mp3_enclosure else ""
         if mp3_link.startswith("//"):
             mp3_link = "https:" + mp3_link
+        mp3_bytes = int(mp3_enclosure.get('length', 0)) if mp3_enclosure else 0
+        mp3_size_str = f"{mp3_bytes / 1_000_000:.0f} MB" if mp3_bytes > 0 else ""
 
         expected_mp3_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.mp3"
         live_url = f"{base_gh_url}/{feed_name_attr}.{date_param}.html"
@@ -198,7 +201,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
         html_content += f"""
         <div class="episode-card" id="card-{i}">
             <span id="status-{i}" class="status-tag tag-checking">Checking...</span>
-            <small style="color:#666; font-weight:bold;">{dt.strftime("%B %d, %Y")}</small>
+            <small style="color:#666; font-weight:bold;">{dt.strftime("%B %d, %Y")}{f" &nbsp;·&nbsp; {mp3_size_str}" if mp3_size_str else ""}</small>
             <h2>{c_title}</h2>
             <div class="summary">{c_summary}...</div>
             <div class="btn-group">
