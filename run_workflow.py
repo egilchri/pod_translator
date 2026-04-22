@@ -28,9 +28,49 @@ def main():
     parser.add_argument("--num_utterances", type=int, default=None, help="Limit number of segments for testing")
     parser.add_argument("--wordlist-only", action="store_true", help="Only produce the vocabulary JSON, skip all audio processing")
     parser.add_argument("--html-only", action="store_true", help="Only regenerate the HTML player from existing JSON files")
+    parser.add_argument("--staging", action="store_true", help="Deploy HTML to Podcasts/staging/ instead of Podcasts/")
+    parser.add_argument("--promote", action="store_true", help="Promote staged HTML to production")
     parser.add_argument("--start-pattern", default=None, help="Skip segments until this text is found in the transcript")
     
     args = parser.parse_args()
+
+    # Handle --promote: regenerate HTML without staging prefix, deploy to production
+    if args.promote:
+        podcasts_repo_path = os.path.abspath("Podcasts")
+        prefix = f"{args.feedname}.{args.date}"
+        prod = os.path.join(podcasts_repo_path, f"{prefix}.html")
+        print(f"[*] Regenerating production HTML for {prefix}...")
+        promote_cmd = [
+            "python3", "svdownload.py",
+            "--url", args.url,
+            "--feedname", args.feedname,
+            "--date", args.date,
+            "--title", args.title,
+            "--lang", args.lang,
+            "--html-only",
+        ]
+        if args.start_pattern:
+            promote_cmd.extend(["--start-pattern", args.start_pattern])
+        else:
+            feed_html = os.path.join(podcasts_repo_path, f"{args.feedname}.feed.html")
+            if os.path.exists(feed_html):
+                with open(feed_html, encoding="utf-8") as f:
+                    m = re.search(r'data-start-pattern="([^"]+)"', f.read())
+                    if m:
+                        promote_cmd.extend(["--start-pattern", m.group(1)])
+        run_command(promote_cmd)
+        html_file = f"{prefix}.html"
+        if os.path.exists(html_file):
+            dest = os.path.join(podcasts_repo_path, html_file)
+            if os.path.exists(dest):
+                os.remove(dest)
+            shutil.move(html_file, dest)
+        print(f"[*] Promoted {prefix}.html -> production")
+        run_command(["git", "add", f"{prefix}.html"], cwd=podcasts_repo_path)
+        run_command(["git", "commit", "-m", f"Promote staged HTML for {args.feedname} - {args.date}"], cwd=podcasts_repo_path)
+        run_command(["git", "push"], cwd=podcasts_repo_path)
+        print(f"--- Promoted and live! ---")
+        return
 
     # 1. Path to your separate Podcasts repository
     podcasts_repo_path = os.path.abspath("Podcasts")
@@ -56,6 +96,9 @@ def main():
 
     if args.html_only:
         cmd.append("--html-only")
+
+    if args.staging:
+        cmd.append("--staging")
 
     start_pattern = args.start_pattern
     if not start_pattern:
@@ -92,15 +135,17 @@ def main():
         ]
 
     # 4. Move files to the Podcasts repository folder
-    print(f"--- Moving files to {podcasts_repo_path} ---")
+    dest_path = os.path.join(podcasts_repo_path, "staging") if args.staging else podcasts_repo_path
+    if args.staging:
+        os.makedirs(dest_path, exist_ok=True)
+    print(f"--- Moving files to {dest_path} ---")
     if not os.path.exists(podcasts_repo_path):
         print(f"[!] Error: Podcasts directory not found at {podcasts_repo_path}")
         sys.exit(1)
 
     for f in files_to_move:
         if os.path.exists(f):
-            # Overwrite if file already exists in target
-            dest = os.path.join(podcasts_repo_path, f)
+            dest = os.path.join(dest_path, f)
             if os.path.exists(dest):
                 os.remove(dest)
             shutil.move(f, dest)
@@ -118,8 +163,9 @@ def main():
     
     # Stage files that exist in the repo
     for f in files_to_move:
-        if os.path.exists(os.path.join(podcasts_repo_path, f)):
-            run_command(["git", "add", f], cwd=podcasts_repo_path)
+        git_path = os.path.join("staging", f) if args.staging else f
+        if os.path.exists(os.path.join(dest_path, f)):
+            run_command(["git", "add", git_path], cwd=podcasts_repo_path)
     
     run_command(["git", "commit", "-m", commit_message], cwd=podcasts_repo_path)
     run_command(["git", "push"], cwd=podcasts_repo_path)

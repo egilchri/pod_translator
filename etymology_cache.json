@@ -1,7 +1,162 @@
 {
+  "sv:aborträtt": {
+    "cognate": "",
+    "etymology": "rätt.",
+    "wiktionary": true
+  },
+  "sv:agenda": {
+    "cognate": "",
+    "etymology": "From agendus.",
+    "wiktionary": true
+  },
+  "sv:agera": {
+    "cognate": "",
+    "etymology": "agō, from *h₂éǵeti. Cognate with agere, also a Latin borrowing. Compare also åka, which derives from aka, from the same ultimate Proto-Indo-European verb.",
+    "wiktionary": true
+  },
+  "sv:aktuell": {
+    "cognate": "",
+    "etymology": "From actuel, perhaps via aktuell, from actuālis, from āctus + -ālis.",
+    "wiktionary": true
+  },
+  "sv:aldrig": {
+    "cognate": "",
+    "etymology": "From aldri, aldrigi. Cognate with aldrei, aldri, aldri and aldrig.",
+    "wiktionary": true
+  },
+  "sv:all": {
+    "cognate": "",
+    "etymology": "From alder, from allr, from *allaz, from *h₂el-.",
+    "wiktionary": true
+  },
+  "sv:alldeles": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:allmän": {
+    "cognate": "",
+    "etymology": "From almennr. män. Compare allmenn.",
+    "wiktionary": true
+  },
+  "sv:allra": {
+    "cognate": "",
+    "etymology": "From aldra, the genitive plural of all, from allr. Originally \"of all\" or \"among all\".",
+    "wiktionary": true
+  },
+  "sv:alls": {
+    "cognate": "",
+    "etymology": "From alz, influenced by Low German alles.",
+    "wiktionary": true
+  },
+  "sv:alltid": {
+    "cognate": "",
+    "etymology": "From tid, literally \"all time\". Compare altid, altijd, ætíð, alltid, alltid.",
+    "wiktionary": true
+  },
+  "sv:alltså": {
+    "cognate": "",
+    "etymology": "Borrowed from also. Compare allt and så. Cognate to altså and altso.",
+    "wiktionary": true
+  },
+  "sv:allvar": {
+    "cognate": "true",
+    "etymology": "From alvara, from an adjective ǫlværr, maybe from alwār.",
+    "wiktionary": true
+  },
+  "sv:allvarlig": {
+    "cognate": "",
+    "etymology": "From alvarliker, from alvarligr. -lig.",
+    "wiktionary": true
+  },
   "sv:amerikan": {
     "cognate": "",
     "etymology": "-an"
+  },
+  "sv:amerikansk": {
+    "cognate": "",
+    "etymology": "From -sk.terms suffixed with -sk",
+    "wiktionary": true
+  },
+  "sv:an": {
+    "cognate": "on",
+    "etymology": "Borrowed from an and an, and less commonly from on, from *ana, cognate with on and doublet of å, på.",
+    "wiktionary": true
+  },
+  "sv:anda": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:angelägenhet": {
+    "cognate": "",
+    "etymology": "het, like German Angelegenheit",
+    "wiktionary": true
+  },
+  "sv:aning": {
+    "cognate": "",
+    "etymology": "From ing. Attested since 1747.",
+    "wiktionary": true
+  },
+  "sv:anklaga": {
+    "cognate": "",
+    "etymology": "klaga",
+    "wiktionary": true
+  },
+  "sv:anmäla": {
+    "cognate": "",
+    "etymology": "From mäla.",
+    "wiktionary": true
+  },
+  "sv:annanstans": {
+    "cognate": "",
+    "etymology": "stans",
+    "wiktionary": true
+  },
+  "sv:annars": {
+    "cognate": "",
+    "etymology": "From annars.",
+    "wiktionary": true
+  },
+  "sv:annorlunda": {
+    "cognate": "",
+    "etymology": "From annorlund, annerlunda, anner lundh or lunda",
+    "wiktionary": true
+  },
+  "sv:anrik": {
+    "cognate": "",
+    "etymology": "From rik.",
+    "wiktionary": true
+  },
+  "sv:anse": {
+    "cognate": "",
+    "etymology": "From anse, from ansen. Equivalent to se.",
+    "wiktionary": true
+  },
+  "sv:anställa": {
+    "cognate": "",
+    "etymology": "From anstellen, equivalent to ställa. Compare aanstellen.",
+    "wiktionary": true
+  },
+  "sv:ansvarig": {
+    "cognate": "",
+    "etymology": "-ig",
+    "wiktionary": true
+  },
+  "sv:ansätta": {
+    "cognate": "",
+    "etymology": "sätta",
+    "wiktionary": true
+  },
+  "sv:anta": {
+    "cognate": "ontake",
+    "etymology": "antaga, calqued from annemen or annehmen. All compounds with the verb ta have gone through apocope and those forms are now the standard ones, see also avta/avtaga, inta/intaga and överta/övertaga. Cognate with antage, an",
+    "wiktionary": true
+  },
+  "sv:antagligen": {
+    "cognate": "",
+    "etymology": "en. Compare and antagelig, whence also antakeleg.",
+    "wiktionary": true
   },
   "sv:använda": {
     "cognate": "",
@@ -11,6 +166,16 @@
     "cognate": "appetite",
     "etymology": "Appetit, from appétit, from appetītus, from -tus. Compare appetit, appetite."
   },
+  "sv:arbeta": {
+    "cognate": "",
+    "etymology": "From arbeida, arbeta, from arbeiden, from arvēdian, from *arbaidijaną, from *arbaidiz, equivalent of a. Compare arbeide, arbeide, arbeida, arbejde, arabeitjan, arabeiton, arbeiten and 𐌰𐍂𐌱𐌰𐌹𐌳𐌾𐌰𐌽.",
+    "wiktionary": true
+  },
+  "sv:arg": {
+    "cognate": "",
+    "etymology": "From argher, from argr, from *argaz, from *h₃orǵʰ-, *h₃erǵʰ-.",
+    "wiktionary": true
+  },
   "sv:attack": {
     "cognate": "",
     "etymology": "From attaque."
@@ -19,45 +184,464 @@
     "cognate": "",
     "etymology": "era"
   },
+  "sv:autentisk": {
+    "cognate": "authentic",
+    "etymology": "Cognate with authentisch, authentic and authentical, authentique, from authenticus and αὐθεντικός, used in Swedish since 1755.",
+    "wiktionary": true
+  },
+  "sv:av-": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:avbilda": {
+    "cognate": "",
+    "etymology": "bilda, like abbilden",
+    "wiktionary": true
+  },
+  "sv:avbryta": {
+    "cognate": "",
+    "etymology": "bryta",
+    "wiktionary": true
+  },
+  "sv:avfyra": {
+    "cognate": "",
+    "etymology": "fyra",
+    "wiktionary": true
+  },
+  "sv:avgå": {
+    "cognate": "",
+    "etymology": "From gå, like abgehen, go off.",
+    "wiktionary": true
+  },
+  "sv:avgöra": {
+    "cognate": "",
+    "etymology": "From göra.",
+    "wiktionary": true
+  },
+  "sv:avsluta": {
+    "cognate": "",
+    "etymology": "From sluta. Compare to avslutta and afslutte",
+    "wiktionary": true
+  },
   "sv:avsnitt": {
     "cognate": "",
     "etymology": "From snitt."
+  },
+  "sv:avspegla": {
+    "cognate": "",
+    "etymology": "spegla. Compare avspeile.",
+    "wiktionary": true
+  },
+  "sv:bak": {
+    "cognate": "back",
+    "etymology": "From baker, from bak, from *baką. Related to back.",
+    "wiktionary": true
+  },
+  "sv:bara": {
+    "cognate": "barely",
+    "etymology": "From bara, from *bara, from *barr, from *bazaz. Compare bara.",
+    "wiktionary": true
+  },
+  "sv:bedriva": {
+    "cognate": "bedrive",
+    "etymology": "From bedriva, from bedrîven. Equivalent to driva. Cognate with bedrive, bedrive, betreiben, bedrijven and bedrive.",
+    "wiktionary": true
+  },
+  "sv:befinna": {
+    "cognate": "befind",
+    "etymology": "From bevinden, from bifindan. Equivalent to finna. Cognate with befinne, befinde, befinden, bevinden, befind and befiende.",
+    "wiktionary": true
+  },
+  "sv:befria": {
+    "cognate": "befree",
+    "etymology": "From bevrien and befreien. Cognate with befri, befri, באַפֿרײַען, bevrien, older bevrijen, now bevrijden, befrije, befrēoġan, *befreen, *bifreen and befree. Equivalent to -a or fria.",
+    "wiktionary": true
+  },
+  "sv:begränsa": {
+    "cognate": "",
+    "etymology": "From begrenzen, equivalent to -a or gränsa. Cognate with begrænse, begrense, begrenzen and begrenzen, beschränken.saob",
+    "wiktionary": true
+  },
+  "sv:begå": {
+    "cognate": "",
+    "etymology": "From bega, from began. Equivalent to gå.",
+    "wiktionary": true
+  },
+  "sv:behov": {
+    "cognate": "",
+    "etymology": "behof, borrowed from behof, from *bihōf, from *bihōf.",
+    "wiktionary": true
+  },
+  "sv:behålla": {
+    "cognate": "",
+    "etymology": "From behalda, beholda, from beholden, from bihaldan.",
+    "wiktionary": true
+  },
+  "sv:behöva": {
+    "cognate": "behoove",
+    "etymology": "a, cognate with behoove (US) / behove (UK) and behoeven.",
+    "wiktionary": true
+  },
+  "sv:bekosta": {
+    "cognate": "",
+    "etymology": "kosta",
+    "wiktionary": true
+  },
+  "sv:bekräfta": {
+    "cognate": "",
+    "etymology": "From bekreften or bekräften (rare, more often bekräftigen), from bekreften. Equivalent of -a. The synonym bekräftiga went out of use during the 17th century. Cognate with bekræfte, bekrefte and bekrefte, bekrefta.",
+    "wiktionary": true
+  },
+  "sv:bekräftelse": {
+    "cognate": "",
+    "etymology": "else",
+    "wiktionary": true
+  },
+  "sv:bekväm": {
+    "cognate": "suitable",
+    "etymology": "From beqvæmber. Compare bequem, bekwaam, bekvem.",
+    "wiktionary": true
+  },
+  "sv:bekymra": {
+    "cognate": "",
+    "etymology": "bekymbra, from bekummeren, bekumberen. For the second element see Kummer. Cognate of bekommeren, bekümmern.",
+    "wiktionary": true
+  },
+  "sv:belasta": {
+    "cognate": "",
+    "etymology": "From belasten. Equivalent to lasta. Cognate with belaste and belasten.",
+    "wiktionary": true
+  },
+  "sv:belöna": {
+    "cognate": "",
+    "etymology": "From belonen or belohnen, equivalent to löna. Cognate with belønne, belønne, belonen, beloon, beloene, beleanje, beloonje, belounen and באַלוינען.",
+    "wiktionary": true
+  },
+  "sv:bensinpris": {
+    "cognate": "",
+    "etymology": "pris",
+    "wiktionary": true
+  },
+  "sv:benåda": {
+    "cognate": "",
+    "etymology": "-a",
+    "wiktionary": true
+  },
+  "sv:berg": {
+    "cognate": "",
+    "etymology": "From bjarg, berg, from *bergaz, from *bʰerǵʰ-.",
+    "wiktionary": true
+  },
+  "sv:bero": {
+    "cognate": "",
+    "etymology": "From beruhen (older form also berugen) or - *berouwen, equivalent to ro. Cognate with bero and bero.",
+    "wiktionary": true
   },
   "sv:berätta": {
     "cognate": "",
     "etymology": "From berætta, from berichten, in correspondence to rätta (verb) and rätt (verb and noun), equivalent to -a or rätta. Cognate with berette, berette, berichten, berechten, bericht, berig, berichten, Bericht and beriichten."
   },
+  "sv:beröra": {
+    "cognate": "be-",
+    "etymology": "From beroren, from beroren, ultimately from *bi-, *hrōzijaną, equivalent to röra. Cognate with berøre, berøre, berühren and beroeren.",
+    "wiktionary": true
+  },
+  "sv:besked": {
+    "cognate": "",
+    "etymology": "From beskedh, from besched, from bescheden.",
+    "wiktionary": true
+  },
   "sv:beslut": {
     "cognate": "",
     "etymology": "From beslut, from beslut, a besluten. 1513. Compare besluit, Beschluss."
+  },
+  "sv:beställa": {
+    "cognate": "",
+    "etymology": "From bestellen or a Low German equivalent. ställa.",
+    "wiktionary": true
+  },
+  "sv:bestämma": {
+    "cognate": "",
+    "etymology": "stämma, like German bestimmen",
+    "wiktionary": true
+  },
+  "sv:besvärlig": {
+    "cognate": "",
+    "etymology": "From beschwerlich, equivalent to lig. Cognate with besværlig, besværlig and bezwaarlijk.",
+    "wiktionary": true
+  },
+  "sv:besöka": {
+    "cognate": "beseech",
+    "etymology": "From besøkia, from besoken, equivalent to söka. Cognate with besøge, besøke, besøke, besøka, besøkje, besøkja, bezoeken, besuchen, besäike, beseech, beseek and beseik.",
+    "wiktionary": true
   },
   "sv:betala": {
     "cognate": "betall",
     "etymology": "From betala, bitala, bittala, from betalen, equivalent to tala.saob Cognate with betale, betale, betala, betale, betalen, betelje, bezahlen, betahlen and betall. Displaced native gälda."
   },
+  "sv:bete": {
+    "cognate": "food",
+    "etymology": "From beita.",
+    "wiktionary": true
+  },
+  "sv:betona": {
+    "cognate": "",
+    "etymology": "tona",
+    "wiktionary": true
+  },
+  "sv:betrakta": {
+    "cognate": "",
+    "etymology": "betrachten. Equivalent to trakta. Attested since the 14th century.",
+    "wiktionary": true
+  },
+  "sv:betyda": {
+    "cognate": "",
+    "etymology": "From bethydha, from beduden, equivalent to tyda.saob Cognate with betyde, bety, bety, bedeuten, bydȧjta, bedeiten, beduiden, older bedieden, beduuje, betjuude and betsjutte.",
+    "wiktionary": true
+  },
+  "sv:betydlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:bevaka": {
+    "cognate": "",
+    "etymology": "From bevaka. Equivalent to vaka.",
+    "wiktionary": true
+  },
   "sv:bevakning": {
     "cognate": "",
     "etymology": "ning"
+  },
+  "sv:bild": {
+    "cognate": "",
+    "etymology": "From Bild, from bilde, from biladi, bilidi. beläte.",
+    "wiktionary": true
+  },
+  "sv:bildlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:biljett": {
+    "cognate": "",
+    "etymology": "From billet, attested from 1741.",
+    "wiktionary": true
+  },
+  "sv:bill": {
+    "cognate": "seal",
+    "etymology": "From bilder, from bíldr, from *bīþlaz. An instrumental derivation of *bītaną. Closely related to bila.",
+    "wiktionary": true
+  },
+  "sv:billig": {
+    "cognate": "",
+    "etymology": "From billik, billich. Compare billig and billijk.",
+    "wiktionary": true
+  },
+  "sv:bland": {
+    "cognate": "",
+    "etymology": "ibland.",
+    "wiktionary": true
+  },
+  "sv:bli": {
+    "cognate": "",
+    "etymology": "bliva, from bliva, from blîven, from bilīvan, from *bilīban, from *bilībaną. varda completely in the present tense, and partly in the past tense.",
+    "wiktionary": true
+  },
+  "sv:blott": {
+    "cognate": "",
+    "etymology": "From blôt, from *blōt. blöt. Compare bloß, bloot, blot.",
+    "wiktionary": true
+  },
+  "sv:blåsa": {
+    "cognate": "",
+    "etymology": "From blása, from *blēsaną. Cognate with blåsa, blåsa and blæse",
+    "wiktionary": true
+  },
+  "sv:blåsväder": {
+    "cognate": "",
+    "etymology": "väder"
+  },
+  "sv:bocka": {
+    "cognate": "",
+    "etymology": "From bokka, bukka, from bucken, from *bukkōn, from *bukkōn.",
+    "wiktionary": true
   },
   "sv:bokstavlig": {
     "cognate": "",
     "etymology": "lig"
   },
+  "sv:bolag": {
+    "cognate": "",
+    "etymology": "From búlag, from bú.",
+    "wiktionary": true
+  },
   "sv:bord": {
     "cognate": "",
     "etymology": "From borþ, from borð, from *burdą."
+  },
+  "sv:bort": {
+    "cognate": "",
+    "etymology": "From burt, brott, braut. See bryta for more.",
+    "wiktionary": true
+  },
+  "sv:borta": {
+    "cognate": "",
+    "etymology": "From brottu, burtu. -a.",
+    "wiktionary": true
+  },
+  "sv:bostad": {
+    "cognate": "",
+    "etymology": "stad",
+    "wiktionary": true
+  },
+  "sv:bota": {
+    "cognate": "",
+    "etymology": "See bot",
+    "wiktionary": true
+  },
+  "sv:bra": {
+    "cognate": "",
+    "etymology": "Since at least 1621, from braf; from brav; from brave, borrowed from bravo.",
+    "wiktionary": true
+  },
+  "sv:bred": {
+    "cognate": "",
+    "etymology": "From breþer, from breiðr, from *braidaz.",
+    "wiktionary": true
+  },
+  "sv:brottsbekämpning": {
+    "cognate": "",
+    "etymology": "bekämpning.",
+    "wiktionary": true
+  },
+  "sv:brottslighet": {
+    "cognate": "",
+    "etymology": "-het",
+    "wiktionary": true
+  },
+  "sv:bruka": {
+    "cognate": "",
+    "etymology": "From bruken, from brukan.",
+    "wiktionary": true
+  },
+  "sv:bryta": {
+    "cognate": "",
+    "etymology": "From bryta, from brjóta, from *breutaną, from *bʰrewd-.",
+    "wiktionary": true
+  },
+  "sv:bränsle": {
+    "cognate": "",
+    "etymology": "Related to bränna.",
+    "wiktionary": true
+  },
+  "sv:bränslepris": {
+    "cognate": "",
+    "etymology": "pris.",
+    "wiktionary": true
+  },
+  "sv:bråka": {
+    "cognate": "",
+    "etymology": "From brake, probably from or related to *brekan. Compare braak.",
+    "wiktionary": true
   },
   "sv:budskap": {
     "cognate": "",
     "etymology": "From boðskapr. Akin to skap, like Botschaft."
   },
+  "sv:bygga": {
+    "cognate": "",
+    "etymology": "From byggia.",
+    "wiktionary": true
+  },
+  "sv:byta": {
+    "cognate": "victory",
+    "etymology": "From býta, from būten, of uncertain ultimate origin; possibly a - borrowing, from *boudi. If so, related to the name of Boudica, a British Celtic queen.",
+    "wiktionary": true
+  },
+  "sv:börja": {
+    "cognate": "",
+    "etymology": "From byria, from byrja, from *burjaną. Derived from *bʰer-.",
+    "wiktionary": true
+  },
+  "sv:chocka": {
+    "cognate": "",
+    "etymology": "-a. Attested since 1956.",
+    "wiktionary": true
+  },
   "sv:cirkulera": {
     "cognate": "",
     "etymology": "era"
   },
+  "sv:dan": {
+    "cognate": "",
+    "etymology": "dagen.",
+    "wiktionary": true
+  },
+  "sv:definitiv": {
+    "cognate": "",
+    "etymology": "From definitivus.",
+    "wiktionary": true
+  },
   "sv:del": {
     "cognate": "",
     "etymology": "From del, from dēl, deil, from dēl."
+  },
+  "sv:deltagare": {
+    "cognate": "",
+    "etymology": "are",
+    "wiktionary": true
+  },
+  "sv:delvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:dessutom": {
+    "cognate": "",
+    "etymology": "From utom.",
+    "wiktionary": true
+  },
+  "sv:desto": {
+    "cognate": "",
+    "etymology": "desto.",
+    "wiktionary": true
+  },
+  "sv:dippa": {
+    "cognate": "",
+    "etymology": "dip.",
+    "wiktionary": true
+  },
+  "sv:dit": {
+    "cognate": "",
+    "etymology": "From þit, from þít, according to SAOB likely from þí + at. þí is in turn an old locative, possibly related to 𐌸𐌴𐌹, and more distantly to τεῖ in τεῖδε. Equivalent to ty + åt.",
+    "wiktionary": true
+  },
+  "sv:draga": {
+    "cognate": "",
+    "etymology": "From dragha, from draga, from *draganą, from *dʰregʰ-. In some senses, from dragen (compare tragen).",
+    "wiktionary": true
+  },
+  "sv:drev": {
+    "cognate": "",
+    "etymology": "From dreif, from *draibō, from *dʰreybʰ-.",
+    "wiktionary": true
+  },
+  "sv:droga": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:dryg": {
+    "cognate": "",
+    "etymology": "From drygher, from drjúgr, from *dreugaz. Cognate to друг.",
+    "wiktionary": true
+  },
+  "sv:drömma": {
+    "cognate": "dream",
+    "etymology": "From drø̄ma, from dreyma, from *draumijaną. Cognate to dream, dromen and träumen.",
+    "wiktionary": true
   },
   "sv:dum": {
     "cognate": "dumb",
@@ -67,9 +651,78 @@
     "cognate": "",
     "etymology": "From dygn, dyghn, døgn, døghn, from dœgn, from *dōgin-, alternative form of *dōg-. mid-14th century.SO}} Cognate with døgn, døgn and døgn. See also dœgr, døger and dægur."
   },
+  "sv:dyka": {
+    "cognate": "",
+    "etymology": "From dūken *ducken, from *dūkan *dukkan, from *dūkan.",
+    "wiktionary": true
+  },
+  "sv:där": {
+    "cognate": "",
+    "etymology": "From þar, from *þar."
+  },
+  "sv:därför": {
+    "cognate": "therefore",
+    "etymology": "From þær for, equivalent to för. Compare therefore, derfor, dafür.",
+    "wiktionary": true
+  },
   "sv:då": {
     "cognate": "then",
     "etymology": "From þa, from þá, from *þan."
+  },
+  "sv:dålig": {
+    "cognate": "",
+    "etymology": "From dáligr, compare with dårlig, dårlig, dåleg.",
+    "wiktionary": true
+  },
+  "sv:dölja": {
+    "cognate": "",
+    "etymology": "From dylia. Compare dylja, diȝel.",
+    "wiktionary": true
+  },
+  "sv:döma": {
+    "cognate": "",
+    "etymology": "From døma, from dǿma, from *dōmijaną.",
+    "wiktionary": true
+  },
+  "sv:e": {
+    "cognate": "forever",
+    "etymology": "See Translingual section.",
+    "wiktionary": true
+  },
+  "sv:efterhand": {
+    "cognate": "",
+    "etymology": "hand",
+    "wiktionary": true
+  },
+  "sv:egen": {
+    "cognate": "own",
+    "etymology": "From eiginn, from *aiganaz, past participle of *aiganą. Equivalent to -en. Cognate with own.",
+    "wiktionary": true
+  },
+  "sv:egentligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:elak": {
+    "cognate": "lack",
+    "etymology": "From elaker, from e- + *laker (from Old Norse lakr, cognate with lack).",
+    "wiktionary": true
+  },
+  "sv:elektor": {
+    "cognate": "",
+    "etymology": "elector.",
+    "wiktionary": true
+  },
+  "sv:elnät": {
+    "cognate": "",
+    "etymology": "nät.",
+    "wiktionary": true
+  },
+  "sv:emot": {
+    "cognate": "",
+    "etymology": "From i mot, equivalent to mot.",
+    "wiktionary": true
   },
   "sv:ena": {
     "cognate": "",
@@ -79,9 +732,43 @@
     "cognate": "",
     "etymology": "-het"
   },
+  "sv:enkel": {
+    "cognate": "",
+    "etymology": "From enkil, from enkel, from *ainakulaz, equivalent to en + -el. Compare etymology of simple. Cognate with enkel, enkelt, enkel, ekkil, enkel and 𐌰𐌹𐌽𐌰𐌺𐌻𐍃. Compare also singulus with the same suffix. See also änka and änk"
+  },
+  "sv:ensam": {
+    "cognate": "",
+    "etymology": "sam; cognate with ensom",
+    "wiktionary": true
+  },
+  "sv:enstaka": {
+    "cognate": "",
+    "etymology": "From -. staka, variant form of stake.",
+    "wiktionary": true
+  },
   "sv:entusiasm": {
     "cognate": "",
     "etymology": "Ultimately from ἐνθουσιασμός, from ἐν + θεός + οὐσία."
+  },
+  "sv:erbjuda": {
+    "cognate": "",
+    "etymology": "From erbieten. Cognate with erbyde, erbiude, erbēden. Equivalent to bjuda.",
+    "wiktionary": true
+  },
+  "sv:evig": {
+    "cognate": "",
+    "etymology": "ævigher, êwich; related to Old Norse ævi.",
+    "wiktionary": true
+  },
+  "sv:exempelvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:facit": {
+    "cognate": "",
+    "etymology": "facit.",
+    "wiktionary": true
   },
   "sv:faktisk": {
     "cognate": "",
@@ -91,17 +778,191 @@
     "cognate": "",
     "etymology": "From fall, from falla. The grammatical sense is a calque of Latin casus."
   },
+  "sv:farlig": {
+    "cognate": "",
+    "etymology": "From fārliker, from varlik. Equivalent to lig.",
+    "wiktionary": true
+  },
+  "sv:fartyg": {
+    "cognate": "",
+    "etymology": "tyg, like Fahrzeug, vaartuig"
+  },
+  "sv:fast": {
+    "cognate": "",
+    "etymology": "From faster, from fastr, from *fastuz; see it for cognates and further etymology.",
+    "wiktionary": true
+  },
+  "sv:fastslå": {
+    "cognate": "",
+    "etymology": "slå",
+    "wiktionary": true
+  },
+  "sv:fatta": {
+    "cognate": "",
+    "etymology": "vāten, from *fatōn, from *fatōn, from *fatōną. Cognate with fatte, fatte, vatten and fassen.",
+    "wiktionary": true
+  },
+  "sv:fattig": {
+    "cognate": "",
+    "etymology": "From fátœkr. Cognate with fátækur.",
+    "wiktionary": true
+  },
+  "sv:fel": {
+    "cognate": "",
+    "etymology": "See Norwegian feil and Danish fejl. Used in Swedish at least since 1527. For the adverb, the now obsolete form felt was the dominant written form until the mid 19th century.",
+    "wiktionary": true
+  },
+  "sv:feltolka": {
+    "cognate": "",
+    "etymology": "tolka.",
+    "wiktionary": true
+  },
+  "sv:finnas": {
+    "cognate": "",
+    "etymology": "From finnas, from finnask. Cognate with finnes and finnast.",
+    "wiktionary": true
+  },
+  "sv:fler": {
+    "cognate": "full",
+    "etymology": "From flere, flæster, from fleiri, from *flaizô, derived from *pleh₁-. Cognate, among others, with fleiri, flestr, plūs and πλέως, πλεῖστος.",
+    "wiktionary": true
+  },
+  "sv:florera": {
+    "cognate": "",
+    "etymology": "flōrēre.",
+    "wiktionary": true
+  },
+  "sv:flytta": {
+    "cognate": "",
+    "etymology": "From flytia, from flytja, from *flutjaną.",
+    "wiktionary": true
+  },
+  "sv:fokusera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
+  },
   "sv:folk": {
     "cognate": "",
     "etymology": "From fōlk, from Runic Swedish fulk, from fólk, folk, from *fulką."
+  },
+  "sv:fort": {
+    "cognate": "away",
+    "etymology": "Attested since 1609 according to ''Nationalencyklopedins Ordbok'', from fôrt, which is used adverbially (forts) with the same meaning in Low German, from fort, from forth. Related to för, före and forsla.",
+    "wiktionary": true
+  },
+  "sv:fortsätta": {
+    "cognate": "",
+    "etymology": "sätta",
+    "wiktionary": true
+  },
+  "sv:fram": {
+    "cognate": "",
+    "etymology": "From fram, from *fram.",
+    "wiktionary": true
+  },
+  "sv:framskjuten": {
+    "cognate": "",
+    "etymology": "skjuten. Compare pushed forward.",
+    "wiktionary": true
+  },
+  "sv:framställa": {
+    "cognate": "",
+    "etymology": "From ställa. Cognate with fremstille, fremstille, framstille, framstilla and framstille.",
+    "wiktionary": true
+  },
+  "sv:framtid": {
+    "cognate": "",
+    "etymology": "tid",
+    "wiktionary": true
+  },
+  "sv:framåt": {
+    "cognate": "",
+    "etymology": "From åt, also written as separate words, attested as such (''fram åt'') in the 1541 Swedish Bible translation (Ezekiel 1:12).",
+    "wiktionary": true
+  },
+  "sv:framöver": {
+    "cognate": "",
+    "etymology": "över",
+    "wiktionary": true
+  },
+  "sv:franska": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:fredsförhandling": {
+    "cognate": "",
+    "etymology": "From förhandling.",
+    "wiktionary": true
+  },
+  "sv:fredssamtal": {
+    "cognate": "",
+    "etymology": "samtal.",
+    "wiktionary": true
+  },
+  "sv:fresta": {
+    "cognate": "",
+    "etymology": "From freista, from *fraistōną.",
+    "wiktionary": true
+  },
+  "sv:fria": {
+    "cognate": "",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:frist": {
+    "cognate": "",
+    "etymology": "From frest, from *frestą.",
+    "wiktionary": true
+  },
+  "sv:frukta": {
+    "cognate": "",
+    "etymology": "From frukta, frokta, frykta, from vruchten, from forhtian, from *furhtijan.",
+    "wiktionary": true
+  },
+  "sv:främst": {
+    "cognate": "",
+    "etymology": "From fram. Intuitively \"forthest/forwardest,\" as in most forward.",
+    "wiktionary": true
   },
   "sv:fråga": {
     "cognate": "frain",
     "etymology": "From vrāge (Frage), from *frāgu, from *frēgō. Compare frain. Displaced native spörja, spörsmål."
   },
+  "sv:fullkomlig": {
+    "cognate": "",
+    "etymology": "From -lig. Compare vollkommen.",
+    "wiktionary": true
+  },
   "sv:fungera": {
     "cognate": "",
     "etymology": "From fungieren, from fungor,0250.html fungera from *bʰewg-. Cognate with fungere, fungere, fungera, fungere, fungeren, function, fungible, fungovat, fungovať, fungere, fungir, fonctionner."
+  },
+  "sv:funka": {
+    "cognate": "",
+    "etymology": "From the ''funk-'' in funktion which is borrowed from function, from fonction, from functiōnem, accusative of functiō, from functus perfect participle of fungor. fungera, which is borrowed from fungor via fungieren.",
+    "wiktionary": true
+  },
+  "sv:fuska": {
+    "cognate": "",
+    "etymology": "pfuschen.",
+    "wiktionary": true
+  },
+  "sv:fälla": {
+    "cognate": "",
+    "etymology": "From fella, from *fallǭ.",
+    "wiktionary": true
+  },
+  "sv:färdig": {
+    "cognate": "",
+    "etymology": "From færþogher, færdigh, from ferðugr.",
+    "wiktionary": true
+  },
+  "sv:fästa": {
+    "cognate": "",
+    "etymology": "From fæsta, from festa, from *fastijaną, equivalent to -a. Cognate with fæste, feste, festa. Compare fasten.",
+    "wiktionary": true
   },
   "sv:få": {
     "cognate": "",
@@ -111,25 +972,421 @@
     "cognate": "",
     "etymology": "From verankern or verankeren, equivalent to ankra. Cognate with forankre, forankre and forankra, forankre."
   },
+  "sv:förbi": {
+    "cognate": "",
+    "etymology": "From vorbi (vorbei). Cognate with forbi.",
+    "wiktionary": true
+  },
+  "sv:föredömlig": {
+    "cognate": "",
+    "etymology": "-lig",
+    "wiktionary": true
+  },
+  "sv:företag": {
+    "cognate": "",
+    "etymology": "[to] undertake."
+  },
+  "sv:företräda": {
+    "cognate": "",
+    "etymology": "träda, from German vertreten",
+    "wiktionary": true
+  },
+  "sv:företrädare": {
+    "cognate": "",
+    "etymology": "are",
+    "wiktionary": true
+  },
+  "sv:förfrågan": {
+    "cognate": "",
+    "etymology": "fråga"
+  },
+  "sv:förföra": {
+    "cognate": "",
+    "etymology": "From vorvoren or verführen. Equivalent to föra.",
+    "wiktionary": true
+  },
+  "sv:förgörelse": {
+    "cognate": "",
+    "etymology": "From -else.",
+    "wiktionary": true
+  },
+  "sv:förhandla": {
+    "cognate": "",
+    "etymology": "handla",
+    "wiktionary": true
+  },
+  "sv:förhoppningsvis": {
+    "cognate": "",
+    "etymology": "From -vis.",
+    "wiktionary": true
+  },
+  "sv:förkasta": {
+    "cognate": "forcast",
+    "etymology": "From forkasta, equivalent to kasta. Cognate with forkaste, forkasta, forkaste, forkaste, forcast, forcasten. See also calques vorwerfen, verwerfen, verwerpen and forthrow with the same meaning.",
+    "wiktionary": true
+  },
   "sv:förklara": {
     "cognate": "",
     "etymology": "From forklara, from vorklaren,saob equivalent to -a or klara. Cognate with forklare, forklare, forklara, forklare, forklåra, forklåre, verklaren, verklaore, verklaar and erklären."
+  },
+  "sv:förknippa": {
+    "cognate": "",
+    "etymology": "Compare verknüpfen",
+    "wiktionary": true
+  },
+  "sv:förkrossa": {
+    "cognate": "",
+    "etymology": "krossa",
+    "wiktionary": true
+  },
+  "sv:förkunna": {
+    "cognate": "",
+    "etymology": "From forkynna, forkynda, forkunna, from vorkunden. Compare verkünden, forkynde.",
+    "wiktionary": true
+  },
+  "sv:förlora": {
+    "cognate": "",
+    "etymology": "From vorloren (verloren), the past participle of vorlêsen, from farliosan, from *fraleusan, from *fraleusaną. förlisa. Compare verloor.",
+    "wiktionary": true
+  },
+  "sv:förlängning": {
+    "cognate": "",
+    "etymology": "-ning",
+    "wiktionary": true
+  },
+  "sv:förmedla": {
+    "cognate": "",
+    "etymology": "medla",
+    "wiktionary": true
+  },
+  "sv:förmodligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:förmå": {
+    "cognate": "",
+    "etymology": "From younger formā, apocopic form of older formāga, formāgha, from vermogen (or vermögen), equivalent to må. Cognate with formå, formå, formuga, younger fyrirmoga and vermogen.saob0261.html förmå",
+    "wiktionary": true
+  },
+  "sv:förneka": {
+    "cognate": "",
+    "etymology": "From neka."
+  },
+  "sv:förr": {
+    "cognate": "",
+    "etymology": "From fyr, from fyrr, from *furiz, comparative of *furi, *furai.",
+    "wiktionary": true
+  },
+  "sv:förra": {
+    "cognate": "",
+    "etymology": "From fyrre, from fyrri, from *furizô, comparative of *furi, *furai.",
+    "wiktionary": true
+  },
+  "sv:försiktig": {
+    "cognate": "",
+    "etymology": "ig, like German vorsichtig and Dutch ''voorzichtig''",
+    "wiktionary": true
+  },
+  "sv:först": {
+    "cognate": "",
+    "etymology": "From fyrster, from fyrstr, from *furistaz.",
+    "wiktionary": true
+  },
+  "sv:förstärka": {
+    "cognate": "",
+    "etymology": "stärka",
+    "wiktionary": true
+  },
+  "sv:förstå": {
+    "cognate": "",
+    "etymology": "Through apocope with umlaut from forstanda, from vörstenden, from farstandan. Cognate with forstå. Equivalent to stå.",
+    "wiktionary": true
+  },
+  "sv:förstås": {
+    "cognate": "",
+    "etymology": "The adverb has developed from a verb usage meaning \"it is understood\" (describing a statement).",
+    "wiktionary": true
+  },
+  "sv:förstöra": {
+    "cognate": "",
+    "etymology": "störa",
+    "wiktionary": true
+  },
+  "sv:försvaga": {
+    "cognate": "",
+    "etymology": "forsvaka. -a.",
+    "wiktionary": true
   },
   "sv:försvara": {
     "cognate": "",
     "etymology": "From forsvara, vorantworden (cf. verantworten and verantwoorden), equivalent to svara. Cognate with forsvare, forsvare, forsvara, forsvare."
   },
+  "sv:försvarsallians": {
+    "cognate": "",
+    "etymology": "allians.",
+    "wiktionary": true
+  },
+  "sv:försvinna": {
+    "cognate": "",
+    "etymology": "svinna, ultimately from vorswinden.",
+    "wiktionary": true
+  },
+  "sv:försvåra": {
+    "cognate": "",
+    "etymology": "From -a.",
+    "wiktionary": true
+  },
+  "sv:försäkra": {
+    "cognate": "",
+    "etymology": "From forsækra, from vorsekeren,saob equivalent of -a or säkra. Cognate with forsikre, forsikre, forsikre, forsikra, verzekeren and versichern.",
+    "wiktionary": true
+  },
+  "sv:försök": {
+    "cognate": "",
+    "etymology": "försöka. Compare forsøg, Versuch.",
+    "wiktionary": true
+  },
+  "sv:försöka": {
+    "cognate": "",
+    "etymology": "söka or a",
+    "wiktionary": true
+  },
+  "sv:förtal": {
+    "cognate": "",
+    "etymology": "förtala.",
+    "wiktionary": true
+  },
+  "sv:förtjäna": {
+    "cognate": "",
+    "etymology": "tjäna. Compare verdienen, verdienen, fortjene.",
+    "wiktionary": true
+  },
+  "sv:förut": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:förvara": {
+    "cognate": "",
+    "etymology": "From forvara, from vorwaren. Cognate with forvare, forvare, forvare, forvara, verwaren and verwahren. Equivalent to vara.",
+    "wiktionary": true
+  },
   "sv:förändra": {
     "cognate": "",
     "etymology": "verändern, equivalent to ändra. Compare forandre."
+  },
+  "sv:ganska": {
+    "cognate": "",
+    "etymology": "From gans, gansch, from ganz, from ganz, from *gant.",
+    "wiktionary": true
+  },
+  "sv:gemensam": {
+    "cognate": "",
+    "etymology": "sam",
+    "wiktionary": true
+  },
+  "sv:genast": {
+    "cognate": "gainest",
+    "etymology": "From genast, originally superlative of gen, as in \"in the shortest time\". Cognate of gainest.",
+    "wiktionary": true
+  },
+  "sv:genomföra": {
+    "cognate": "",
+    "etymology": "From föra, probably after durchführen, whence also doorvoeren.",
+    "wiktionary": true
+  },
+  "sv:geografisk": {
+    "cognate": "",
+    "etymology": "isk",
+    "wiktionary": true
+  },
+  "sv:gift": {
+    "cognate": "poison",
+    "etymology": "poison From Gift, from gift, gift, from *gifti, from *giftiz, which is a derivation of *gebaną.",
+    "wiktionary": true
+  },
+  "sv:gilla": {
+    "cognate": "",
+    "etymology": "From gilda, from gilda. Compare gilda and gildr.",
+    "wiktionary": true
+  },
+  "sv:glittrig": {
+    "cognate": "",
+    "etymology": "From glitter or glittra + -ig.",
+    "wiktionary": true
+  },
+  "sv:global": {
+    "cognate": "",
+    "etymology": "al",
+    "wiktionary": true
+  },
+  "sv:glorifiera": {
+    "cognate": "",
+    "etymology": "glorifier. Cognate of glorifizieren.",
+    "wiktionary": true
+  },
+  "sv:glömma": {
+    "cognate": "",
+    "etymology": "gløma, from gleyma. Cognate with glemme, gløyma, gloyma.",
+    "wiktionary": true
+  },
+  "sv:godtycklig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
   },
   "sv:grann": {
     "cognate": "",
     "etymology": "pretty From grannr, with semantic shift \"thin, fine\" > \"fine, pretty\"."
   },
+  "sv:grov": {
+    "cognate": "",
+    "etymology": "From grof.",
+    "wiktionary": true
+  },
+  "sv:grund": {
+    "cognate": "shallow",
+    "etymology": "From grunnr.",
+    "wiktionary": true
+  },
+  "sv:grunda": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
   "sv:grupp": {
     "cognate": "",
     "etymology": "From groupe, attested from 1781."
+  },
+  "sv:gunga": {
+    "cognate": "",
+    "etymology": "sv.",
+    "wiktionary": true
+  },
+  "sv:gynnsam": {
+    "cognate": "gainsome",
+    "etymology": "From sam. Compare gainsome.",
+    "wiktionary": true
+  },
+  "sv:gärna": {
+    "cognate": "willingly",
+    "etymology": "From gjarna, from *gernô, the adverbial form of *gernaz.",
+    "wiktionary": true
+  },
+  "sv:gång": {
+    "cognate": "",
+    "etymology": "From ganger, from gangr, from *gangaz.",
+    "wiktionary": true
+  },
+  "sv:går": {
+    "cognate": "",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:göra": {
+    "cognate": "yare",
+    "etymology": "From gøra, gæra, giora, from gera, gøra, gørva, from *garwijaną. Compare with yare and gear. * The noun is a nominalization of the verb. Literally \"doing.\"",
+    "wiktionary": true
+  },
+  "sv:hamna": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:handla": {
+    "cognate": "",
+    "etymology": "From handla, from handla, hǫndla, from *handlōną. In the sense ''trade'' influenced by from handelen and handeln.",
+    "wiktionary": true
+  },
+  "sv:hantera": {
+    "cognate": "",
+    "etymology": "From hanteren.",
+    "wiktionary": true
+  },
+  "sv:has": {
+    "cognate": "",
+    "etymology": "From haas.",
+    "wiktionary": true
+  },
+  "sv:hav": {
+    "cognate": "",
+    "etymology": "From haf, from haf, from *habą, and ultimately from *kap-."
+  },
+  "sv:he": {
+    "cognate": "",
+    "etymology": "Related to häva.",
+    "wiktionary": true
+  },
+  "sv:heja": {
+    "cognate": "",
+    "etymology": "a.",
+    "wiktionary": true
+  },
+  "sv:hela": {
+    "cognate": "",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:helg": {
+    "cognate": "",
+    "etymology": "helgr.",
+    "wiktionary": true
+  },
+  "sv:heller": {
+    "cognate": "",
+    "etymology": "hælder, from heldr.",
+    "wiktionary": true
+  },
+  "sv:hemlig": {
+    "cognate": "homely",
+    "etymology": "From hemeliker, from heimiligr, from heimelik, from *haimalīk, from *haimaz. Compare with homely.",
+    "wiktionary": true
+  },
+  "sv:hemsk": {
+    "cognate": "homely",
+    "etymology": "hemsker, derived from hem. The original meaning was equivalent to homely, ergo \"one who has only stayed at home\" or \"one who has not been out in the world\", and subsequently \"stupid\" or \"easily terrified\". Cognate of hei",
+    "wiktionary": true
+  },
+  "sv:heta": {
+    "cognate": "",
+    "etymology": "From heta, from heita, from *haitaną.",
+    "wiktionary": true
+  },
+  "sv:heterosexuell": {
+    "cognate": "",
+    "etymology": "sexuell",
+    "wiktionary": true
+  },
+  "sv:himla": {
+    "cognate": "",
+    "etymology": "From himmel.",
+    "wiktionary": true
+  },
+  "sv:hinna": {
+    "cognate": "",
+    "etymology": "From *hinna, from *hinþaną.",
+    "wiktionary": true
+  },
+  "sv:historieskrivning": {
+    "cognate": "",
+    "etymology": "skrivning",
+    "wiktionary": true
+  },
+  "sv:hit": {
+    "cognate": "",
+    "etymology": "From - ''hit'', from *''hī''+''at''. * ''hī'', from *kei- (as in ἐκεῖ) * ''at'', from *at, from *ád (as in Swedish åt) Composed in a similar way: hegat and hingað. thumb|x270px|Pressing the button marked '''HIT''' (to he",
+    "wiktionary": true
+  },
+  "sv:hitta": {
+    "cognate": "",
+    "etymology": "From hitta, from hitta, from *hittijaną, from *keyd-.",
+    "wiktionary": true
+  },
+  "sv:hittills": {
+    "cognate": "",
+    "etymology": "tills",
+    "wiktionary": true
   },
   "sv:hjälp": {
     "cognate": "",
@@ -139,6 +1396,11 @@
     "cognate": "",
     "etymology": "From hiælpa, from hjalpa, from *helpaną, from *ḱelb-, *ḱelp-."
   },
+  "sv:hjälpsam": {
+    "cognate": "",
+    "etymology": "From sam. Compare UK dialectal helpsome.",
+    "wiktionary": true
+  },
   "sv:hopp": {
     "cognate": "",
     "etymology": "From hopp, from hōpen, from *hopon, from *hopōn."
@@ -147,17 +1409,247 @@
     "cognate": "",
     "etymology": "From hoppa, huppa, from hoppa, from *huppōną, from *kewb-."
   },
+  "sv:hoppas": {
+    "cognate": "",
+    "etymology": "From hōpen, from *hopon, from *hopōn.",
+    "wiktionary": true
+  },
+  "sv:hota": {
+    "cognate": "",
+    "etymology": "From hóta, derived from the noun hót (cf. hot). It has replaced an older (now obsolete) verb, höta, from hœta, from *hwōtijaną, cognate with høde, 𐍈𐍉𐍄𐌾𐌰𐌽.",
+    "wiktionary": true
+  },
+  "sv:hov": {
+    "cognate": "hoof",
+    "etymology": "From hōv, from hófr, from *hōfaz, from *ḱoph₂ós. Cognate with hov, hoof, Huf and hoef.",
+    "wiktionary": true
+  },
+  "sv:hur": {
+    "cognate": "",
+    "etymology": "Shortened form of huru, from hwaru, from neuter dative of *hwar",
+    "wiktionary": true
+  },
+  "sv:huruvida": {
+    "cognate": "",
+    "etymology": "vida",
+    "wiktionary": true
+  },
   "sv:hus": {
     "cognate": "house",
     "etymology": "From [[hus, from hús, from *hūsą."
+  },
+  "sv:hylla": {
+    "cognate": "",
+    "etymology": "Related to hjälle, itself from hjallr. Cognate with hylle, hylde, hilla.",
+    "wiktionary": true
+  },
+  "sv:hämta": {
+    "cognate": "",
+    "etymology": "From hæmta, from heimta, from *haimatjaną.",
+    "wiktionary": true
+  },
+  "sv:hända": {
+    "cognate": "",
+    "etymology": "From hænda, from henda, from *handijaną.",
+    "wiktionary": true
+  },
+  "sv:här": {
+    "cognate": "",
+    "etymology": "From hér, from *hē₂r.",
+    "wiktionary": true
   },
   "sv:härlig": {
     "cognate": "",
     "etymology": "From hêrlik. Cf. herrlich, heerlijk."
   },
+  "sv:häva": {
+    "cognate": "heave",
+    "etymology": "From hæfia, from hefja, from *habjaną, from *kh₂pyé-, from the root *kap-. Compare hæve, hevja, heave, heffen, heben. Doublet of hiva.",
+    "wiktionary": true
+  },
+  "sv:hävda": {
+    "cognate": "",
+    "etymology": "From hefða.",
+    "wiktionary": true
+  },
+  "sv:hålla": {
+    "cognate": "",
+    "etymology": "From halda, halla, holda, holla, from halda, from *haldaną. Further etymology uncertain; possibly from *ḱel-.",
+    "wiktionary": true
+  },
+  "sv:höger": {
+    "cognate": "skilled",
+    "etymology": "From hǿgri, comparative of hǿgr, from *hōgiz. Cognate with hægri, højre and høyre.",
+    "wiktionary": true
+  },
+  "sv:högerextrem": {
+    "cognate": "",
+    "etymology": "extrem",
+    "wiktionary": true
+  },
+  "sv:högtryck": {
+    "cognate": "",
+    "etymology": "tryck",
+    "wiktionary": true
+  },
+  "sv:höja": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:ibland": {
+    "cognate": "",
+    "etymology": "From bland|t1=in|t2=mixture}}.",
+    "wiktionary": true
+  },
+  "sv:icke-spridningsavtal": {
+    "cognate": "",
+    "etymology": "non-proliferation treaty. avtal.",
+    "wiktionary": true
+  },
+  "sv:idag": {
+    "cognate": "",
+    "etymology": "i dag.",
+    "wiktionary": true
+  },
+  "sv:ifrågasätta": {
+    "cognate": "",
+    "etymology": "sätta, cognate with German in Frage stellen, used in Swedish since 1792.",
+    "wiktionary": true
+  },
+  "sv:igenom": {
+    "cognate": "",
+    "etymology": "From í gegnum.",
+    "wiktionary": true
+  },
+  "sv:igång": {
+    "cognate": "",
+    "etymology": "gång, also written as separate words",
+    "wiktionary": true
+  },
+  "sv:igår": {
+    "cognate": "",
+    "etymology": "From í gær, í gjár (whence í gær and í gjár). Akin to går.",
+    "wiktionary": true
+  },
+  "sv:ihjäl": {
+    "cognate": "",
+    "etymology": "From Late ihiäl, from Early i hæl, from í hel (see hel, from *haljō), cognate with ihjel and i hel.",
+    "wiktionary": true
+  },
+  "sv:ihop": {
+    "cognate": "",
+    "etymology": "hop",
+    "wiktionary": true
+  },
+  "sv:ihåg": {
+    "cognate": "",
+    "etymology": "Compound of håg, literally \"to one's mind\"."
+  },
+  "sv:ikväll": {
+    "cognate": "",
+    "etymology": "kväll",
+    "wiktionary": true
+  },
+  "sv:illa": {
+    "cognate": "ill",
+    "etymology": "From illa, from ílla, illa, adverb formation of ill, ilder, íllr, illr. Related to ill.",
+    "wiktionary": true
+  },
+  "sv:inbjudan": {
+    "cognate": "",
+    "etymology": "From -an.",
+    "wiktionary": true
+  },
+  "sv:införa": {
+    "cognate": "",
+    "etymology": "föra, like German einführen"
+  },
+  "sv:ingenstans": {
+    "cognate": "",
+    "etymology": "From ænginstads, ingenstadz, jngen stedz. Equivalent to stans. Compare ingensteds, ingensteds."
+  },
+  "sv:inleda": {
+    "cognate": "",
+    "etymology": "From leda."
+  },
+  "sv:inledningsvis": {
+    "cognate": "",
+    "etymology": "-vis",
+    "wiktionary": true
+  },
+  "sv:inlägg": {
+    "cognate": "",
+    "etymology": "lägga.",
+    "wiktionary": true
+  },
+  "sv:inne": {
+    "cognate": "",
+    "etymology": "From inne, from inni.",
+    "wiktionary": true
+  },
+  "sv:innebära": {
+    "cognate": "",
+    "etymology": "bära",
+    "wiktionary": true
+  },
+  "sv:innehålla": {
+    "cognate": "",
+    "etymology": "hålla",
+    "wiktionary": true
+  },
+  "sv:inrikespolitisk": {
+    "cognate": "",
+    "etymology": "politisk.",
+    "wiktionary": true
+  },
+  "sv:insats": {
+    "cognate": "",
+    "etymology": "sats"
+  },
+  "sv:inställning": {
+    "cognate": "",
+    "etymology": "EinstellungSO or ing.SAOB Compare indstilling, innstilling, Einstellung, instelling.",
+    "wiktionary": true
+  },
+  "sv:internet": {
+    "cognate": "",
+    "etymology": "Internet.",
+    "wiktionary": true
+  },
+  "sv:intervjua": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
   "sv:intresse": {
     "cognate": "",
     "etymology": "interesse."
+  },
+  "sv:irrationell": {
+    "cognate": "irrational",
+    "etymology": "From irratiōnālis. Cognate of irrationell, irrationel, irrational.",
+    "wiktionary": true
+  },
+  "sv:iscensätta": {
+    "cognate": "",
+    "etymology": "sätta. Compare iscenesette, iscenesætte, in Szene setzen, mettre en scène.",
+    "wiktionary": true
+  },
+  "sv:israelisk": {
+    "cognate": "",
+    "etymology": "-isk",
+    "wiktionary": true
+  },
+  "sv:istället": {
+    "cognate": "",
+    "etymology": "stället",
+    "wiktionary": true
+  },
+  "sv:jaga": {
+    "cognate": "",
+    "etymology": "From iagha, from Early Old Swedish iagha, from jaga, from jāgen, from *jagōn, from *jagōn.",
+    "wiktionary": true
   },
   "sv:jobb": {
     "cognate": "",
@@ -167,53 +1659,320 @@
     "cognate": "",
     "etymology": "Verbalization of jobb. Compare jobbe and jobba/jobbe."
   },
+  "sv:journalist": {
+    "cognate": "",
+    "etymology": "From -ist.",
+    "wiktionary": true
+  },
+  "sv:ju": {
+    "cognate": "",
+    "etymology": "From iū, io. Compare jo, jo, ja (adverb) / je (conjunction).",
+    "wiktionary": true
+  },
+  "sv:jubla": {
+    "cognate": "",
+    "etymology": "jubeln, from iūbilāre. Compare jubilera.",
+    "wiktionary": true
+  },
+  "sv:jämföra": {
+    "cognate": "",
+    "etymology": "From iæmføra.",
+    "wiktionary": true
+  },
+  "sv:jämna": {
+    "cognate": "",
+    "etymology": "From iæmna.",
+    "wiktionary": true
+  },
+  "sv:jättebra": {
+    "cognate": "",
+    "etymology": "From bra.",
+    "wiktionary": true
+  },
+  "sv:jättestor": {
+    "cognate": "",
+    "etymology": "stor",
+    "wiktionary": true
+  },
   "sv:kalla": {
     "cognate": "",
     "etymology": "From kalla, from kalla, from *kalzōną."
+  },
+  "sv:kampanja": {
+    "cognate": "",
+    "etymology": "From -a. 1968.",
+    "wiktionary": true
+  },
+  "sv:kansli": {
+    "cognate": "chancellery",
+    "etymology": "Kanzlei, from cancelli. Cognate of chancellery, chancery."
   },
   "sv:klocka": {
     "cognate": "bell",
     "etymology": "From klockæ, from klokka, from clocca, probably of - origin, from *klokkos (compare cloch, clog), from *klēg-, *klōg-."
   },
+  "sv:koll": {
+    "cognate": "",
+    "etymology": "kolla.",
+    "wiktionary": true
+  },
+  "sv:kolla": {
+    "cognate": "",
+    "etymology": "Shortened from kollationera.",
+    "wiktionary": true
+  },
+  "sv:kollektivtrafik": {
+    "cognate": "",
+    "etymology": "trafik",
+    "wiktionary": true
+  },
+  "sv:komma": {
+    "cognate": "",
+    "etymology": "From koma, from koma, from *kwemaną, from *gʷem-. orgasm is probably a come.",
+    "wiktionary": true
+  },
+  "sv:kommunal": {
+    "cognate": "",
+    "etymology": "al",
+    "wiktionary": true
+  },
+  "sv:kompis": {
+    "cognate": "",
+    "etymology": "kompanjon is. Compare Kumpel, kompel, kumpel, compa.",
+    "wiktionary": true
+  },
   "sv:kongressledamot": {
     "cognate": "",
     "etymology": "ledamot."
+  },
+  "sv:konka": {
+    "cognate": "",
+    "etymology": "Short for konkursa, göra konkurs, similar to konka and konke.",
+    "wiktionary": true
   },
   "sv:konsekvens": {
     "cognate": "",
     "etymology": "From conséquence, from consequentia."
   },
+  "sv:konspirationsteori": {
+    "cognate": "",
+    "etymology": "From teori."
+  },
+  "sv:konstatera": {
+    "cognate": "",
+    "etymology": "constater.",
+    "wiktionary": true
+  },
+  "sv:konstgjord": {
+    "cognate": "",
+    "etymology": "From gjord, past participle of göra.",
+    "wiktionary": true
+  },
+  "sv:konstig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
+  },
+  "sv:koppla": {
+    "cognate": "",
+    "etymology": "From -a.",
+    "wiktionary": true
+  },
+  "sv:korrespondent": {
+    "cognate": "correspondent",
+    "etymology": "From Medieval Latin ''correspondens'', cognate with correspondent, Korrespondent. Used in Swedish since 1797."
+  },
+  "sv:kostnadsfri": {
+    "cognate": "",
+    "etymology": "From -fri.",
+    "wiktionary": true
+  },
+  "sv:kraft": {
+    "cognate": "",
+    "etymology": "From krapter, from kraptr, krǫptr, from *kraftuz.",
+    "wiktionary": true
+  },
+  "sv:kraftig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
+  },
   "sv:krig": {
     "cognate": "",
     "etymology": "krîch. Unlike and krig, the Swedish word has neutrum gender like kríggj."
+  },
+  "sv:krigsföring": {
+    "cognate": "",
+    "etymology": "-föring",
+    "wiktionary": true
+  },
+  "sv:kristen": {
+    "cognate": "",
+    "etymology": "From kristin, from kristinn, from kristen or cristen, from Christianus, from χρῑστιᾱνός.",
+    "wiktionary": true
+  },
+  "sv:kristna": {
+    "cognate": "",
+    "etymology": "kristna or a",
+    "wiktionary": true
   },
   "sv:kritik": {
     "cognate": "",
     "etymology": "Borrowed from critique, from criticus, from κριτικός."
   },
+  "sv:kräva": {
+    "cognate": "crave",
+    "etymology": "sv.",
+    "wiktionary": true
+  },
+  "sv:kubansk": {
+    "cognate": "",
+    "etymology": "sk",
+    "wiktionary": true
+  },
+  "sv:kunglig": {
+    "cognate": "",
+    "etymology": "lig, from - ''konung(s)liker''",
+    "wiktionary": true
+  },
+  "sv:kuppförsök": {
+    "cognate": "",
+    "etymology": "försök.",
+    "wiktionary": true
+  },
   "sv:kvar": {
     "cognate": "",
     "etymology": "From kvirr, kyrr, from *kwerruz."
+  },
+  "sv:kvart": {
+    "cognate": "",
+    "etymology": "From quart, from quartus, from *kʷeturtos.",
+    "wiktionary": true
+  },
+  "sv:kvinnlig": {
+    "cognate": "",
+    "etymology": "From qvinliker, qvinzliker, from kvennsligr and kvennligr. Akin to lig.",
+    "wiktionary": true
   },
   "sv:kväll": {
     "cognate": "",
     "etymology": "From quæld, qvælder, from kveld, from *kwildiz, from *gʷelH-."
   },
+  "sv:kylig": {
+    "cognate": "",
+    "etymology": "From -ig. Cognate of kølig.",
+    "wiktionary": true
+  },
+  "sv:kämpa": {
+    "cognate": "",
+    "etymology": "From kempe; see kamp. Compare kæmpe and kjempe",
+    "wiktionary": true
+  },
+  "sv:kämpig": {
+    "cognate": "",
+    "etymology": "-ig",
+    "wiktionary": true
+  },
+  "sv:kännas": {
+    "cognate": "",
+    "etymology": "Passive of känna. Literally, \"to be felt.\"",
+    "wiktionary": true
+  },
+  "sv:känslig": {
+    "cognate": "",
+    "etymology": "From -ig.",
+    "wiktionary": true
+  },
+  "sv:kärnväljare": {
+    "cognate": "",
+    "etymology": "väljare.",
+    "wiktionary": true
+  },
   "sv:köpa": {
     "cognate": "cheap",
     "etymology": "From køpa, from keypa, kaupa, from *kaupijaną, *kaupōną, from *kaupô, caupo, caupōnor. Cognate with købe, kjøpe, kaufen, kopen and cheap."
+  },
+  "sv:köra": {
+    "cognate": "",
+    "etymology": "From køra, from keyra, from *kaurijaną, *karjaną. More at cair.",
+    "wiktionary": true
+  },
+  "sv:laglig": {
+    "cognate": "",
+    "etymology": "lig, from lǫgligr. Cognate with löglegur.",
+    "wiktionary": true
   },
   "sv:led": {
     "cognate": "",
     "etymology": "leþer, from leiðr, from *laiþaz, from *h₂leyt-."
   },
+  "sv:legal": {
+    "cognate": "",
+    "etymology": "legalis.",
+    "wiktionary": true
+  },
+  "sv:leta": {
+    "cognate": "",
+    "etymology": "From leta, from leita, from *wlaitōną.",
+    "wiktionary": true
+  },
+  "sv:lika": {
+    "cognate": "",
+    "etymology": "From líka, from *līkāną, *galīkāną.",
+    "wiktionary": true
+  },
+  "sv:liksom": {
+    "cognate": "",
+    "etymology": "From lika som. som.",
+    "wiktionary": true
+  },
   "sv:linje": {
     "cognate": "flax",
     "etymology": "From linia, from linea, from līnum, from *līno-."
   },
+  "sv:lite": {
+    "cognate": "",
+    "etymology": "Contraction of litet, neuter of liten. Compare mycket, with similar formation.",
+    "wiktionary": true
+  },
   "sv:lobbygrupp": {
     "cognate": "",
     "etymology": "grupp."
+  },
+  "sv:lokal": {
+    "cognate": "local",
+    "etymology": "From locālis, from locus.",
+    "wiktionary": true
+  },
+  "sv:lova": {
+    "cognate": "",
+    "etymology": "From lova, from lofa, from *lubōną, equivalent to -a. Cognate with love, love, loven, loben.",
+    "wiktionary": true
+  },
+  "sv:lycka": {
+    "cognate": "lock",
+    "etymology": "lucke, gelucke. According to the OED, it may be related to the source of lock (compare *lūkaną). Compare and lykke, and lukke. Compare also luck, Glück, גליק, gelok, and geluk, and koloku.",
+    "wiktionary": true
+  },
+  "sv:lycklig": {
+    "cognate": "",
+    "etymology": "lig. Similar to lykkelig and lukkeleg. Compare also גליקלעך and glücklich.",
+    "wiktionary": true
+  },
+  "sv:lysa": {
+    "cognate": "",
+    "etymology": "From lȳsa, from lýsa. Compare dialectal ljusa, lyse.",
+    "wiktionary": true
+  },
+  "sv:lyssna": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:lyssnare": {
+    "cognate": "",
+    "etymology": "-are",
+    "wiktionary": true
   },
   "sv:läge": {
     "cognate": "",
@@ -223,13 +1982,63 @@
     "cognate": "",
     "etymology": "From lengi."
   },
+  "sv:lära": {
+    "cognate": "",
+    "etymology": "From lēre, from lēra. Compare lære.",
+    "wiktionary": true
+  },
+  "sv:läsa": {
+    "cognate": "",
+    "etymology": "From læsa, from lesa, from *lesaną, from *les-.",
+    "wiktionary": true
+  },
+  "sv:läsning": {
+    "cognate": "",
+    "etymology": "ning",
+    "wiktionary": true
+  },
+  "sv:låta": {
+    "cognate": "",
+    "etymology": "From lata, from láta, from *lētaną, from *leh₁d-. The sense “to sound” was also present in Old Norse and can be derived from the sense “to let (sound) go”.",
+    "wiktionary": true
+  },
+  "sv:löfte": {
+    "cognate": "",
+    "etymology": "From the verb lova.",
+    "wiktionary": true
+  },
+  "sv:löpa": {
+    "cognate": "",
+    "etymology": "From løpa, from hlaupa, from *hlaupaną, from *klewb-.",
+    "wiktionary": true
+  },
+  "sv:lördag": {
+    "cognate": "",
+    "etymology": "From løghardagher, from laugardagr.",
+    "wiktionary": true
+  },
   "sv:man": {
     "cognate": "",
     "etymology": "From maþer, mander, from maðr, from *mann-."
   },
+  "sv:mana": {
+    "cognate": "",
+    "etymology": "From manen, from manon, from *manōną, cognate with manian.",
+    "wiktionary": true
+  },
+  "sv:mandatperiod": {
+    "cognate": "",
+    "etymology": "period",
+    "wiktionary": true
+  },
   "sv:mar": {
     "cognate": "",
     "etymology": "mars."
+  },
+  "sv:marknadsföra": {
+    "cognate": "",
+    "etymology": "föra",
+    "wiktionary": true
   },
   "sv:marktrupp": {
     "cognate": "",
@@ -243,89 +2052,654 @@
     "cognate": "masculine",
     "etymology": "From masculīnus."
   },
+  "sv:med": {
+    "cognate": "",
+    "etymology": "From mæþ, from með, from *midi.",
+    "wiktionary": true
+  },
+  "sv:med-": {
+    "cognate": "",
+    "etymology": "From med.",
+    "wiktionary": true
+  },
+  "sv:meddela": {
+    "cognate": "",
+    "etymology": "dela",
+    "wiktionary": true
+  },
+  "sv:medverka": {
+    "cognate": "",
+    "etymology": "verka, like German mitwirken",
+    "wiktionary": true
+  },
+  "sv:mejla": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:mena": {
+    "cognate": "",
+    "etymology": "From mena, from mēnen, meinen (compare meina, mene), from mēnian, from *mainijaną, from *mein-.",
+    "wiktionary": true
+  },
+  "sv:mening": {
+    "cognate": "",
+    "etymology": "ing",
+    "wiktionary": true
+  },
+  "sv:minnas": {
+    "cognate": "",
+    "etymology": "Reflexive or passive form of minna, from minna.",
+    "wiktionary": true
+  },
+  "sv:minska": {
+    "cognate": "",
+    "etymology": "From *minska, from *minnisōną. More at mince.",
+    "wiktionary": true
+  },
+  "sv:missnöjd": {
+    "cognate": "",
+    "etymology": "nöjd",
+    "wiktionary": true
+  },
+  "sv:missnöje": {
+    "cognate": "",
+    "etymology": "From nöje.",
+    "wiktionary": true
+  },
+  "sv:mista": {
+    "cognate": "",
+    "etymology": "From mista. Compare missa.",
+    "wiktionary": true
+  },
+  "sv:moment": {
+    "cognate": "",
+    "etymology": "From momentum.",
+    "wiktionary": true
+  },
   "sv:morgon": {
     "cognate": "",
     "etymology": "morghon, morgunn, morginn, from *murginaz, from *merkʷ-, *merǝkʷ-."
+  },
+  "sv:motarbeta": {
+    "cognate": "",
+    "etymology": "arbeta, literally \"counterwork\".",
+    "wiktionary": true
+  },
+  "sv:motståndare": {
+    "cognate": "",
+    "etymology": "From motestandare, equivalent to are.",
+    "wiktionary": true
+  },
+  "sv:mycken": {
+    "cognate": "",
+    "etymology": "From mikinn, accusative of mikill, from *mikilaz, from *meǵh₂-.",
+    "wiktionary": true
   },
   "sv:mycket": {
     "cognate": "great",
     "etymology": "Originally neuter singular of mycken, from mykin, mikin, accusative singular of mikil, from mikill, from *mikilaz, from *meǵh₂-."
   },
+  "sv:mysig": {
+    "cognate": "",
+    "etymology": "Attested since 1762. Derived from ''mysa'' (\"to smile (slightly) with contentedness/comfort\").''Svenska Akademiens ordbok'', column [https://web.archive.org/web/20160305023008/http://g3.spraakdata.gu.se/saob/show.phtml?f",
+    "wiktionary": true
+  },
   "sv:mängd": {
     "cognate": "",
     "etymology": "*managiþō, possibly through mængde. Compare mengd."
+  },
+  "sv:märkbar": {
+    "cognate": "",
+    "etymology": "-bar",
+    "wiktionary": true
+  },
+  "sv:märklig": {
+    "cognate": "",
+    "etymology": "From mærkeliker, from merkiligr. Compare merkeleg, mærkelig and merkelig.",
+    "wiktionary": true
   },
   "sv:mätning": {
     "cognate": "",
     "etymology": "ning"
   },
+  "sv:måla": {
+    "cognate": "",
+    "etymology": "From mála. Cognate with mála and male, from mālen.",
+    "wiktionary": true
+  },
   "sv:måndag": {
     "cognate": "Monday",
     "etymology": "From mānadagher, from mánadagr, from *mānini dag, a calque of dies lunae, equivalent of dag. Cognate with mandag, måndag, mandag, mánudagur, mánadagur, maanantai, Monday, Montag and maandag."
+  },
+  "sv:mången": {
+    "cognate": "",
+    "etymology": "From manger, margher, marghin, from mangr, margr, from *managaz.",
+    "wiktionary": true
+  },
+  "sv:möjligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:möjligtvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:mörk": {
+    "cognate": "murk",
+    "etymology": "From myrker, mørker, from myrkr, from *merkuz. Cognate with murk.",
+    "wiktionary": true
   },
   "sv:möte": {
     "cognate": "",
     "etymology": "From mót, from *mōtą, *gamōtą."
   },
+  "sv:ner": {
+    "cognate": "",
+    "etymology": "A contraction of earlier neder, from niðr, from *niþer, from *niter.",
+    "wiktionary": true
+  },
+  "sv:nick": {
+    "cognate": "",
+    "etymology": "nicka.",
+    "wiktionary": true
+  },
+  "sv:nivå": {
+    "cognate": "",
+    "etymology": "From niveau.",
+    "wiktionary": true
+  },
   "sv:nog": {
     "cognate": "",
     "etymology": "From nóg, nógr, gnógr, from *ganōgaz. Ultimately from *h₂eh₂nóḱe, perfective of *h₂neḱ-."
+  },
+  "sv:noga": {
+    "cognate": "narrow",
+    "etymology": "From nōgha, from nouwe. Compare genau.",
+    "wiktionary": true
+  },
+  "sv:nota": {
+    "cognate": "",
+    "etymology": "nota.",
+    "wiktionary": true
+  },
+  "sv:nuvarande": {
+    "cognate": "",
+    "etymology": "varande",
+    "wiktionary": true
+  },
+  "sv:nämna": {
+    "cognate": "",
+    "etymology": "From næmna, from nefna, nemna, from *namnijaną, from *h₁nómn̥.",
+    "wiktionary": true
+  },
+  "sv:när": {
+    "cognate": "",
+    "etymology": "From nær, from *nēhwiz, comparative of *nēhw. Ultimately from *h₂neḱ-.",
+    "wiktionary": true
+  },
+  "sv:närma": {
+    "cognate": "",
+    "etymology": "From närmare, comparative of nära, likely influenced by nærme.",
+    "wiktionary": true
+  },
+  "sv:nästa": {
+    "cognate": "nearest",
+    "etymology": "From næstr, a superlative of ná, corresponding to *nēhwist.",
+    "wiktionary": true
+  },
+  "sv:nå": {
+    "cognate": "",
+    "etymology": "From na, from ná. Ultimately from *h₂neḱ-."
+  },
+  "sv:någon": {
+    "cognate": "",
+    "etymology": "From late naghan, from earlier nokon, accusative of nokor, from nǫkkurr, from - ''*ne-wait-ek-hwarjaʀ'' (literally, \"not-know-I-who\"). Cognate with nokon, nogen, nakar, nokkur, noen.",
+    "wiktionary": true
+  },
+  "sv:någonsin": {
+    "cognate": "",
+    "etymology": "From sinn. Note that ''sinn'' is a neuter noun, and ''någon'' is thus the old neuter plural form. Compare någonting.",
+    "wiktionary": true
+  },
+  "sv:någonstans": {
+    "cognate": "",
+    "etymology": "stans",
+    "wiktionary": true
+  },
+  "sv:nåt": {
+    "cognate": "",
+    "etymology": "From not, nut, from *hnōjaną, from *kneh₂-. Cognate with not, not, not, nót and Nut.not",
+    "wiktionary": true
+  },
+  "sv:nödvändigtvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:oavsett": {
+    "cognate": "",
+    "etymology": "From oavsedd, from o- + avsedd.",
+    "wiktionary": true
+  },
+  "sv:obegriplig": {
+    "cognate": "",
+    "etymology": "begriplig",
+    "wiktionary": true
+  },
+  "sv:oberoende": {
+    "cognate": "",
+    "etymology": "beroende",
+    "wiktionary": true
+  },
+  "sv:också": {
+    "cognate": "",
+    "etymology": "Corresponding to och / ock + så, from ok svā, from ok and svá. Compare også.",
+    "wiktionary": true
+  },
+  "sv:oerhörd": {
+    "cognate": "",
+    "etymology": "From unerhört, negation of erhört, past participle of erhören. Equivalent to hörd.",
+    "wiktionary": true
+  },
+  "sv:oförutsägbar": {
+    "cognate": "",
+    "etymology": "unpredictable, equivalent to förutsägbar.",
+    "wiktionary": true
+  },
+  "sv:ohygglig": {
+    "cognate": "",
+    "etymology": "hygglig",
+    "wiktionary": true
+  },
+  "sv:ohållbar": {
+    "cognate": "",
+    "etymology": "hållbar",
+    "wiktionary": true
+  },
+  "sv:olaglig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:olämplig": {
+    "cognate": "",
+    "etymology": "lämplig",
+    "wiktionary": true
+  },
+  "sv:om": {
+    "cognate": "if",
+    "etymology": "From um, from *umbi, from *h₂m̥bʰi. * As a conjunction, um superseded or blended with Old Norse ef and em, taking on their function as well. This is from *jabai, whence also if and ob. jäv, direct descendant of ef (see t",
+    "wiktionary": true
   },
   "sv:om-": {
     "cognate": "",
     "etymology": "From om."
   },
+  "sv:omedelbar": {
+    "cognate": "",
+    "etymology": "medelbar",
+    "wiktionary": true
+  },
+  "sv:omge": {
+    "cognate": "",
+    "etymology": "umgeben, equivalent to ge.",
+    "wiktionary": true
+  },
+  "sv:omgärda": {
+    "cognate": "",
+    "etymology": "From umgærdha, equivalent to gärda.",
+    "wiktionary": true
+  },
+  "sv:omgång": {
+    "cognate": "",
+    "etymology": "From umganger, from umgangr, from *umbigangaz, equivalent to gång.",
+    "wiktionary": true
+  },
+  "sv:omkring": {
+    "cognate": "",
+    "etymology": "From umkring, equivalent to om + kring.",
+    "wiktionary": true
+  },
+  "sv:omringa": {
+    "cognate": "",
+    "etymology": "-a",
+    "wiktionary": true
+  },
+  "sv:omröstning": {
+    "cognate": "",
+    "etymology": "röstning",
+    "wiktionary": true
+  },
+  "sv:omsätta": {
+    "cognate": "",
+    "etymology": "sätta",
+    "wiktionary": true
+  },
   "sv:omvärld": {
     "cognate": "",
     "etymology": "omverden, from Umwelt. Attested since 1892."
+  },
+  "sv:ond": {
+    "cognate": "",
+    "etymology": "From vándr. Compare onda.",
+    "wiktionary": true
   },
   "sv:onsdag": {
     "cognate": "",
     "etymology": "From oþinsdagher, from óðinsdagr, from *Wōdanas dag."
   },
+  "sv:opartisk": {
+    "cognate": "",
+    "etymology": "partisk",
+    "wiktionary": true
+  },
   "sv:opatriotisk": {
     "cognate": "",
     "etymology": "patriotisk"
+  },
+  "sv:oppositionell": {
+    "cognate": "",
+    "etymology": "-ell.",
+    "wiktionary": true
+  },
+  "sv:or": {
+    "cognate": "",
+    "etymology": "Related to orna, oret, of obscure ultimate origin. Compare oren.",
+    "wiktionary": true
+  },
+  "sv:ordentlig": {
+    "cognate": "row",
+    "etymology": "From ordentlich, from ordenlich (cognate with ordenlīcho), from orden, from ordō, from *ordō.",
+    "wiktionary": true
+  },
+  "sv:orientera": {
+    "cognate": "",
+    "etymology": "From orienter.",
+    "wiktionary": true
+  },
+  "sv:oro": {
+    "cognate": "",
+    "etymology": "ro, the negation of ro, from -. Definition 3 is likely a direct loan from German Unruh.",
+    "wiktionary": true
+  },
+  "sv:orolig": {
+    "cognate": "",
+    "etymology": "From rolig. Rolig, in the meaning ''calm'', is obsolete in contemporary Swedish so ''rolig'' is not considered an antonym of this word. (In contemporary Swedish, rolig means ''funny''.)",
+    "wiktionary": true
+  },
+  "sv:orsaka": {
+    "cognate": "",
+    "etymology": "From orsaken, equivalent of -a. Cognate with årsage, forårsake, forårsake, forårsaka, orsaken, older oorzaken and older ursachen.saob",
+    "wiktionary": true
+  },
+  "sv:otrolig": {
+    "cognate": "",
+    "etymology": "trolig",
+    "wiktionary": true
+  },
+  "sv:otydlig": {
+    "cognate": "",
+    "etymology": "tydlig. Cognate of utydelig, undeutlich.",
+    "wiktionary": true
+  },
+  "sv:oval": {
+    "cognate": "",
+    "etymology": "From ōvālis.",
+    "wiktionary": true
+  },
+  "sv:ovanlig": {
+    "cognate": "",
+    "etymology": "From ovanliker, equivalent to vanlig",
+    "wiktionary": true
+  },
+  "sv:ovillig": {
+    "cognate": "",
+    "etymology": "oviliogher, equivalent to villig."
+  },
+  "sv:oväntad": {
+    "cognate": "",
+    "etymology": "väntad",
+    "wiktionary": true
+  },
+  "sv:part": {
+    "cognate": "",
+    "etymology": "Ultimately borrowed from pars.",
+    "wiktionary": true
   },
   "sv:pass": {
     "cognate": "",
     "etymology": "From -, originally from passo."
   },
+  "sv:passa": {
+    "cognate": "",
+    "etymology": "From passen or passen.",
+    "wiktionary": true
+  },
+  "sv:peka": {
+    "cognate": "",
+    "etymology": "Compare pege and peika."
+  },
   "sv:person": {
     "cognate": "",
     "etymology": "From persona. the late 14th century. persona."
+  },
+  "sv:pik": {
+    "cognate": "",
+    "etymology": "pīker, from pík, from *pīkaz."
+  },
+  "sv:plugga": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:plötslig": {
+    "cognate": "",
+    "etymology": "From plutzlik or plötzlich.",
+    "wiktionary": true
+  },
+  "sv:podd": {
+    "cognate": "",
+    "etymology": "From pod or podcast, borrowed from podcast.",
+    "wiktionary": true
+  },
+  "sv:porträttera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
+  },
+  "sv:posera": {
+    "cognate": "",
+    "etymology": "poser.",
+    "wiktionary": true
+  },
+  "sv:positionera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
   },
   "sv:prata": {
     "cognate": "prate",
     "etymology": "From praten, probably of sv origin. Compare prate and prattle, práta."
   },
+  "sv:presidentkandidat": {
+    "cognate": "",
+    "etymology": "kandidat.",
+    "wiktionary": true
+  },
+  "sv:primärval": {
+    "cognate": "",
+    "etymology": "val",
+    "wiktionary": true
+  },
+  "sv:profilera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
+  },
   "sv:programledare": {
     "cognate": "",
     "etymology": "ledare"
+  },
+  "sv:psykologisera": {
+    "cognate": "",
+    "etymology": "-isera.",
+    "wiktionary": true
+  },
+  "sv:påminna": {
+    "cognate": "",
+    "etymology": "From minna]]. Compare påminde, áminna.",
+    "wiktionary": true
+  },
+  "sv:påpeka": {
+    "cognate": "",
+    "etymology": "peka"
+  },
+  "sv:påstå": {
+    "cognate": "",
+    "etymology": "stå",
+    "wiktionary": true
   },
   "sv:påtryckningsmedel": {
     "cognate": "",
     "etymology": "medel."
   },
+  "sv:påver": {
+    "cognate": "",
+    "etymology": "pauvre, from pauper. 1737.",
+    "wiktionary": true
+  },
+  "sv:påverka": {
+    "cognate": "",
+    "etymology": "verka",
+    "wiktionary": true
+  },
   "sv:rad": {
     "cognate": "row",
     "etymology": "From rǫð, from *radō."
+  },
+  "sv:rak": {
+    "cognate": "right",
+    "etymology": "From rakr, related to rekja. Compare right.",
+    "wiktionary": true
   },
   "sv:rand": {
     "cognate": "",
     "etymology": "From rǫnd, cognate with rönd."
   },
+  "sv:rasa": {
+    "cognate": "",
+    "etymology": "From rasa.",
+    "wiktionary": true
+  },
+  "sv:reagera": {
+    "cognate": "",
+    "etymology": "agera",
+    "wiktionary": true
+  },
+  "sv:reda": {
+    "cognate": "",
+    "etymology": "From rēþa, from reiða.",
+    "wiktionary": true
+  },
+  "sv:redan": {
+    "cognate": "",
+    "etymology": "From redho, redha.",
+    "wiktionary": true
+  },
+  "sv:redo": {
+    "cognate": "",
+    "etymology": "From rēþo, probably from rēde, reide. Cognate with rede, reiður.",
+    "wiktionary": true
+  },
+  "sv:regelbunden": {
+    "cognate": "",
+    "etymology": "bunden",
+    "wiktionary": true
+  },
   "sv:regering": {
     "cognate": "",
     "etymology": "ing"
+  },
+  "sv:regi": {
+    "cognate": "",
+    "etymology": "régie.",
+    "wiktionary": true
   },
   "sv:regim": {
     "cognate": "",
     "etymology": "régime."
   },
+  "sv:relation": {
+    "cognate": "",
+    "etymology": "From relātiō.",
+    "wiktionary": true
+  },
+  "sv:ren": {
+    "cognate": "clean",
+    "etymology": "hreinn.",
+    "wiktionary": true
+  },
+  "sv:rensa": {
+    "cognate": "",
+    "etymology": "From rensa, rænsa, from hreinsa, from *hrainisōną.",
+    "wiktionary": true
+  },
+  "sv:republikansk": {
+    "cognate": "",
+    "etymology": "sk",
+    "wiktionary": true
+  },
+  "sv:riktig": {
+    "cognate": "",
+    "etymology": "From richtich or richtig. Compare rigtig.",
+    "wiktionary": true
+  },
+  "sv:rimlig": {
+    "cognate": "",
+    "etymology": "-lig. Note that the verb rimma is not only used in the literal sense \"to rhyme\" but also in the figurative sense \"to fit\".",
+    "wiktionary": true
+  },
+  "sv:rimligtvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:ropa": {
+    "cognate": "",
+    "etymology": "From ropa, from hrópa, from *hrōpaną. Cognate with rópa, hrópa, råbe, rope.",
+    "wiktionary": true
+  },
+  "sv:rulla": {
+    "cognate": "",
+    "etymology": "From rolla, from roeler.",
+    "wiktionary": true
+  },
+  "sv:rygga": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:räcka": {
+    "cognate": "",
+    "etymology": "Nominal formation from Etymology 2?",
+    "wiktionary": true
+  },
   "sv:rätt": {
     "cognate": "",
     "etymology": "From réttr, from *rehtaz, from *h₃reǵtós. rät."
+  },
+  "sv:rättslig": {
+    "cognate": "",
+    "etymology": "From rætliker, equivalent to -lig. Compare rechtlich.",
+    "wiktionary": true
+  },
+  "sv:råda": {
+    "cognate": "",
+    "etymology": "From raþa, from ráða, from *rēdaną.",
+    "wiktionary": true
   },
   "sv:råg": {
     "cognate": "rye",
@@ -335,13 +2709,222 @@
     "cognate": "",
     "etymology": "a"
   },
+  "sv:råka": {
+    "cognate": "crow",
+    "etymology": "thumb|en råka (a rook) hrókr, from *hrōkaz, ultimately from *ker-; see rook#Etymology_1 for more.",
+    "wiktionary": true
+  },
+  "sv:röd": {
+    "cognate": "",
+    "etymology": "From røþer, from rauðr, from *raudaz, from *h₁rowdʰós < *h₁rewdʰ-.",
+    "wiktionary": true
+  },
+  "sv:röja": {
+    "cognate": "",
+    "etymology": "From rydhia, from ryðja, from *rudjaną.",
+    "wiktionary": true
+  },
+  "sv:röra": {
+    "cognate": "",
+    "etymology": "From røra, from hrœra, from *hrōzijaną.",
+    "wiktionary": true
+  },
+  "sv:rörig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
+  },
+  "sv:rörlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
   "sv:röst": {
     "cognate": "",
     "etymology": "From raust, ultimately from a - derivative of *h₃reyH-.922 Related to *runsiz. Cognate with røst."
   },
+  "sv:rösta": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:sabba": {
+    "cognate": "",
+    "etymology": "sabotera.",
+    "wiktionary": true
+  },
   "sv:sak": {
     "cognate": "sake",
     "etymology": "sǫk, from *sakō. Cognate with sak, sak, sag, sök, sake, zaak, Saak, Sook, Sache. An unrelated word that also underwent the transformation in meaning from \"legal matter\" to \"thing, item\" is causa."
+  },
+  "sv:sakpolitisk": {
+    "cognate": "",
+    "etymology": "politisk",
+    "wiktionary": true
+  },
+  "sv:samarbeta": {
+    "cognate": "",
+    "etymology": "arbeta",
+    "wiktionary": true
+  },
+  "sv:samla": {
+    "cognate": "",
+    "etymology": "From sambla, from samna, from *samnōną.",
+    "wiktionary": true
+  },
+  "sv:sammanfatta": {
+    "cognate": "",
+    "etymology": "fatta",
+    "wiktionary": true
+  },
+  "sv:sammanhang": {
+    "cognate": "",
+    "etymology": "Zusammenhang.",
+    "wiktionary": true
+  },
+  "sv:samordna": {
+    "cognate": "",
+    "etymology": "ordna",
+    "wiktionary": true
+  },
+  "sv:sanning": {
+    "cognate": "",
+    "etymology": "sannind, sannindi, from sannind. Cognate of sannindi.",
+    "wiktionary": true
+  },
+  "sv:sannolik": {
+    "cognate": "",
+    "etymology": "-lik",
+    "wiktionary": true
+  },
+  "sv:satsa": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:sedan": {
+    "cognate": "",
+    "etymology": "From siþan, from síðan. See Norwegian siden. Cognate with siþþan.",
+    "wiktionary": true
+  },
+  "sv:sen": {
+    "cognate": "",
+    "etymology": "From seinn.",
+    "wiktionary": true
+  },
+  "sv:signalera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
+  },
+  "sv:sikta": {
+    "cognate": "",
+    "etymology": "a, relating to se",
+    "wiktionary": true
+  },
+  "sv:sikte": {
+    "cognate": "",
+    "etymology": "From sikte, from sichte. Compare sikt.",
+    "wiktionary": true
+  },
+  "sv:sist": {
+    "cognate": "",
+    "etymology": "From sízt.",
+    "wiktionary": true
+  },
+  "sv:sista": {
+    "cognate": "",
+    "etymology": "From síðastr.",
+    "wiktionary": true
+  },
+  "sv:sjunde": {
+    "cognate": "",
+    "etymology": "From siundi, from sjaundi, from *sebundô. syvende, which was borrowed from Danish.",
+    "wiktionary": true
+  },
+  "sv:själv": {
+    "cognate": "",
+    "etymology": "From sjalfr, from *selbaz, from *selbʰ-, from *s(w)e-.",
+    "wiktionary": true
+  },
+  "sv:ska": {
+    "cognate": "",
+    "etymology": "Borrowed from ska.",
+    "wiktionary": true
+  },
+  "sv:skaffa": {
+    "cognate": "",
+    "etymology": "From skaffa, from schaffen, from scaffan (from scepfen, from *skappjan. Cognate with skepja (see skapa)).",
+    "wiktionary": true
+  },
+  "sv:skakig": {
+    "cognate": "",
+    "etymology": "-ig",
+    "wiktionary": true
+  },
+  "sv:skamlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:skandera": {
+    "cognate": "scan",
+    "etymology": "scandō, suffixed with -era. Cognate with skandieren, scander, scan.",
+    "wiktionary": true
+  },
+  "sv:skapa": {
+    "cognate": "",
+    "etymology": "From skapa, from skapa, from *skapjaną. Related to German schaffen and English shape."
+  },
+  "sv:ske": {
+    "cognate": "",
+    "etymology": "From ske, from schên, from skehan, from *skehan. Cognate with ske, skje, geschehen, geschieden, sji-jje.",
+    "wiktionary": true
+  },
+  "sv:skepp": {
+    "cognate": "",
+    "etymology": "From skip, from skip, from *skipą. Sense 2 is a navis.",
+    "wiktionary": true
+  },
+  "sv:skicka": {
+    "cognate": "",
+    "etymology": "From skikka, from schicken \"to send\" (schicken, schikken). Cognate with ske \"to happen, to occur\". Compare Trøndelag sjekk.",
+    "wiktionary": true
+  },
+  "sv:skifta": {
+    "cognate": "",
+    "etymology": "From skipta.",
+    "wiktionary": true
+  },
+  "sv:skilja": {
+    "cognate": "",
+    "etymology": "From skilia, from skilja, from *skiljaną, from *(s)kelH-.",
+    "wiktionary": true
+  },
+  "sv:skratta": {
+    "cognate": "",
+    "etymology": "a, used since 1561, cognate with skratte, related to an obsolete Swedish word ''skrata'' (to scare away by making noise).",
+    "wiktionary": true
+  },
+  "sv:skrev": {
+    "cognate": "",
+    "etymology": "Used since 1752, cognate with skræv, possibly from Old High German ''gascrevŏn'' (to scratch, to cut), in the sense of a place of division.",
+    "wiktionary": true
+  },
+  "sv:skri": {
+    "cognate": "",
+    "etymology": "skri, from or related to skríkja. Cognate with Schrei.",
+    "wiktionary": true
+  },
+  "sv:skriftlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:skrika": {
+    "cognate": "shriek",
+    "etymology": "From skríkja, from *skrīkijaną. Cognate to shriek/skrike and schreien.",
+    "wiktionary": true
   },
   "sv:skriva": {
     "cognate": "shrive",
@@ -355,73 +2938,987 @@
     "cognate": "",
     "etymology": "skydda."
   },
+  "sv:skyldig": {
+    "cognate": "",
+    "etymology": "ig, from skyldogher, skuldogher, from skuld, skull. In part influenced by schuldich and schuldig.",
+    "wiktionary": true
+  },
+  "sv:skyldighet": {
+    "cognate": "",
+    "etymology": "-het. Compare Schuldigkeit",
+    "wiktionary": true
+  },
+  "sv:skämt": {
+    "cognate": "",
+    "etymology": "From skæmt, from skæmta, whence also modern skämta. Cognate with skæmt, skjemt and skjemt.",
+    "wiktionary": true
+  },
+  "sv:skär": {
+    "cognate": "skerry",
+    "etymology": "pink chair, from the phrase couleur de chair.",
+    "wiktionary": true
+  },
+  "sv:skön": {
+    "cognate": "sheen",
+    "etymology": "From skön, from schö̂ne, from skōni, from *skaunī, from *skauniz, related to *skuþōną, which yielded skåda. Compare schön, sheen, skøn.",
+    "wiktionary": true
+  },
+  "sv:sköt": {
+    "cognate": "",
+    "etymology": "Probably related to sköte, from skaut.",
+    "wiktionary": true
+  },
+  "sv:sköta": {
+    "cognate": "",
+    "etymology": "From sköta, equivalent to -a. Compare skeyta, skjøtte.",
+    "wiktionary": true
+  },
+  "sv:slag": {
+    "cognate": "",
+    "etymology": "From slag, from *slagiz.",
+    "wiktionary": true
+  },
+  "sv:slippa": {
+    "cognate": "",
+    "etymology": "From slippa, from sleppa, from or related to *slīpaną.",
+    "wiktionary": true
+  },
+  "sv:slott": {
+    "cognate": "",
+    "etymology": "From slot, from *slutą (see *slot for more).",
+    "wiktionary": true
+  },
+  "sv:slut": {
+    "cognate": "",
+    "etymology": "From slūt.",
+    "wiktionary": true
+  },
+  "sv:sluta": {
+    "cognate": "",
+    "etymology": "slūta, from sluten, from slūten, from *slūtan.",
+    "wiktionary": true
+  },
+  "sv:slutligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:slutsats": {
+    "cognate": "",
+    "etymology": "From sats. Cognate with slutsats, sluttsats, sluttsats, Schlusssatz, Schluss-Satz.",
+    "wiktionary": true
+  },
+  "sv:släppa": {
+    "cognate": "",
+    "etymology": "From sleppa (past tense sleppti), from *slampijaną, from *(s)lembʰ-, see also *limpaną.",
+    "wiktionary": true
+  },
+  "sv:slåss": {
+    "cognate": "",
+    "etymology": "Passive form of slå.",
+    "wiktionary": true
+  },
+  "sv:snabb": {
+    "cognate": "",
+    "etymology": "Borrowed from the stem of snaben.807",
+    "wiktionary": true
+  },
+  "sv:snar": {
+    "cognate": "",
+    "etymology": "From snarr.",
+    "wiktionary": true
+  },
+  "sv:snäv": {
+    "cognate": "",
+    "etymology": "From snǣver, from snæfr. Compare snæver. Arguably related to snabb.",
+    "wiktionary": true
+  },
+  "sv:solig": {
+    "cognate": "",
+    "etymology": "-ig",
+    "wiktionary": true
+  },
+  "sv:som": {
+    "cognate": "",
+    "etymology": "From som or sum, in Runic inscriptions also ''sim'', same as sem, from sem. Also related to the prefix sam- and suffix -sam. Still in the Poetic Edda, the Icelandic ''sem'' is only used as a comparative particle, e.g. Há",
+    "wiktionary": true
+  },
+  "sv:sommartid": {
+    "cognate": "",
+    "etymology": "tid",
+    "wiktionary": true
+  },
+  "sv:sort": {
+    "cognate": "",
+    "etymology": "sorte.",
+    "wiktionary": true
+  },
+  "sv:spannmål": {
+    "cognate": "",
+    "etymology": "mål",
+    "wiktionary": true
+  },
+  "sv:spark": {
+    "cognate": "",
+    "etymology": "From spark, from sparka.",
+    "wiktionary": true
+  },
+  "sv:specifik": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
   "sv:spel": {
     "cognate": "spindle",
     "etymology": "From spil, from spil and spil, from *spil."
+  },
+  "sv:spela": {
+    "cognate": "",
+    "etymology": "From spila, borrowed from spillen, from spilōn, from *spilōn. Equivalent to a.",
+    "wiktionary": true
+  },
+  "sv:sprayflaska": {
+    "cognate": "",
+    "etymology": "flaska",
+    "wiktionary": true
+  },
+  "sv:spretig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
   },
   "sv:spricka": {
     "cognate": "",
     "etymology": "From springa, from springa, from *springaną."
   },
+  "sv:sprida": {
+    "cognate": "spread",
+    "etymology": "From spridha, probably the same word as spredha, from sprēden, spreiden, from *spraidijaną. Cognate with spread and spreiten. Due to the absence of this word in Old Icelandic, the Swedish word as well as sprede, spre, an",
+    "wiktionary": true
+  },
+  "sv:spruta": {
+    "cognate": "",
+    "etymology": "From sprúta, from *spreutaną.",
+    "wiktionary": true
+  },
+  "sv:spränga": {
+    "cognate": "",
+    "etymology": "From sprængia, from sprengja, from *sprangijaną, causative of *springaną. springa.",
+    "wiktionary": true
+  },
+  "sv:stabschef": {
+    "cognate": "",
+    "etymology": "chef",
+    "wiktionary": true
+  },
+  "sv:stadsdel": {
+    "cognate": "",
+    "etymology": "del, like German Stadtteil",
+    "wiktionary": true
+  },
+  "sv:stamp": {
+    "cognate": "",
+    "etymology": "From stamp, ultimately related to the verb stampa.",
+    "wiktionary": true
+  },
+  "sv:stan": {
+    "cognate": "",
+    "etymology": "Contraction of staden, the definite singular of stad.",
+    "wiktionary": true
+  },
+  "sv:stark": {
+    "cognate": "",
+    "etymology": "From starker, from starkr, from *starkuz, from *sterg-.",
+    "wiktionary": true
+  },
+  "sv:steg": {
+    "cognate": "",
+    "etymology": "From stig. Cognate with steg, stig, stig."
+  },
+  "sv:stegvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:sticka": {
+    "cognate": "stick",
+    "etymology": "stikka, from *stikkô, from *(s)teyg-, related to Etymology 2 below. Compare stika, stick.",
+    "wiktionary": true
+  },
+  "sv:stiga": {
+    "cognate": "sty",
+    "etymology": "From stigha, from stíga, from *stīganą. Cognate with stige, stige, sty, steigen, stijgen.",
+    "wiktionary": true
+  },
+  "sv:stod": {
+    "cognate": "",
+    "etymology": "See ståd",
+    "wiktionary": true
+  },
+  "sv:stoppa": {
+    "cognate": "",
+    "etymology": "From stoppa, from stoppen, from *stoppon, from *stoppōn.",
+    "wiktionary": true
+  },
+  "sv:stor": {
+    "cognate": "big",
+    "etymology": "From stor, from stórr, from *stōraz, from *stāro-.",
+    "wiktionary": true
+  },
   "sv:storm": {
     "cognate": "",
     "etymology": "From stormber, from stormr, from *sturmaz, from *(s)twerH-."
+  },
+  "sv:stormning": {
+    "cognate": "",
+    "etymology": "-ning",
+    "wiktionary": true
+  },
+  "sv:storslagen": {
+    "cognate": "",
+    "etymology": "slagen",
+    "wiktionary": true
+  },
+  "sv:strid": {
+    "cognate": "",
+    "etymology": "From stríðr.",
+    "wiktionary": true
+  },
+  "sv:strida": {
+    "cognate": "",
+    "etymology": "stríða, from *strīdaną",
+    "wiktionary": true
+  },
+  "sv:stridighet": {
+    "cognate": "",
+    "etymology": "het",
+    "wiktionary": true
+  },
+  "sv:stryk": {
+    "cognate": "",
+    "etymology": "stryka. strög.",
+    "wiktionary": true
+  },
+  "sv:styra": {
+    "cognate": "",
+    "etymology": "From styra, from stýra, from *stiurijaną.",
+    "wiktionary": true
+  },
+  "sv:städa": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:ställa": {
+    "cognate": "",
+    "etymology": "From stælla, from stellen, from stellian, from *stalljan.",
+    "wiktionary": true
+  },
+  "sv:ställd": {
+    "cognate": "",
+    "etymology": "From the past participle of ställa.",
+    "wiktionary": true
+  },
+  "sv:ställe": {
+    "cognate": "",
+    "etymology": "From stellen, from stellian. Cf Stelle.",
+    "wiktionary": true
+  },
+  "sv:ställning": {
+    "cognate": "",
+    "etymology": "ning",
+    "wiktionary": true
+  },
+  "sv:stämma": {
+    "cognate": "",
+    "etymology": "Borrowed from stemmen, from *stemnian, from *stabnijan, from *stabnijaną.",
+    "wiktionary": true
+  },
+  "sv:ständig": {
+    "cognate": "",
+    "etymology": "ig, similar to German ständig. The Swedish/German verb stå/stehen is the basis for the noun stånd/Stand, which can mean both upright standing (without support) and still standing (without movement or change). The still-s",
+    "wiktionary": true
+  },
+  "sv:stärka": {
+    "cognate": "",
+    "etymology": "From the adjective stark.",
+    "wiktionary": true
   },
   "sv:stöd": {
     "cognate": "",
     "etymology": "From late Old Swedish stydh, from earlier stuþ, stoþ, from stoð, stuð, from *stuþs, from *stut-. Ultimately from *stew-."
   },
+  "sv:stödja": {
+    "cognate": "",
+    "etymology": "From Late stødhia, from styþia, from styðja, from *stuþjaną.",
+    "wiktionary": true
+  },
+  "sv:stöta": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
   "sv:stötta": {
     "cognate": "",
     "etymology": "From stöd."
+  },
+  "sv:subventionera": {
+    "cognate": "",
+    "etymology": "era",
+    "wiktionary": true
+  },
+  "sv:support": {
+    "cognate": "",
+    "etymology": "From French (or German) and English support. Attested since 1697.",
+    "wiktionary": true
+  },
+  "sv:svag": {
+    "cognate": "",
+    "etymology": "From swak, from *swak, from *swak. Compare with schwach. The form with -g- is due to - influence.",
+    "wiktionary": true
   },
   "sv:svar": {
     "cognate": "answer",
     "etymology": "From svar."
   },
+  "sv:svara": {
+    "cognate": "answer",
+    "etymology": "From svara, from *swarōną, cognate to answer. Compare svar.",
+    "wiktionary": true
+  },
   "sv:svart": {
     "cognate": "swart",
     "etymology": "From svarter, from svartr, from *swartaz, from *swordo-. Cognate with zwart, swart, schwarz, svartur and sort. Related to Latin sordes, sordere."
+  },
+  "sv:svensk": {
+    "cognate": "Swedish",
+    "etymology": "From svenskr, sœnskr, from *swihaniskaz, from *swihô.",
+    "wiktionary": true
+  },
+  "sv:sväng": {
+    "cognate": "",
+    "etymology": "svänga.",
+    "wiktionary": true
+  },
+  "sv:sväva": {
+    "cognate": "",
+    "etymology": "From svæva‚ likely borrowed from swēven, from *swivian, from *swibāną. sviva.",
+    "wiktionary": true
+  },
+  "sv:svår": {
+    "cognate": "",
+    "etymology": "From svār, svāger, svor, from svárr, from *swēraz, from *swer-. Compare schwer.",
+    "wiktionary": true
   },
   "sv:syn": {
     "cognate": "",
     "etymology": "From syn, from sýn, sjón, from *siuniz."
   },
+  "sv:syna": {
+    "cognate": "",
+    "etymology": "From sýna, related to sjá.",
+    "wiktionary": true
+  },
+  "sv:synpunkt": {
+    "cognate": "",
+    "etymology": "punkt"
+  },
+  "sv:syntes": {
+    "cognate": "",
+    "etymology": "Ultimately from σῠ́νθεσῐς.",
+    "wiktionary": true
+  },
+  "sv:säkerhetspolitisk": {
+    "cognate": "",
+    "etymology": "politisk.",
+    "wiktionary": true
+  },
+  "sv:sämst": {
+    "cognate": "",
+    "etymology": "Cognate with sæmest, further etymology uncertain.",
+    "wiktionary": true
+  },
+  "sv:särskild": {
+    "cognate": "",
+    "etymology": "Originally the past participle form of särskilja."
+  },
+  "sv:sätt": {
+    "cognate": "",
+    "etymology": "sv",
+    "wiktionary": true
+  },
+  "sv:sätta": {
+    "cognate": "set",
+    "etymology": "From sætia, from setja, from *satjaną. Cognate with set.",
+    "wiktionary": true
+  },
+  "sv:sådär": {
+    "cognate": "",
+    "etymology": "där, in sense 1 more often written as separate words",
+    "wiktionary": true
+  },
+  "sv:såhär": {
+    "cognate": "",
+    "etymology": "här",
+    "wiktionary": true
+  },
+  "sv:såklart": {
+    "cognate": "",
+    "etymology": "klart",
+    "wiktionary": true
+  },
+  "sv:sönder": {
+    "cognate": "",
+    "etymology": "From sundr, from *sundraz, from *sn̥Hter-.",
+    "wiktionary": true
+  },
+  "sv:sönderfall": {
+    "cognate": "",
+    "etymology": "fall",
+    "wiktionary": true
+  },
+  "sv:tackla": {
+    "cognate": "",
+    "etymology": "takla. 1509.",
+    "wiktionary": true
+  },
+  "sv:tacksam": {
+    "cognate": "",
+    "etymology": "sam",
+    "wiktionary": true
+  },
+  "sv:tajt": {
+    "cognate": "",
+    "etymology": "tight. 1968. tät.",
+    "wiktionary": true
+  },
+  "sv:tala": {
+    "cognate": "",
+    "etymology": "From tala, from *talō, from *del-.",
+    "wiktionary": true
+  },
+  "sv:tappa": {
+    "cognate": "",
+    "etymology": "From tapa. In the sense “to tap” from tappen.",
+    "wiktionary": true
+  },
+  "sv:teckna": {
+    "cognate": "",
+    "etymology": "a, like German zeichnen",
+    "wiktionary": true
+  },
   "sv:tidig": {
     "cognate": "",
     "etymology": "From tíðligr and tidelik, related to tid."
+  },
+  "sv:tidsram": {
+    "cognate": "",
+    "etymology": "ram",
+    "wiktionary": true
+  },
+  "sv:tidtabell": {
+    "cognate": "",
+    "etymology": "tabell",
+    "wiktionary": true
+  },
+  "sv:till": {
+    "cognate": "",
+    "etymology": "From til, from til, from *til (compare *tilą).",
+    "wiktionary": true
+  },
+  "sv:tillbaka": {
+    "cognate": "",
+    "etymology": "From til baka, from til + baka, genitive plural of baker, equivalent to baks, according to SAOB online the alternative forms with -s are however not hence this fact, but rather from the genitive singular. Cognate with ti",
+    "wiktionary": true
+  },
+  "sv:tillfällig": {
+    "cognate": "",
+    "etymology": "Partly from tōvallich, tōvellich from tōval + -ich and partly from ig. Cognate with, but with a different meaning than, tilfældig, tilfeldig, zufällig and toevallig.",
+    "wiktionary": true
+  },
+  "sv:tillgänglig": {
+    "cognate": "",
+    "etymology": "sv. Cognate of zugänglich. Compare förgänglig, oundgänglig.",
+    "wiktionary": true
+  },
+  "sv:tillhöra": {
+    "cognate": "",
+    "etymology": "höra, like gehören, tilheyra, tilhøre.",
+    "wiktionary": true
+  },
+  "sv:tillhörig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
+  },
+  "sv:tillräcklig": {
+    "cognate": "",
+    "etymology": "räckalig",
+    "wiktionary": true
+  },
+  "sv:tillsammans": {
+    "cognate": "",
+    "etymology": "From til saman, til samans, from tosamene. Cognate with tilsammen, til sammen, tilsammen, zusammen, tousommen, tosamen, tezamen and zesummen.",
+    "wiktionary": true
+  },
+  "sv:tillstånd": {
+    "cognate": "",
+    "etymology": "stånd",
+    "wiktionary": true
+  },
+  "sv:tillverka": {
+    "cognate": "",
+    "etymology": "verka",
+    "wiktionary": true
+  },
+  "sv:timme": {
+    "cognate": "time",
+    "etymology": "From time, from tími, from *tīmô, from *tī-, from *dī-.",
+    "wiktionary": true
+  },
+  "sv:ting": {
+    "cognate": "",
+    "etymology": "From þing, from þing, from *þingą.",
+    "wiktionary": true
+  },
+  "sv:titta": {
+    "cognate": "",
+    "etymology": "Probably sv child-speak, similar to titte.",
+    "wiktionary": true
+  },
+  "sv:tjäna": {
+    "cognate": "",
+    "etymology": "From þiǣna, þiāna, þiēna, from þjóna, þéna. Akin to dienen.",
+    "wiktionary": true
+  },
+  "sv:tokig": {
+    "cognate": "",
+    "etymology": "ig",
+    "wiktionary": true
+  },
+  "sv:tom": {
+    "cognate": "tome",
+    "etymology": "From tómr, from *tōmaz.",
+    "wiktionary": true
+  },
+  "sv:total": {
+    "cognate": "",
+    "etymology": "From total, from total, from tōtālis.",
+    "wiktionary": true
+  },
+  "sv:tott": {
+    "cognate": "",
+    "etymology": "From þáttr, from *þanhtu-, from *tonk-tu-.533 According to Pokorny, this is related to *teḱ-, see also texō, dūhen.",
+    "wiktionary": true
+  },
+  "sv:trappa": {
+    "cognate": "",
+    "etymology": "From trapa, trappa, borrowed from trappe, from *trappa, from *trappā. Similar to trapp, trappe and trappa.",
+    "wiktionary": true
+  },
+  "sv:trasslig": {
+    "cognate": "",
+    "etymology": "-ig",
+    "wiktionary": true
+  },
+  "sv:tre": {
+    "cognate": "",
+    "etymology": "From þrir, þrī, from Runic Swedish þrīR, from þrír, from ᚦᚱᛁᛃᛟᛉ, from *þrīz, ultimately from *tréyes. Compare Norwegian and Danish tre, Icelandic þrír, Faroese tríggir.",
+    "wiktionary": true
   },
   "sv:tro": {
     "cognate": "",
     "etymology": "From tro, from trú, from *trūwō."
   },
+  "sv:trohet": {
+    "cognate": "",
+    "etymology": "-het. Compare Treue, tryggð.",
+    "wiktionary": true
+  },
+  "sv:troligtvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
+  "sv:trovärdig": {
+    "cognate": "",
+    "etymology": "From värdig, compare with troverdig and truverdig.",
+    "wiktionary": true
+  },
+  "sv:trygga": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:träffa": {
+    "cognate": "",
+    "etymology": "Borrowed from treffen. dräpa.",
+    "wiktionary": true
+  },
+  "sv:tuffa": {
+    "cognate": "",
+    "etymology": "From -a.",
+    "wiktionary": true
+  },
+  "sv:tung": {
+    "cognate": "",
+    "etymology": "From þungr, from *þunguz.",
+    "wiktionary": true
+  },
+  "sv:tvinga": {
+    "cognate": "",
+    "etymology": "From þvinga, from þvinga, from *þwinganą, from *þwangiz. Cognates: see zwingen.",
+    "wiktionary": true
+  },
+  "sv:tvungen": {
+    "cognate": "",
+    "etymology": "tvinga",
+    "wiktionary": true
+  },
+  "sv:tvärtom": {
+    "cognate": "",
+    "etymology": "From om. Perhaps from notion of a quick about-turn.",
+    "wiktionary": true
+  },
+  "sv:två": {
+    "cognate": "",
+    "etymology": "From tver, from tveir, from *twai, from *dwóh₁.",
+    "wiktionary": true
+  },
+  "sv:tycka": {
+    "cognate": "",
+    "etymology": "From þykkia, þykia, from þykkja, from *þunkijaną.",
+    "wiktionary": true
+  },
+  "sv:tyckare": {
+    "cognate": "",
+    "etymology": "are, since 1843.",
+    "wiktionary": true
+  },
+  "sv:tyda": {
+    "cognate": "",
+    "etymology": "From þyþa, from þýða, from *þiudijaną.",
+    "wiktionary": true
+  },
+  "sv:tydlig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:tydligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:täcka": {
+    "cognate": "thatch",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:tänk": {
+    "cognate": "",
+    "etymology": "tänka.",
+    "wiktionary": true
+  },
+  "sv:tänkbar": {
+    "cognate": "",
+    "etymology": "bar",
+    "wiktionary": true
+  },
+  "sv:tävla": {
+    "cognate": "",
+    "etymology": "From tefla, derived from tafl.",
+    "wiktionary": true
+  },
+  "sv:udda": {
+    "cognate": "",
+    "etymology": "From oddi, dative singular of oddr.",
+    "wiktionary": true
+  },
+  "sv:undantag": {
+    "cognate": "",
+    "etymology": "tag",
+    "wiktionary": true
+  },
+  "sv:under": {
+    "cognate": "",
+    "etymology": "svprepFrom undir, from undir, from *under.",
+    "wiktionary": true
+  },
+  "sv:underbar": {
+    "cognate": "",
+    "etymology": "wunderbar, equivalent to -bar. Compare and underbar, wonderbaar, wunderbar and wunnerbor.",
+    "wiktionary": true
+  },
+  "sv:underteckna": {
+    "cognate": "",
+    "etymology": "teckna",
+    "wiktionary": true
+  },
   "sv:underton": {
     "cognate": "",
     "etymology": "ton"
+  },
+  "sv:undra": {
+    "cognate": "",
+    "etymology": "a, from undra.",
+    "wiktionary": true
   },
   "sv:undsättning": {
     "cognate": "",
     "etymology": "-ning"
   },
+  "sv:ungefär": {
+    "cognate": "",
+    "etymology": "Borrowed from ungefähr."
+  },
+  "sv:upp": {
+    "cognate": "",
+    "etymology": "From upp, from *upp.",
+    "wiktionary": true
+  },
+  "sv:uppenbarligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:uppfatta": {
+    "cognate": "",
+    "etymology": "From fatta, after auffassen.",
+    "wiktionary": true
+  },
+  "sv:uppfylla": {
+    "cognate": "",
+    "etymology": "fylla",
+    "wiktionary": true
+  },
+  "sv:uppför": {
+    "cognate": "",
+    "etymology": "för",
+    "wiktionary": true
+  },
+  "sv:upphöra": {
+    "cognate": "",
+    "etymology": "höra",
+    "wiktionary": true
+  },
+  "sv:uppleva": {
+    "cognate": "",
+    "etymology": "leva",
+    "wiktionary": true
+  },
+  "sv:uppmana": {
+    "cognate": "",
+    "etymology": "mana",
+    "wiktionary": true
+  },
+  "sv:uppmärksamhet": {
+    "cognate": "",
+    "etymology": "-het",
+    "wiktionary": true
+  },
+  "sv:uppmärksamma": {
+    "cognate": "",
+    "etymology": "a",
+    "wiktionary": true
+  },
+  "sv:uppnå": {
+    "cognate": "",
+    "etymology": "nå",
+    "wiktionary": true
+  },
+  "sv:upprepa": {
+    "cognate": "",
+    "etymology": "From earlier uppreppa, from upreppa, from upreppen.",
+    "wiktionary": true
+  },
+  "sv:upprörd": {
+    "cognate": "",
+    "etymology": "rörd",
+    "wiktionary": true
+  },
+  "sv:uppseende": {
+    "cognate": "",
+    "etymology": "Aufsehen, from seende. Attested since 1760.",
+    "wiktionary": true
+  },
+  "sv:uppskatta": {
+    "cognate": "",
+    "etymology": "skatta",
+    "wiktionary": true
+  },
+  "sv:uppskattningsvis": {
+    "cognate": "",
+    "etymology": "vis",
+    "wiktionary": true
+  },
   "sv:uppslutning": {
     "cognate": "",
     "etymology": "-ning"
+  },
+  "sv:uppstå": {
+    "cognate": "",
+    "etymology": "stå",
+    "wiktionary": true
+  },
+  "sv:ur": {
+    "cognate": "",
+    "etymology": "From ór, úr, from *uz.",
+    "wiktionary": true
+  },
+  "sv:ursprungligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
   },
   "sv:ut": {
     "cognate": "",
     "etymology": "From út, from *ūt."
   },
+  "sv:utdragen": {
+    "cognate": "",
+    "etymology": "dragen, compare drawn out. Attested since 1835.",
+    "wiktionary": true
+  },
+  "sv:ute": {
+    "cognate": "",
+    "etymology": "From ūte, from úti.",
+    "wiktionary": true
+  },
+  "sv:utesluta": {
+    "cognate": "",
+    "etymology": "exclūdō, equivalent to sluta.",
+    "wiktionary": true
+  },
   "sv:utgång": {
     "cognate": "",
     "etymology": "From ūtganger, from útgangr, from *ūtgangaz. Equivalent to gång."
+  },
+  "sv:uthållighet": {
+    "cognate": "",
+    "etymology": "-het. Attested since 1825.",
+    "wiktionary": true
+  },
+  "sv:utländsk": {
+    "cognate": "outlandish",
+    "etymology": "From utlændsker, utlænzker. Compare ausländisch and outlandish.",
+    "wiktionary": true
+  },
+  "sv:utläsa": {
+    "cognate": "",
+    "etymology": "läsa",
+    "wiktionary": true
+  },
+  "sv:utmanare": {
+    "cognate": "",
+    "etymology": "are",
+    "wiktionary": true
+  },
+  "sv:utmåla": {
+    "cognate": "",
+    "etymology": "måla. Compare paint out.",
+    "wiktionary": true
+  },
+  "sv:utnyttja": {
+    "cognate": "",
+    "etymology": "nyttja",
+    "wiktionary": true
+  },
+  "sv:utomlands": {
+    "cognate": "",
+    "etymology": "From útanlands, equivalent to lands.",
+    "wiktionary": true
+  },
+  "sv:utplåna": {
+    "cognate": "",
+    "etymology": "plåna, literally to (wipe) out from a slate",
+    "wiktionary": true
+  },
+  "sv:utpressning": {
+    "cognate": "",
+    "etymology": "-ning. Attested since 1855. Compare Erpressung."
+  },
+  "sv:utredning": {
+    "cognate": "",
+    "etymology": "ning",
+    "wiktionary": true
+  },
+  "sv:utrikesutskott": {
+    "cognate": "",
+    "etymology": "utskott",
+    "wiktionary": true
+  },
+  "sv:utropa": {
+    "cognate": "",
+    "etymology": "Compound of ropa, compare ropa ut.",
+    "wiktionary": true
+  },
+  "sv:utrota": {
+    "cognate": "",
+    "etymology": "From rota, a ausrotten.",
+    "wiktionary": true
+  },
+  "sv:uttal": {
+    "cognate": "",
+    "etymology": "tal."
+  },
+  "sv:uttala": {
+    "cognate": "",
+    "etymology": "From tala. Compare udtale, uttale and uttala.",
+    "wiktionary": true
+  },
+  "sv:uttrycka": {
+    "cognate": "",
+    "etymology": "trycka",
+    "wiktionary": true
   },
   "sv:utveckling": {
     "cognate": "",
     "etymology": "ing"
   },
+  "sv:utåt": {
+    "cognate": "",
+    "etymology": "åt",
+    "wiktionary": true
+  },
+  "sv:vakna": {
+    "cognate": "",
+    "etymology": "From vakna, from vakna, from *waknaną, from *weǵ-.",
+    "wiktionary": true
+  },
+  "sv:valkampanj": {
+    "cognate": "",
+    "etymology": "kampanj",
+    "wiktionary": true
+  },
+  "sv:valrörelse": {
+    "cognate": "",
+    "etymology": "rörelse",
+    "wiktionary": true
+  },
+  "sv:vanlig": {
+    "cognate": "",
+    "etymology": "vanaligr. Compare vanlig, vanalegur and vanleg.",
+    "wiktionary": true
+  },
+  "sv:vapenvila": {
+    "cognate": "",
+    "etymology": "vila",
+    "wiktionary": true
+  },
   "sv:vara": {
     "cognate": "ware",
     "etymology": "vara, væra from vera, earlier vesa, from *wesaną. Cognate with være, vera, være."
+  },
+  "sv:vart": {
+    "cognate": "",
+    "etymology": "From hvart, shortened form of var-åt, \"towards where\".",
+    "wiktionary": true
+  },
+  "sv:varva": {
+    "cognate": "",
+    "etymology": "From a.",
+    "wiktionary": true
   },
   "sv:vass": {
     "cognate": "water",
@@ -431,6 +3928,50 @@
     "cognate": "",
     "etymology": "From vika, from vika, from *wikǭ, from *weyg-."
   },
+  "sv:verka": {
+    "cognate": "",
+    "etymology": "From värkia, from verka, from *werką, from *wérǵom. Compare werken and wirken.",
+    "wiktionary": true
+  },
+  "sv:verkligen": {
+    "cognate": "",
+    "etymology": "en",
+    "wiktionary": true
+  },
+  "sv:verktyg": {
+    "cognate": "",
+    "etymology": "tyg, Werkzeug.",
+    "wiktionary": true
+  },
+  "sv:veta": {
+    "cognate": "see",
+    "etymology": "From vita, from vita, from *witaną, ultimately from *weyd-."
+  },
+  "sv:vetta": {
+    "cognate": "see",
+    "etymology": "From vita, ''vet(t)a'', from vita, from *witaną, ultimately from *weyd-. veta.",
+    "wiktionary": true
+  },
+  "sv:vi": {
+    "cognate": "why",
+    "etymology": "From vir, from *wīʀ (compare vér), from *wīz, from *wéy, plural of *éǵh₂.",
+    "wiktionary": true
+  },
+  "sv:viktig": {
+    "cognate": "weighty",
+    "etymology": "ig. Cognate with weighty.",
+    "wiktionary": true
+  },
+  "sv:vintras": {
+    "cognate": "",
+    "etymology": "From -as.",
+    "wiktionary": true
+  },
+  "sv:visa": {
+    "cognate": "strophe",
+    "etymology": "",
+    "wiktionary": true
+  },
   "sv:viss": {
     "cognate": "",
     "etymology": "From viss, from *gawissaz. Cognate with viss."
@@ -439,9 +3980,84 @@
     "cognate": "",
     "etymology": "From hviter, from hvítr, from *hwītaz, ultimately from *ḱweytos."
   },
+  "sv:vitt": {
+    "cognate": "",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:vittna": {
+    "cognate": "",
+    "etymology": "From vitna, from the corresponding noun to vittne.",
+    "wiktionary": true
+  },
+  "sv:väcka": {
+    "cognate": "",
+    "etymology": "From vækia, vækkia, from vekja, from *wakjaną.",
+    "wiktionary": true
+  },
+  "sv:väl": {
+    "cognate": "well",
+    "etymology": "From vel, from *wela, from *welh₁-. Common Germanic word. Cognate with vel, wel, well, væl, wohl, 𐍅𐌰𐌹𐌻𐌰, vel, vel, vel.",
+    "wiktionary": true
+  },
+  "sv:väldig": {
+    "cognate": "",
+    "etymology": "weldich, whence also vældig and veldig (which are usually used in a different way from the Swedish word). See the related gewaltig for more.",
+    "wiktionary": true
+  },
+  "sv:välja": {
+    "cognate": "",
+    "etymology": "From vælia, from velja, from *waljaną. Causative of *wiljaną (see vilja).",
+    "wiktionary": true
+  },
   "sv:väljare": {
     "cognate": "",
     "etymology": "-are"
+  },
+  "sv:välkomna": {
+    "cognate": "",
+    "etymology": "The verb is derived from the adjective a",
+    "wiktionary": true
+  },
+  "sv:välvillig": {
+    "cognate": "",
+    "etymology": "benevolus. Equivalent to villig. Compare velvillig.",
+    "wiktionary": true
+  },
+  "sv:vän": {
+    "cognate": "",
+    "etymology": "From vænn.",
+    "wiktionary": true
+  },
+  "sv:vända": {
+    "cognate": "",
+    "etymology": "From vænda, from venda, from *wandijaną.",
+    "wiktionary": true
+  },
+  "sv:vänja": {
+    "cognate": "",
+    "etymology": "From vænia, from venja, from *wanjaną.",
+    "wiktionary": true
+  },
+  "sv:vänlig": {
+    "cognate": "",
+    "etymology": "From vinliker or -lig.",
+    "wiktionary": true
+  },
+  "sv:vänskaplig": {
+    "cognate": "",
+    "etymology": "lig",
+    "wiktionary": true
+  },
+  "sv:vänta": {
+    "cognate": "",
+    "etymology": "From vænta.",
+    "wiktionary": true
+  },
+  "sv:värd": {
+    "cognate": "worth",
+    "etymology": "From værþer from verðr, verð, from *werþaz, used substantively as a noun. Cognate with waard, wert, Wert, worth.",
+    "wiktionary": true
   },
   "sv:värld": {
     "cognate": "",
@@ -451,6 +4067,36 @@
     "cognate": "",
     "etymology": "ekonomi."
   },
+  "sv:värmebölja": {
+    "cognate": "",
+    "etymology": "bölja",
+    "wiktionary": true
+  },
+  "sv:värna": {
+    "cognate": "",
+    "etymology": "From verna, a.",
+    "wiktionary": true
+  },
+  "sv:väsentlig": {
+    "cognate": "",
+    "etymology": "From wesentlich, wesentlich. lig.",
+    "wiktionary": true
+  },
+  "sv:växa": {
+    "cognate": "",
+    "etymology": "From væxa, from vaxa, from *wahsijaną, from *h₂weg-, cognate with wax (of the moon).",
+    "wiktionary": true
+  },
+  "sv:våga": {
+    "cognate": "",
+    "etymology": "From vagha, from vága, from wagen.",
+    "wiktionary": true
+  },
+  "sv:våldta": {
+    "cognate": "",
+    "etymology": "ta",
+    "wiktionary": true
+  },
   "sv:vår": {
     "cognate": "",
     "etymology": "From var, várr, from *unseraz."
@@ -459,8 +4105,163 @@
     "cognate": "",
     "etymology": "lig"
   },
+  "sv:ytterst": {
+    "cognate": "",
+    "etymology": "Superlative of the adjective yttre.",
+    "wiktionary": true
+  },
+  "sv:zooma": {
+    "cognate": "",
+    "etymology": "-a",
+    "wiktionary": true
+  },
+  "sv:äga": {
+    "cognate": "",
+    "etymology": "From ægha, from eiga, from *aigǭ, from *eik-.",
+    "wiktionary": true
+  },
+  "sv:ägna": {
+    "cognate": "own",
+    "etymology": "From eigna, related to eiginn. Related to äga and egen. Also compare eignen, own.",
+    "wiktionary": true
+  },
+  "sv:älska": {
+    "cognate": "",
+    "etymology": "From ælska, from ælska (Compare elska). Ultimately from *aliskōną.",
+    "wiktionary": true
+  },
+  "sv:än": {
+    "cognate": "than",
+    "etymology": "From enn, from *andi, from *h₂entí.",
+    "wiktionary": true
+  },
+  "sv:ända": {
+    "cognate": "",
+    "etymology": "=",
+    "wiktionary": true
+  },
+  "sv:ändra": {
+    "cognate": "",
+    "etymology": "From ändern. Cognate with ændre.",
+    "wiktionary": true
+  },
+  "sv:ändå": {
+    "cognate": "",
+    "etymology": "From då. Compare endå, enda, endda, enda.",
+    "wiktionary": true
+  },
+  "sv:ännu": {
+    "cognate": "",
+    "etymology": "än + nu",
+    "wiktionary": true
+  },
+  "sv:ärlig": {
+    "cognate": "",
+    "etymology": "From ǣrlīker, from êrlich, from *aiʀulīk, equivalent to -lig. Cognate of ehrlich.",
+    "wiktionary": true
+  },
+  "sv:även": {
+    "cognate": "even",
+    "etymology": "From even, effen, from evan, from *ebn, from *ebnaz, cognate with even, even. Compare effen. See also jämn.",
+    "wiktionary": true
+  },
+  "sv:åka": {
+    "cognate": "",
+    "etymology": "From aka, from aka, from *akaną. Cognate with age. Ultimately from *h₂eǵ-. Doublet of agera, which was borrowed from agō, from the same ultimate Proto-Indo-European source.",
+    "wiktionary": true
+  },
+  "sv:ånga": {
+    "cognate": "",
+    "etymology": "The oblique case of ''ånge'' (in Early Modern Swedish), from ange. Compare ang and anga. Beyond the Nordic languages the origin is unclear, perhaps from *h₂enh₁-.",
+    "wiktionary": true
+  },
+  "sv:ångra": {
+    "cognate": "anger",
+    "etymology": "From angra, from angra, equivalent to -a. Compare angre, angre, anger.",
+    "wiktionary": true
+  },
   "sv:år": {
     "cognate": "",
     "etymology": "From ar, from ár, from *jērą, from *yeh₁r-."
+  },
+  "sv:åstadkomma": {
+    "cognate": "",
+    "etymology": "komma",
+    "wiktionary": true
+  },
+  "sv:åt": {
+    "cognate": "",
+    "etymology": "From at, from *at, from *ád.",
+    "wiktionary": true
+  },
+  "sv:åtala": {
+    "cognate": "",
+    "etymology": "From tala.",
+    "wiktionary": true
+  },
+  "sv:återkomma": {
+    "cognate": "",
+    "etymology": "komma",
+    "wiktionary": true
+  },
+  "sv:återvända": {
+    "cognate": "",
+    "etymology": "vända",
+    "wiktionary": true
+  },
+  "sv:åtminstone": {
+    "cognate": "",
+    "etymology": "From at minsto, + the feminine dative singular definite suffix definite ''-unni/-onne''. Equivalent to åt + dative form of modern minsta.",
+    "wiktionary": true
+  },
+  "sv:öka": {
+    "cognate": "eke",
+    "etymology": "From øka, from auka, from *aukaną, from *h₂ewg-. Akin to eke, øge, 𐌰𐌿𐌺𐌰𐌽, augeō.",
+    "wiktionary": true
+  },
+  "sv:ökänd": {
+    "cognate": "",
+    "etymology": "From ø̄dhkænder‚ from auðkendr, from kenna. Cognate with åkjendt, audkjend and auðkenndur.",
+    "wiktionary": true
+  },
+  "sv:önska": {
+    "cognate": "wish",
+    "etymology": "From yskia, øskia, from œskja, from *wunskijaną. The 'n' stems from influence from Middle Low German wunschen. Compare wünschen.",
+    "wiktionary": true
+  },
+  "sv:över": {
+    "cognate": "",
+    "etymology": "From ivir, yvir, ø̄wer, from Runic Swedish ufiR, from yfir, from *ubiri, from *upéri, from *upér, from *upo.",
+    "wiktionary": true
+  },
+  "sv:över-": {
+    "cognate": "",
+    "etymology": "From yver, from yfir.",
+    "wiktionary": true
+  },
+  "sv:överens": {
+    "cognate": "",
+    "etymology": "From ower ens, over en, equivalent of ens.",
+    "wiktionary": true
+  },
+  "sv:överhuvudtaget": {
+    "cognate": "",
+    "etymology": "taget, from ovir hovudh. Likely borrowed from German, compare überhaupt.",
+    "wiktionary": true
+  },
+  "sv:överleva": {
+    "cognate": "",
+    "etymology": "From leva. Calque of Latin supervivire.",
+    "wiktionary": true
+  },
+  "sv:överraska": {
+    "cognate": "",
+    "etymology": "überraschen, equivalent to raska. Cognate of overraske.",
+    "wiktionary": true
+  },
+  "sv:övertyga": {
+    "cognate": "",
+    "etymology": "From overtügen. Compare überzeugen, overtuigen.",
+    "wiktionary": true
   }
 }

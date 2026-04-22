@@ -20,6 +20,23 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')[:15]
 
+_GTAG_IDS = {
+    "usapodden": "G-1B0C3D6XSQ",
+}
+
+def _gtag_snippet(feedname):
+    gtag_id = _GTAG_IDS.get(feedname)
+    if not gtag_id:
+        return ""
+    return f"""<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={gtag_id}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+      gtag('config', '{gtag_id}');
+    </script>"""
+
 def create_general_feed(url, lang_override=None, feedname_override=None, start_pattern=None):
     # 1. CACHE-BUSTING FETCH
     cache_buster_url = f"{url}?t={int(time.time())}"
@@ -51,7 +68,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
         podcast_title = feed.feed.get('title', 'Unknown Podcast')
         feed_name_attr = slugify(podcast_title)
 
-    podcast_title_display = feed.feed.get('title', 'Unknown Podcast')
+    podcast_title_display = feed.feed.get('title', 'Unknown Podcast') + ' Translator'
     latest_entry = feed.entries[0]
     latest_ts = time.mktime(latest_entry.published_parsed) if hasattr(latest_entry, 'published_parsed') else time.time()
 
@@ -83,7 +100,7 @@ def create_general_feed(url, lang_override=None, feedname_override=None, start_p
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>{podcast_title_display} - Feed Dashboard</title>
-        
+        {_gtag_snippet(feed_name_attr)}
         <link rel="manifest" href="manifest.json">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">

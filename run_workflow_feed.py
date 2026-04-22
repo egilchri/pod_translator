@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--lang", help="Optional: Override language detection (e.g., 'fr', 'es')")
     parser.add_argument("--feedname", help="Optional: Override discovered feedname")
     parser.add_argument("--start-pattern", default=None, help="Optional: Skip transcript segments before this pattern")
+    parser.add_argument("--staging", action="store_true", help="Write to Podcasts/staging/ instead of Podcasts/")
     args = parser.parse_args()
 
     podcasts_repo_path = os.path.abspath("Podcasts")
@@ -42,11 +43,23 @@ def main():
 
     # 2. Run show_general_feed.py passing the determined feedname
     print(f"--- Generating Feed Dashboard for {feedname} ---")
+
+    # Inherit start-pattern from existing feed HTML if not explicitly provided
+    start_pattern = args.start_pattern
+    if not start_pattern:
+        existing_feed = os.path.join(podcasts_repo_path, f"{feedname}.feed.html")
+        if os.path.exists(existing_feed):
+            with open(existing_feed, encoding="utf-8") as f:
+                m = re.search(r'data-start-pattern="([^"]+)"', f.read())
+                if m:
+                    start_pattern = m.group(1)
+                    print(f"--- Using start-pattern from feed HTML: '{start_pattern}' ---")
+
     gen_cmd = ["python3", "show_general_feed.py", "--url", args.url, "--feedname", feedname]
     if args.lang:
         gen_cmd.extend(["--lang", args.lang])
-    if args.start_pattern:
-        gen_cmd.extend(["--start-pattern", args.start_pattern])
+    if start_pattern:
+        gen_cmd.extend(["--start-pattern", start_pattern])
         
     stdout_output = run_command_with_output(gen_cmd)
 
@@ -60,13 +73,17 @@ def main():
     # Since we passed --feedname, the source and target names are now identical
     feed_file = f"{feedname}.feed.html"
 
+    dest_dir = os.path.join(podcasts_repo_path, "staging") if args.staging else podcasts_repo_path
+    if args.staging:
+        os.makedirs(dest_dir, exist_ok=True)
+
     if not os.path.exists(podcasts_repo_path):
         print(f"[!] Error: Podcasts directory not found at {podcasts_repo_path}")
         sys.exit(1)
 
     if os.path.exists(feed_file):
-        print(f"--- Moving {feed_file} to {podcasts_repo_path} ---")
-        dest = os.path.join(podcasts_repo_path, feed_file)
+        print(f"--- Moving {feed_file} to {dest_dir} ---")
+        dest = os.path.join(dest_dir, feed_file)
         if os.path.exists(dest):
             os.remove(dest)
         shutil.move(feed_file, dest)
@@ -76,21 +93,21 @@ def main():
 
     # 5. Patch MP3 sizes into the feed HTML
     print(f"--- Fetching MP3 sizes for {feedname} ---")
-    sizes_cmd = ["python3", "fetch_mp3_sizes.py", feedname, "--html", os.path.join(podcasts_repo_path, feed_file)]
+    sizes_cmd = ["python3", "fetch_mp3_sizes.py", feedname, "--html", os.path.join(dest_dir, feed_file)]
     try:
         subprocess.run(sizes_cmd, check=True)
     except subprocess.CalledProcessError as e:
         print(f"[!] fetch_mp3_sizes failed (non-fatal): {e}")
 
     # 6. Git Operations
+    git_path = os.path.join("staging", feed_file) if args.staging else feed_file
+    commit_message = f"{'[staging] ' if args.staging else ''}Update feed: {feedname} ({lang})"
     print(f"--- Staging and Pushing to Repository ---")
-    commit_message = f"Update feed: {feedname} ({lang})"
-    
     try:
-        subprocess.run(["git", "add", feed_file], cwd=podcasts_repo_path, check=True)
+        subprocess.run(["git", "add", git_path], cwd=podcasts_repo_path, check=True)
         subprocess.run(["git", "commit", "-m", commit_message], cwd=podcasts_repo_path, check=True)
         subprocess.run(["git", "push"], cwd=podcasts_repo_path, check=True)
-        print(f"--- Workflow Complete! {feedname} dashboard is live. ---")
+        print(f"--- Workflow Complete! {feedname} dashboard is {'in staging' if args.staging else 'live'}. ---")
     except subprocess.CalledProcessError:
         print("Nothing to commit (or git error), skipping push.")
 
